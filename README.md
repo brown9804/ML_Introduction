@@ -1,7 +1,7 @@
 # Machine Learning Introduction
 
 Learning Machine Learning concepts and 
-design simple algorithms using Matlab, Octave, Python, NumPy and R
+design simple algorithms using Matlab, Octave, Python, NumPy and, R
 
 ## Dependecies
 - Install Matlab or use Matlab online
