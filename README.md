@@ -1,4 +1,4 @@
-# Machine Learning Introduction
+# Machine Learning Training Path
 
 Learning Machine Learning concepts and 
 design simple algorithms using Matlab, Octave, Python, NumPy and, R
