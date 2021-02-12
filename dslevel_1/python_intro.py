@@ -170,3 +170,258 @@ print(areas[count-1])
 
 # Print out the area of the living room
 print(areas[5])
+
+### --------------------------------------------------------
+# Create the areas list
+areas = ["hallway", 11.25, "kitchen", 18.0, "living room", 20.0, "bedroom", 10.75, "bathroom", 9.50]
+
+# Sum of kitchen and bedroom area: eat_sleep_area
+eat_sleep_area = areas[3] + areas[-3]
+
+# Print the variable eat_sleep_area
+print(eat_sleep_area)
+
+
+### --------------------------------------------------------
+# Create the areas list
+areas = ["hallway", 11.25, "kitchen", 18.0, "living room", 20.0, "bedroom", 10.75, "bathroom", 9.50]
+
+# Use slicing to create downstairs
+downstairs = areas[0:6]
+
+# Use slicing to create upstairs
+upstairs = areas[6:]
+
+# Print out downstairs and upstairs
+print(downstairs)
+print(upstairs)
+
+
+### --------------------------------------------------------
+# Create the areas list
+areas = ["hallway", 11.25, "kitchen", 18.0, "living room", 20.0, "bedroom", 10.75, "bathroom", 9.50]
+
+# Alternative slicing to create downstairs
+downstairs = areas[:6]
+
+# Alternative slicing to create upstairs
+upstairs = areas[6:]
+
+print(downstairs)
+print(upstairs)
+
+
+### --------------------------------------------------------
+areas = ["hallway", 11.25, "kitchen", 18.0, "living room", 20.0, "bedroom", 10.75, "bathroom", 9.50]
+house[-1][1]
+# returns the 9.5
+# A float: the bathroom area
+
+
+### --------------------------------------------------------
+# Create the areas list
+areas = ["hallway", 11.25, "kitchen", 18.0, "living room", 20.0, "bedroom", 10.75, "bathroom", 9.50]
+
+print("Areas before: \n" + str(areas))
+
+# Correct the bathroom area
+areas[-1] = 10.50
+
+# Change "living room" to "chill zone"
+areas[4] = "chill zone"
+
+print("Areas after: \n" + str(areas))
+
+
+### --------------------------------------------------------
+# Create the areas list and make some changes
+areas = ["hallway", 11.25, "kitchen", 18.0, "chill zone", 20.0,
+         "bedroom", 10.75, "bathroom", 10.50]
+
+# Add poolhouse data to areas, new list is areas_1
+areas_1 = areas + ["poolhouse", 24.5]
+
+# Add garage data to areas_1, new list is areas_2
+areas_2 = areas_1 + ["garage", 15.45]
+
+print(areas)
+print(areas_1)
+print(areas_2)
+
+
+### --------------------------------------------------------
+## how to Delete list elements
+areas = ["hallway", 11.25, "kitchen", 18.0,
+        "chill zone", 20.0, "bedroom", 10.75,
+         "bathroom", 10.50, "poolhouse", 24.5,
+         "garage", 15.45]
+
+del(areas[-4:-2])
+# output 
+# ['hallway', 11.25, 'kitchen', 18.0, 
+# 'chill zone', 20.0, 'bedroom', 10.75, 
+# 'bathroom', 10.5, 'garage', 15.45]
+
+
+### --------------------------------------------------------
+### Inner workings of lists
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+
+# Create areas_copy
+areas_copy = list(areas)
+
+# Change areas_copy
+areas_copy[0] = 5.0
+
+# Print areas
+print(areas)
+
+
+### --------------------------------------------------------
+# Create variables var1 and var2
+var1 = [1, 2, 3, 4]
+var2 = True
+
+# Print out type of var1
+print(type(var1))
+
+# Print out length of var1
+print("The len is: " + str(len(var1)))
+
+# Convert var2 to an integer: out2
+print("Before "+ str(type(var2)))
+## operation
+out2 = int(var2)
+## printing for debug 
+print("After "+ str(type(out2)))
+
+
+
+### --------------------------------------------------------
+# Help!
+# Maybe you already know the name of a 
+# Python function, but you still have to figure out
+#  how to use it. Ironically, you have to ask for 
+#  information about a function with another function: 
+#  help(). In IPython specifically, you can also use ? 
+#  before the function name.
+
+# To get help on the max() function, for example, 
+# you can use one of these calls:
+
+# help(max) ? max
+# Use the Shell to open up the documentation on
+#  complex(). Which of the following statements is true?
+
+# R/ # complex() takes two arguments: real and imag. real is a required argument, imag is an optional argument.
+
+
+
+### --------------------------------------------------------
+## Multiple arguments
+# Create lists first and second
+first = [11.25, 18.0, 20.0]
+second = [10.75, 9.50]
+
+# Paste together first and second: full
+full = first + second
+
+# Sort full in descending order: full_sorted
+full_sorted = sorted(full, reverse=True)
+
+# Print out full_sorted
+print(full_sorted)
+
+### --------------------------------------------------------
+## Methods  - String Methods
+# string to experiment with: place
+place = "poolhouse"
+
+# Use upper() on place: place_up
+place_up = place.upper()
+
+# Print out place and place_up
+print(place)
+print(place_up)
+
+# Print out the number of o's in place
+print(place.count('o'))
+
+
+### --------------------------------------------------------
+## Methods  - List Methods - ex#0
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+
+# Print out the index of the element 20.0
+print(areas.index(20.0))
+
+# Print out how often 9.50 appears in areas
+print(areas.count(9.50))
+
+
+
+### --------------------------------------------------------
+## Methods  - List Methods - ex#1
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+
+# Use append twice to add poolhouse and garage size
+areas.append(24.5)
+areas.append(15.45)
+
+# Print out areas
+print(areas)
+
+# Reverse the orders of the elements in areas
+areas.reverse()
+
+# Print out areas
+print(areas)
+
+
+### --------------------------------------------------------
+## import example 
+# Definition of radius
+r = 0.43
+
+# Import the math package
+import math 
+
+# Calculate C
+C = 2 * math.pi * r
+
+# Calculate A
+A = math.pi * (r**2)
+
+# Build printout
+print("Circumference: " + str(C))
+print("Area: " + str(A))
+
+
+
+### --------------------------------------------------------
+## import selected
+# Definition of radius
+r = 192500
+
+# Import radians function of math package
+from math import radians
+
+# Travel distance of Moon over 12 degrees. Store in dist.
+phi = radians(12)
+dist = r * phi
+
+# Print out dist
+print(dist)
+
+
+### --------------------------------------------------------
+## Suppose you want to use the function inv(), which is in
+## the linalg subpackage of the scipy package. You want to
+## be able to use this function as follows:
+## R/ from scipy.linalg import inv as my_inv
+
+### --------------------------------------------------------
+## NUMPY
