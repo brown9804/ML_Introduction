@@ -1,7 +1,7 @@
 # Machine Learning
 ## Learning and Training Path
 
-Learning Machine Learning concepts and 
+Learning ML concepts and 
 design simple algorithms using Matlab, Octave, Python, NumPy and, R
 
 ### Dependecies
