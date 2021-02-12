@@ -23,6 +23,13 @@ Level up your data science skills by creating visualizations using Matplotlib an
 
 Learn the art of writing your own functions in Python, as well as key concepts like scoping, etc.
 
+## 6. Statistical Thinking in Python (Part 1):
+
+Build the foundation you need to think statistically and to speak the language of your data, etc.
+
+## 7. Statistical Thinking in Python (Part 2):
+
+Learn to perform the two key tasks in statistical inference: parameter estimation and hypothesis, etc.
 
 
 
