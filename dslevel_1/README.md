@@ -17,7 +17,11 @@ Master the basics of data analysis in Python. Expand your skillset by learning s
 
 ### 4. Intermediate Python:
 
-Level up your data science skills by creating visualizations using Matplotlib and manipulating Data, etc
+Level up your data science skills by creating visualizations using Matplotlib and manipulating Data, etc.
+
+### 5. Python Data Science Toolbox (Part 1):
+
+Learn the art of writing your own functions in Python, as well as key concepts like scoping, etc.
 
 
 
