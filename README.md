@@ -1,4 +1,5 @@
-# Machine Learning -- Learning and Training Path
+# Data Scientist (ML)
+## Learning and Training Path
 
 Learning ML concepts and 
 design simple algorithms using Matlab, Octave, Python, NumPy and, R
