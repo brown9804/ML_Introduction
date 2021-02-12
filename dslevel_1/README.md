@@ -11,5 +11,15 @@ Master the basics of querying tables in relational databases such as MySQL, SQL 
 
 Join two or three tables together into one, combine tables using set theory, and work with subqueries, etc
 
-### 3.
+### 3. Introduction to Python:
+
+Master the basics of data analysis in Python. Expand your skillset by learning scientific computing, etc.
+
+### 4. Intermediate Python:
+
+Level up your data science skills by creating visualizations using Matplotlib and manipulating Data, etc
+
+
+
+
 
