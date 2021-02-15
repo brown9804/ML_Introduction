@@ -1,6 +1,6 @@
 # FODS Continuous Learning Phase 1
 
-### Febrary, 2021
+### February, 2021
 
 ## Courses:
 ### 1. Intermediate SQL:
