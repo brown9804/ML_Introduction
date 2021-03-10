@@ -19,7 +19,7 @@ Learn the fundamentals of neural networks and how to build deep learning models 
 Learn how to cluster, transform, visualize, and extract insights from unlabeled datasets.
 
 
-### 4.Case Study: School Budgeting with Machine Learning in Python
+### 4. Case Study: School Budgeting with Machine Learning in Python
 
 Learn how to build a model to automatically classify items in a school budget.
 
@@ -28,11 +28,11 @@ Learn how to build a model to automatically classify items in a school budget.
 Learn the fundamentals of gradient boosting and build state-of-the-art machine learning models using XGBoost.
 
 
-### 6.Linear Classifiers in Python
+### 6. Linear Classifiers in Python
 
 In this course you will learn the details of linear classifiers like logistic regression and SVM.
 
-### 7.Machine Learning with Tree-Based Models in Python
+### 7. Machine Learning with Tree-Based Models in Python
 
 In this course, you'll learn how to use tree-based models and ensembles for regression and classification, etc.
 
