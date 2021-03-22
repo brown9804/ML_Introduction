@@ -8,6 +8,7 @@
 
 ## Machine Learning 
 It is a branch of artificial intelligence that allows machines to learn without being expressly programmed to do so. The idea is to identify the patterns between the data to make predictions. That is, the relationships between the columns are analyzed. <br/>
+
 Data Tendency:
 |   Use  | % | 
 |---|---|
