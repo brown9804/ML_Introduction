@@ -1,5 +1,4 @@
 # [Notes] Azure Machine Learning Environments 
-### This is my compilations of several tips/information
 
 ## References
 [1] From https://docs.microsoft.com/en-us/azure/machine-learning/classic/
