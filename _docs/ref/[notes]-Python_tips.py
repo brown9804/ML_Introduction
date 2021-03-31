@@ -8,6 +8,5 @@ print(df.head(5).to_csv("./getting_sample.csv"))
 
 # To tranpose a excel file n rows
 df_n5 = df.head(5)
-transpose_sample = df_n5.transpose()
-print(df_n5.to_csv("./transpose_sample.csv"))
-
+transpose_sample = df_n5.T
+print(transpose_sample.to_csv("./transpose_n5_sample.csv"))
