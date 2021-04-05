@@ -7,6 +7,8 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [2] From https://www.bbva.com/es/machine-learning-que-es-y-como-funciona/ <br/>
 [3] From https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9 <br/>
 [4] From https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/ <br/>
+[5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
+[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md
 
 ## 1. Data Tendency:
 
@@ -14,6 +16,24 @@ It is a branch of artificial intelligence that allows machines to learn without 
 |---|---|
 | Training | 80 | 
 | Validation | 20 |
+
+
+According with google documentation (quoting):
+
+> In general, the more training examples you have, the better your outcome.
+> The amount of example data required also scales with the complexity of the
+> problem you're trying to solve. You won't need as much data to get an accurate
+>  binary classification model compared to a multi-class model because it's less 
+>  complicated to predict one class from two rather than many.
+>
+> There's no perfect formula, but there are recommended minimum rows of example data:
+> - Classification problem: 50 x the number features
+> - Regression problem: 200 x the number of features
+
+> -- <cite> Google Cloud </cite>
+
+
+
 
 
 ## 2. Accuracy 
@@ -50,3 +70,13 @@ sensitivity = TP / TP + FN
 ```math
 specificity = TN / TN + FP  
 ```
+
+## 6. Auto ML 
+
+
+|  Transform Strategies  |   Meaning  | Syntax     | 
+|     ---    |        ---       |         ---      |
+| Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
+| Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
+| Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
+
