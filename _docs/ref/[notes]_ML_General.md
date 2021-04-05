@@ -8,7 +8,9 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [3] From https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9 <br/>
 [4] From https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/ <br/>
 [5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
-[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md
+[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md <br/>
+[7] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-automated-ml.md <br/>
+
 
 ## 1. Data Tendency:
 
@@ -73,6 +75,46 @@ specificity = TN / TN + FP
 
 ## 6. Auto ML 
 
+Considering Microsoft documentation:
+
+### Types of AutoML: classify, regression, & forecast
+### - Classification 
+> Classification is a common machine learning task. Classification is a 
+> type of supervised learning in which models learn using training data, 
+> and apply those learnings to new data. Azure Machine Learning offers 
+> featurizations specifically for these tasks, such as deep neural network 
+> text featurizers for classification. Learn more about <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-configure-auto-features.md#featurization" target="_top"> featurization options </a>.
+> 
+> The main goal of classification models is to predict which categories 
+> new data will fall into based on learnings from its training data. 
+> Common classification examples include fraud detection, handwriting 
+> recognition, and object detection. Learn more and see an example at <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/tutorial-first-experiment-automated-ml.md" target="_top"> Create a classification model with automated ML </a>.
+>
+> See examples of classification and automated machine learning in these 
+> Python notebooks:
+> 1.  <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb" target="_top"> Fraud Detection </a>
+> 2. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb" target="_top"> Marketing Prediction </a>
+> 3. <a href="https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b" target="_top"> Newsgroup Data Classification </a>
+> 
+> -- <cite> Microsoft Docs </cite>
+
+### - Regression
+> 
+>
+>
+>
+> -- <cite> Microsoft Docs </cite>
+
+
+### - Time-series forecasting
+> 
+>
+>
+>
+> -- <cite> Microsoft Docs </cite>
+
+
+### Transform Strategies
 
 |  Transform Strategies  |   Meaning  | Syntax     | 
 |     ---    |        ---       |         ---      |
