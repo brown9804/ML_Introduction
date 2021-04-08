@@ -1,4 +1,13 @@
 # Conda Essentials
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Feb, 2021
+
+----------
 
 ### February, 2021
 
