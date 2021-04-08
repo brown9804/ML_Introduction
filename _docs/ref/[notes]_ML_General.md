@@ -99,18 +99,58 @@ Considering Microsoft documentation:
 > -- <cite> Microsoft Docs </cite>
 
 ### - Regression
+> Similar to classification, regression tasks are also a common 
+> supervised learning task. Azure Machine Learning 
+> <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-configure-auto-features.md#featurization" target="_top"> offers featurizations specifically for these tasks </a>.
+
+> Different from classification where predicted output values are categorical, 
+> regression models predict numerical output values based on independent predictors. 
+> In regression, the objective is to help establish the relationship among those independent
+> predictor variables by estimating how one variable impacts the others. 
+>  
+>  For example, automobile price based on features like, gas mileage, 
+>  safety rating, etc. Learn more and see an example of 
+>  <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/tutorial-auto-train-models.md" target="_top"> regression with automated machine learning </a>.
+>
+>
+> See examples of regression and automated machine 
+> learning for predictions in these Python notebooks: 
+> <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb" target="_top" > CPU Performance Prediction </a>
 > 
->
->
->
 > -- <cite> Microsoft Docs </cite>
 
 
 ### - Time-series forecasting
+> Building forecasts is an integral part of any business, whether it's revenue,
+> inventory, sales, or customer demand. You can use automated ML to combine 
+> techniques and approaches and get a recommended, high-quality time-series forecast.
+> Learn more with this how-to: 
+> <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md" target="_top" > automated machine learning for time series forecasting </a>.
+>
+> An automated time-series experiment is treated as a multivariate regression problem. 
+> Past time-series values are "pivoted" to become additional dimensions for the regressor 
+> together with other predictors. This approach, unlike classical time series methods, 
+> has an advantage of naturally incorporating multiple contextual variables and their 
+> relationship to one another during training. Automated ML learns a single, but often 
+> internally branched model for all items in the dataset and prediction horizons. 
+> More data is thus available to estimate model parameters and generalization to unseen 
+> series becomes possible.
+>
+> Advanced forecasting configuration includes:
 > 
+> - Holiday detection and featurization
+> - Time-series and DNN learners (Auto-ARIMA, Prophet, ForecastTCN)
+> - Many models support through grouping
+> - Rolling-origin cross validation
+> - Configurable lags
+> - Rolling window aggregate features
 >
->
->
+> See examples of regression and automated machine learning for predictions 
+> in these Python notebooks: 
+> 1. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb" target="_top" > Sales Forecasting </a>
+> 2. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb" target="_top" > Demand Forecasting </a>
+> 3. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb" target="_top" >  Beverage Production Forecast </a>
+> 
 > -- <cite> Microsoft Docs </cite>
 
 
