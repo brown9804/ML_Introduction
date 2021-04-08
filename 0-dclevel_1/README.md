@@ -1,5 +1,15 @@
 # 7 of 10 Trainings - Mark Completion back in MyLearning
 
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Jan, 2021
+
+----------
+
 ### January, 2021
 
 ## Courses:
