@@ -185,7 +185,7 @@ Private container services
 
 ## CD/CI
 
-`Continuos Deploy ` `Continous Delivery` `Continuos Integration`
+`Continuos Deploy `  `Continous Delivery` `Continuos Integration`
 
 1. Time to market goes down 
 2. Quality increases 
