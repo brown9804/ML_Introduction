@@ -1,3 +1,13 @@
+# ----------
+
+# Costa Rica
+
+# Belinda Brown, belindabrownr04@gmail.com
+
+# Jan, 2021
+
+# ----------
+
 # To getting a small sample of n rows from a cvs to another one 
 # if you want another extension just change it.
 import pandas as pd
