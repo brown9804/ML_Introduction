@@ -61,9 +61,9 @@ A tool criteria is:
 2. Transparent uptime: `admit failure, sound like a human, communication channel, authentic`.
 
   ### The westrum model 
-  1. pathological (power oriented)
+  1. Pathological (power oriented)
   2. Bereaucratic (rule-oriented)
-  2. generative (performance oriented)
+  2. Generative (performance oriented)
 
   ### Kaizen
   Change for the better.
@@ -141,7 +141,7 @@ And know ...  calms with L of leans
 - Empower the team 
 - Build-in integrity 
 - See the whole
-- 
+
 ## Prod & Stage 
 | |  Important for Prod and Stage    ||  |
 |---|---|---|---|
@@ -200,7 +200,7 @@ Annotations:
 - Don't leave the build broken 
 - Use a trunk - bases development flow 
 - No flaky tests 
-- the build should return a status, a log, and an artifact 
+- The build should return a status, a log, and an artifact 
 
 Important:
 1. Only build artifacts once
