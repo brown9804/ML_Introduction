@@ -1,5 +1,15 @@
 # Machine Learning
 
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+March, 2021
+
+----------
+
 ### March, 2021
 
 ## Topics:
