@@ -1,4 +1,15 @@
 # Data Scientist (ML)
+
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Jan, 2021
+
+----------
+
 ## Learning and Training Path
 
 Learning ML concepts and 
