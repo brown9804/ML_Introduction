@@ -1,5 +1,16 @@
 # FODS Continuous Learning Phase 2
 
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Feb, 2021
+
+----------
+
+
 ### February, 2021
 
 ## Topics:
