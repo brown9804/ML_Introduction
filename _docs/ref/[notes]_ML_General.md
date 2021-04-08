@@ -1,5 +1,15 @@
 # [Notes] Machine Learning 
 
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Jan, 2021
+
+----------
+
 It is a branch of artificial intelligence that allows machines to learn without being expressly programmed to do so. The idea is to identify the patterns between the data to make predictions. That is, the relationships between the columns are analyzed.
 
 ## References
