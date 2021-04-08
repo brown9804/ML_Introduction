@@ -1,5 +1,15 @@
 # [Notes] Azure Machine Learning Environments 
 
+----------
+
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Jan, 2021
+
+----------
+
 ## References
 [1] From https://docs.microsoft.com/en-us/azure/machine-learning/classic/ <br/>
 [2] From https://naadispeaks.wordpress.com/2020/11/30/different-computation-options-on-azure-machine-learning/#:~:text=Compute%20clusters%20are%20different%20from,using%20parallel%20processing%20for%20computations <br/>
