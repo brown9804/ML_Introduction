@@ -39,7 +39,7 @@ Azure Machine Learning compute cluster is a managed-compute infrastructure that 
 Compute clusters are different from compute instances with their ability of having one or more compute nodes. These compute nodes can be created with our desired hardware configurations. Why having more than one node? That comes with the ability of using parallel processing for computations. If you are going do to hyperparameter tuning/ GPU based complex computations/ several machine learning runs at once you may have to create a compute cluster. If you are running Automated Machine Learning expriment with AzureML, you must have a compute cluster to perform computations.
 
 
-## Infence cluster 
+## Inference cluster 
 `-> For endpoints `
 
 There are two options to deploy Azure machine learning web services as REST endpoints. <br/>
