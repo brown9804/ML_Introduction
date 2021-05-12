@@ -185,7 +185,7 @@ From [10]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/How-to-Choose-a-Metric-for-Imbalanced-Classification-latest.png)
 
-### 1. For specific model:
+### 1. Specific Perfomance Analysis:
 
 #### 1.1 Evaluate Logistic regression model
 > 1. `AIC (Akaike Information Criteria)` – The analogous metric of adjusted R² in logistic 
@@ -224,7 +224,7 @@ From [24]:
 > 
 > -- <cite> Analytics Vidhya </cite>
 
-### 2. For general model:
+### 2. Explainability metrics:
 
 #### 2.1 Accuracy 
 `-> Compare real prediction vs ml prediction`
