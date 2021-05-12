@@ -66,6 +66,7 @@ From [12]
 
 #### 1.3 Linear Regression
 
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_logistic_vs_linear_regression.png)
 
 ### Topic #2 Unsupervised Learning 
 
