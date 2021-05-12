@@ -23,6 +23,7 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [8] From https://www.datarobot.com/wiki/target/ <br/>
 [9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
 [10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
+[11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
 
 
 ## Dictionary
@@ -39,9 +40,7 @@ It is a branch of artificial intelligence that allows machines to learn without 
 
 
 
-From [10]:
-<br/>
-
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
 
 ### Topic #1 Supervised Learning 
 
@@ -78,6 +77,12 @@ From [10]:
 
 
 
+## How to choose a Performance Metric
+
+
+From [10]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/How-to-Choose-a-Metric-for-Imbalanced-Classification-latest.png)
 
 
 ## 1. Data Tendency:
