@@ -24,7 +24,14 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
 [10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
 [11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
-[12] From 
+[12] From https://www.potentiaco.com/what-is-machine-learning-definition-types-applications-and-examples/ <br/>
+[13] From https://corporatefinanceinstitute.com/resources/knowledge/other/decision-tree/ <br/>
+[14] From https://developer.ibm.com/technologies/artificial-intelligence/articles/cc-models-machine-learning/ <br/>
+[15] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
+[16] From https://www.javatpoint.com/unsupervised-machine-learning <br/>
+[17] From https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html <br/>
+[18] From https://medium.com/@Medmain/learning-through-trial-and-error-f83ab6e591dd <br/>
+
 
 ## Dictionary
 `Target Variable`: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding. [8]
@@ -34,48 +41,122 @@ It is a branch of artificial intelligence that allows machines to learn without 
 |   Type  | Category | Definition |
 |---|---|---|
 | Supervised | Classification and Regression | This algorithms learns the input pattern and generates the expected output. We have expected output associated with our input data. [9] |
-| Unsupervised | Clustering and  | The task of machine is to group unsorted information according to similarities, patterns and differences without any prior training of data. [9]|
-| Reinforcement | *  |  |
+| Unsupervised | Clustering and Association | The task of machine is to group unsorted information according to similarities, patterns and differences without any prior training of data. [9]|
+| Reinforcement | *  | Reinforcement learning works by putting the algorithm in a work environment with an interpreter and a reward system. In every iteration of the algorithm, the output result is given to the interpreter, which decides whether the outcome is favorable or not. [12] |
 
+From [18]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/types_of_ml_based_in_objective.png)
 
-From [12]
+From [14]
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_types_input_output.png)
 
-
+From [11]
+<br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
 
-### Topic #1 Supervised Learning 
+### Type #1 Supervised Learning 
 
 |   Use  | % | 
 |---|---|
 | Training | 80 | 
 | Validation | 20 |
 
+From [14]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_model_in_out.png)
+
+From []:
+<br/>
+
+|   Categegory  | Definition | 
+|---|---|
+| Classification | | 
+| Regression | |
+
+
+From [15]:
+<br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/regression_vs_classification_supervised_learning.png)
 
+
+
 #### 1.1 Decision Trees
+> A decision tree is a supervised learning method for classification. 
+> Algorithms of this variety create trees that predict the result of an 
+> input vector based on decision rules inferred from the features present 
+> in the data. Decision trees are useful because they’re easy to visualize 
+> so you can understand the factors that lead to a result.
+>
+> Two types of models exist for decision trees: <br/>
+> Classification trees, where the target variable is a discrete value and the leaves represent class labels (as shown in the example tree), and <br/>
+> Regression trees, where the target variable can take continuous values.
+> 
+> > -- <cite> From [14] IBM </cite>
+> > 
+
+From [14]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/typical_decision_tree.png)
 
 ##### 1.1.1 Classification Trees
 
+> A categorical variable decision tree includes categorical target 
+> variables that are divided into categories. For example, the categories 
+> can be yes or no. The categories mean that every stage of the decision 
+> process falls into one of the categories, and there are no in-betweens.
+> 
+> > -- <cite> From [13] CFI </cite>
+
+
 ##### 1.1.1 Regression Trees
 
-
+> A continuous variable decision tree is a decision tree with a continuous 
+> target variable. For example, the income of an individual whose income is
+> unknown can be predicted based on available information such as their 
+> occupation, age, and other continuous variables.
+> 
+> > -- <cite> From [13] CFI </cite>
 
 #### 1.2 Logictic Regression
 
 #### 1.3 Linear Regression
 
+From []:
+<br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_logistic_vs_linear_regression.png)
 
-### Topic #2 Unsupervised Learning 
+### Type #2 Unsupervised Learning 
+
+From [14]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/unsupervised_logic_data_in_out.png)
 
 
+From [16]:
+<br/>
+
+|   Categegory  | Definition | 
+|---|---|
+| Clustering | Clustering is a method of grouping the objects into clusters such that objects with most similarities remains into a group and has less or no similarities with the objects of another group. Cluster analysis finds the commonalities between the data objects and categorizes them as per the presence and absence of those commonalities. [16]| 
+| Association | An association rule is an unsupervised learning method which is used for finding the relationships between variables in the large database. It determines the set of items that occurs together in the dataset. Association rule makes marketing strategy more effective. Such as people who buy X item (suppose a bread) are also tend to purchase Y (Butter/Jam) item. [16]|
 
 
+### Type #3 Reinforcement Learning 
+From [14]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_logic_data_in_out.png)
 
-### Topic #3 Reinforcement Learning 
 
+From [17]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_flow_basic_1.png)
+
+
+From [17]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_flow_basic_2.png)
 
 
 
