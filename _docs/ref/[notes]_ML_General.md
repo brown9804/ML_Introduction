@@ -20,14 +20,67 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
 [6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md <br/>
 [7] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-automated-ml.md <br/>
+[8] From https://www.datarobot.com/wiki/target/ <br/>
+[9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
+[10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
 
 
-## 1. Data Tendency:
+## Dictionary
+`Target Variable`: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding. [8]
+
+## 3 main Types of Learning:
+
+|   Type  | Category | Definition |
+|---|---|---|
+| Supervised | Classification and Regression | |
+| Unsupervised | Clustering and  | |
+| Reinforcement | *  | |
+
+
+
+
+From [10]:
+<br/>
+
+
+### Topic #1 Supervised Learning 
 
 |   Use  | % | 
 |---|---|
 | Training | 80 | 
 | Validation | 20 |
+
+#### 1.1 Decision Trees
+
+##### 1.1.1 Classification Trees
+
+##### 1.1.1 Regression Trees
+
+
+
+#### 1.2 Logictic Regression
+
+#### 1.3 Linear Regression
+
+
+### Topic #2 Unsupervised Learning 
+
+
+
+
+
+### Topic #3 Reinforcement Learning 
+
+
+
+
+
+
+
+
+
+
+## 1. Data Tendency:
 
 
 According with google documentation (quoting):
