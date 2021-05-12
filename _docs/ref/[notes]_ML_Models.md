@@ -1,4 +1,4 @@
-# [Notes] Machine Learning 
+# [Notes] Machine Learning Models
 
 ----------
 
