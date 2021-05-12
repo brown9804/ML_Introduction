@@ -12,27 +12,6 @@ Jan, 2021
 
 It is a branch of artificial intelligence that allows machines to learn without being expressly programmed to do so. The idea is to identify the patterns between the data to make predictions. That is, the relationships between the columns are analyzed.
 
-## References
-[1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
-[2] From https://www.bbva.com/es/machine-learning-que-es-y-como-funciona/ <br/>
-[3] From https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9 <br/>
-[4] From https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/ <br/>
-[5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
-[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md <br/>
-[7] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-automated-ml.md <br/>
-[8] From https://www.datarobot.com/wiki/target/ <br/>
-[9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
-[10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
-[11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
-[12] From https://www.potentiaco.com/what-is-machine-learning-definition-types-applications-and-examples/ <br/>
-[13] From https://corporatefinanceinstitute.com/resources/knowledge/other/decision-tree/ <br/>
-[14] From https://developer.ibm.com/technologies/artificial-intelligence/articles/cc-models-machine-learning/ <br/>
-[15] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
-[16] From https://www.javatpoint.com/unsupervised-machine-learning <br/>
-[17] From https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html <br/>
-[18] From https://medium.com/@Medmain/learning-through-trial-and-error-f83ab6e591dd <br/>
-
-
 ## Dictionary
 `Target Variable`: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding. [8]
 
@@ -67,13 +46,13 @@ From [14]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_model_in_out.png)
 
-From []:
+From [19]:
 <br/>
 
-|   Categegory  | Definition | 
+|   Category  | Definition | 
 |---|---|
-| Classification | | 
-| Regression | |
+| Classification | Supervised learning problem that involves predicting a class label. [19]| 
+| Regression | Supervised learning problem that involves predicting a numerical label. [19]|
 
 
 From [15]:
@@ -100,7 +79,7 @@ From [14]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/typical_decision_tree.png)
 
-##### 1.1.1 Classification Trees
+##### 1.1.1 Classification Trees (Discrete/Binary - Yes/No types)
 
 > A categorical variable decision tree includes categorical target 
 > variables that are divided into categories. For example, the categories 
@@ -110,7 +89,7 @@ From [14]:
 > > -- <cite> From [13] CFI </cite>
 
 
-##### 1.1.1 Regression Trees
+##### 1.1.1 Regression Trees (Continuous data types)
 
 > A continuous variable decision tree is a decision tree with a continuous 
 > target variable. For example, the income of an individual whose income is
@@ -120,6 +99,32 @@ From [14]:
 > > -- <cite> From [13] CFI </cite>
 
 #### 1.2 Logictic Regression
+Assumptions:
+
+> `Binary Output Variable`: This might be obvious as we have already mentioned it, 
+> but logistic regression is intended for binary (two-class) classification problems. 
+> It will predict the probability of an instance belonging to the default class,
+> which can be snapped into a 0 or 1 classification.
+> 
+> `Remove Noise`: Logistic regression assumes no error in the output variable (y), 
+> consider removing outliers and possibly misclassified instances from your training data.
+> 
+> `Gaussian Distribution`: Logistic regression is a linear algorithm (with a non-linear transform 
+> on output). It does assume a linear relationship between the input variables with the output.
+> Data transforms of your input variables that better expose this linear relationship can result
+> in a more accurate model. For example, you can use log, root, Box-Cox and other univariate 
+> transforms to better expose this relationship.
+> 
+> `Remove Correlated Input`: Like linear regression, the model can overfit if you have multiple 
+> highly-correlated inputs. Consider calculating the pairwise correlations between all inputs 
+> and removing highly correlated inputs.
+> 
+> `Fail to Converge`: It is possible for the expected likelihood estimation process that learns 
+> the coefficients to fail to converge. This can happen if there are many highly correlated inputs
+> in your data or the data is very sparse (e.g. lots of zeros in your input data).
+
+> > -- <cite> From [20] Machine Learning Mastery </cite>
+
 
 #### 1.3 Linear Regression
 
@@ -342,4 +347,28 @@ Considering Microsoft documentation:
 | Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
 | Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
 | Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
+
+
+## References
+[1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
+[2] From https://www.bbva.com/es/machine-learning-que-es-y-como-funciona/ <br/>
+[3] From https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9 <br/>
+[4] From https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/ <br/>
+[5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
+[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md <br/>
+[7] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-automated-ml.md <br/>
+[8] From https://www.datarobot.com/wiki/target/ <br/>
+[9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
+[10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
+[11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
+[12] From https://www.potentiaco.com/what-is-machine-learning-definition-types-applications-and-examples/ <br/>
+[13] From https://corporatefinanceinstitute.com/resources/knowledge/other/decision-tree/ <br/>
+[14] From https://developer.ibm.com/technologies/artificial-intelligence/articles/cc-models-machine-learning/ <br/>
+[15] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
+[16] From https://www.javatpoint.com/unsupervised-machine-learning <br/>
+[17] From https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html <br/>
+[18] From https://medium.com/@Medmain/learning-through-trial-and-error-f83ab6e591dd <br/>
+[19] From https://machinelearningmastery.com/types-of-learning-in-machine-learning/ <br/>
+[20] From https://machinelearningmastery.com/logistic-regression-for-machine-learning/ <br/>
+
 
