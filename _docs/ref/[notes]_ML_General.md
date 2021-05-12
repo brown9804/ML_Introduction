@@ -60,6 +60,9 @@ From [15]:
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/regression_vs_classification_supervised_learning.png)
 
 
+From [22]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_general_flow.png)
 
 #### 1.1 Decision Trees
 > A decision tree is a supervised learning method for classification. 
@@ -99,6 +102,10 @@ From [14]:
 > > -- <cite> From [13] CFI </cite>
 
 #### 1.2 Logictic Regression
+From [21]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/linear_logistic_regression_graph.png)
+
 Assumptions:
 
 > `Binary Output Variable`: This might be obvious as we have already mentioned it, 
@@ -128,7 +135,7 @@ Assumptions:
 
 #### 1.3 Linear Regression
 
-From []:
+From [21]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_logistic_vs_linear_regression.png)
 
@@ -147,6 +154,9 @@ From [16]:
 | Clustering | Clustering is a method of grouping the objects into clusters such that objects with most similarities remains into a group and has less or no similarities with the objects of another group. Cluster analysis finds the commonalities between the data objects and categorizes them as per the presence and absence of those commonalities. [16]| 
 | Association | An association rule is an unsupervised learning method which is used for finding the relationships between variables in the large database. It determines the set of items that occurs together in the dataset. Association rule makes marketing strategy more effective. Such as people who buy X item (suppose a bread) are also tend to purchase Y (Butter/Jam) item. [16]|
 
+From [22]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/unsupervised_general_flow.png)
 
 ### Type #3 Reinforcement Learning 
 From [14]:
@@ -164,10 +174,9 @@ From [17]:
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_flow_basic_2.png)
 
 
-
-
-
-
+From [22]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_general_flow.png)
 
 ## How to choose a Performance Metric
 
@@ -370,5 +379,6 @@ Considering Microsoft documentation:
 [18] From https://medium.com/@Medmain/learning-through-trial-and-error-f83ab6e591dd <br/>
 [19] From https://machinelearningmastery.com/types-of-learning-in-machine-learning/ <br/>
 [20] From https://machinelearningmastery.com/logistic-regression-for-machine-learning/ <br/>
-
+[21] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
+[22] From https://www.softwaretestinghelp.com/types-of-machine-learning-supervised-unsupervised/ <br/>
 
