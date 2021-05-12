@@ -24,7 +24,7 @@ It is a branch of artificial intelligence that allows machines to learn without 
 [9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
 [10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
 [11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
-
+[12] From 
 
 ## Dictionary
 `Target Variable`: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding. [8]
@@ -33,11 +33,14 @@ It is a branch of artificial intelligence that allows machines to learn without 
 
 |   Type  | Category | Definition |
 |---|---|---|
-| Supervised | Classification and Regression | |
-| Unsupervised | Clustering and  | |
-| Reinforcement | *  | |
+| Supervised | Classification and Regression | This algorithms learns the input pattern and generates the expected output. We have expected output associated with our input data. [9] |
+| Unsupervised | Clustering and  | The task of machine is to group unsorted information according to similarities, patterns and differences without any prior training of data. [9]|
+| Reinforcement | *  |  |
 
 
+From [12]
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_types_input_output.png)
 
 
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
@@ -48,6 +51,8 @@ It is a branch of artificial intelligence that allows machines to learn without 
 |---|---|
 | Training | 80 | 
 | Validation | 20 |
+
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/regression_vs_classification_supervised_learning.png)
 
 #### 1.1 Decision Trees
 
