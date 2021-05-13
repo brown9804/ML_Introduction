@@ -77,7 +77,17 @@ May, 2021
 ## * Media Commands 
 |   Command  | Description | 
 |---|---|
-
+| chkdsk	| check volumes| 
+| chkntfs	| display/change volume check at startup| 
+| defrag	| defragment media| 
+| diskpart	| volume management| 
+| driverquery| 	display installed devices and their properties| 
+| format| 	format volumes| 
+| label	| change volume name| 
+| mode	| configure interfaces/devices| 
+| mountvol	| assign/delete drive mountpoints| 
+| verify	| monitoring whether volumes are written correctly| 
+| vol	| show volume description and serial numbers of the HDDs| 
 
 
 ## * Miscellaneous Commands 
