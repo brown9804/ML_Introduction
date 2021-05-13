@@ -93,7 +93,12 @@ May, 2021
 ## * Miscellaneous Commands 
 |   Command  | Description | 
 |---|---|
-
+| for	| for loop| 
+| gpresult| 	display group policies| 
+| gpupdate| 	update group policies| 
+| perfmon	| start performance monitor| 
+| prompt	| change command prompt| 
+| reg| 	add/read/import/export registry entries| 
 
 
 
