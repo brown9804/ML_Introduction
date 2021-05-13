@@ -1,4 +1,4 @@
-# [Notes] CMD - Coomand List for Windows
+# [Notes] CMD - Command List for Windows
 ----------
 
 Costa Rica
@@ -34,6 +34,42 @@ May, 2021
 | title | 	set title for prompt | 
 | ver	 | display operating system version | 
 | w32tm | 	setting time synchronisation/time server/time zone | 
+
+
+## * Network Command 
+|   Command  | Description | 
+|---|---|
+| ftp	| transfer files to a FTP server| 
+| ftype	| display file type and mapping| 
+| getmac	| display MAC address| 
+| ipconfig	| display IP network settings| 
+| netsh	| configure/control/display network components| 
+| netstat| 	display TCP/IP connections and status| 
+| nslookup| 	query the DNS| 
+| pathping| 	test the connection to a specific IP address| 
+| ping	| pings the network| 
+| route	| display network routing table, add static routes| 
+| systeminfo| 	displays computer-specific properties and configurations| 
+| telnet	| establish Telnet connection| 
+| tftp	| transfer files to a TFTP server| 
+| tracert| 	trace routes similar to patchping| 
+
+## * Files Command 
+|   Command  | Description | 
+|---|---|
+
+
+## * Media Commands 
+|   Command  | Description | 
+|---|---|
+
+
+
+## * Miscellaneous Commands 
+|   Command  | Description | 
+|---|---|
+
+
 
 
 ## * References
