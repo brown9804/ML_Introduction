@@ -1,4 +1,5 @@
-# [Notes] CMD - Command List for Windows
+# [Notes] CMD - Shell - Command List for Windows
+
 ----------
 
 Costa Rica
