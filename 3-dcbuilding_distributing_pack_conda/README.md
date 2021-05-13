@@ -1,5 +1,6 @@
 # Building and Distributing Packages with Conda
 
+
 ----------
 
 Costa Rica
@@ -10,6 +11,7 @@ Feb, 2021
 
 ----------
 
+
 ### February, 2021
 
 ## Topics:
@@ -19,4 +21,5 @@ Feb, 2021
 ### 2. Python Packages
 
 ### 3. Conda Packages
+
 
