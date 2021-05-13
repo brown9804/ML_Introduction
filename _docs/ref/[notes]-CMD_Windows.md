@@ -57,7 +57,22 @@ May, 2021
 ## * Files Command 
 |   Command  | Description | 
 |---|---|
-
+| attrib| 	display file attributes| 
+| comp| 	compare file contents| 
+| compact	| display/change file compression| 
+| copy / xcopy	| copy files| 
+| diskcomp| 	compare content of two floppy disks| 
+| diskcopy	| copy floppy disc to another one| 
+| erase / del	| delete one or more files| 
+| expand	| extract files| 
+| fc	| copare files and display the differences| 
+| mkdir	| create a new directory| 
+| move	| move/rename files| 
+| rename	| rename files| 
+| replace| 	replace files| 
+| rmdir / rd| 	delete directory| 
+| tree	| display folder structure graphically| 
+| type	| display content of text files| 
 
 ## * Media Commands 
 |   Command  | Description | 
