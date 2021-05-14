@@ -136,17 +136,80 @@ Available for: Unix-like, macOS (only latest GPLv2 release; GPLv3 releases avail
 ## * Messages between Users
 |   Command  | Description | 
 |---|---|
+| write| 	send a message to another local user| 
+| wall	| send a message to all local users| 
+| pine	| vdu-based mail utility| 
+| mail	| simple send or read mail program| 
+| thunderbird| 	GUI mail handling tool on Linux| 
 
 
 ## * Networking Commands
 |   Command  | Description | 
 |---|---|
+| ftp| 	file transfer program| 
+| tftp	| trivial file transfer program| 
+| sftp	| secure shell file transfer program| 
+| rcp	| remote file copy| 
+| scp| 	secure shell remote file copy| 
+| wget| 	non-interactive network downloader| 
+| telnet	| make terminal connection to another host| 
+| ssh| 	secure shell terminal or command connection| 
+| rlogin| 	remote login to a Linux host| 
+| rsh| 	remote shell| 
+| curl	| transfer data from a url| 
+| firefox| 	web browser| 
+| google-chrome| 	web browser| 
 
 
 ## * Programming Commands
+### 1. General Commands
 |   Command  | Description | 
 |---|---|
+| make	| maintain groups of programs| 
+| size	| print program's sizes| 
+| nm	| print program's name list| 
+| strip| 	remove symbol table and relocation bits| 
 
+### 2. C Commands
+|   Command  | Description | 
+|---|---|
+| cb	| C program beautifier| 
+| gcc	| GNU ANSI C Compiler| 
+| ctrace	| C program debugger| 
+| indent	| indent and format C program source| 
+| cxref	| generate C program cross reference| 
+
+
+### 3. C++ Commands
+|   Command  | Description | 
+|---|---|
+|g++|	GNU C++ Compiler|
+
+
+### 4. JAVA Commands
+|   Command  | Description | 
+|---|---|
+| appletviewer	| JAVA applet viewer| 
+| javac	| JAVA compiler| 
+| eclipse	| Java integrated development environment on Linux| 
+
+### 5. FORTRAN Commands
+|   Command  | Description | 
+|---|---|
+| f95	| GNU Fortran 95 compiler |
+
+### 6. Other Languages Commands
+|   Command  | Description | 
+|---|---|
+| bc| 	interactive arithmetic language processor| 
+| matlab| 	maths package| 
+| gcl	| GNU Common Lisp| 
+| perl| 	general purpose language| 
+| python| 	object-oriented programming language| 
+| squeak| 	smalltalk| 
+| php	| web page embedded language| 
+| mathematica	| symbolic maths package| 
+| asp	| web page embedded language| 
 
 ## * Text Processing Commands
 ### 1. General Commands
