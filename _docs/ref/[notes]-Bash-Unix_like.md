@@ -79,23 +79,59 @@ Available for: Unix-like, macOS (only latest GPLv2 release; GPLv3 releases avail
 ## * Compressed files Commands
 |   Command  | Description | 
 |---|---|
-
+| gzip	| compress files| 
+| zmore| 	file perusal filter for crt viewing of compressed text| 
+| uncompress| 	uncompress files| 
+| zcat| 	cat a compressed file| 
+| gunzip	| uncompress gzipped files| 
+| zcmp, zdiff	| compare compressed files| 
 
 ## * Information Commands
 |   Command  | Description | 
 |---|---|
-
+| apropos	| locate commands by keyword lookup| 
+| man	| displays manual pages online| 
+| info	| displays command information pages online| 
+| yelp	| GNOME help viewer| 
 
 
 ## * Status Commands
 |   Command  | Description | 
 |---|---|
+| ps	| print process status statistics| 
+| date	| print the date| 
+| quota -v| 	display disk usage and limits| 
+| reset| 	reset terminal mode| 
+| du	| print amount of disk usage| 
+| script| 	keep script of terminal session| 
+| stty| 	set terminal options| 
+| groups| 	show group memberships| 
+| time	| time a command| 
+| homequota| 	show quota and file usage| 
+| iostat| 	report I/O statistics| 
+| tty	| print current terminal name| 
+| kill	| send a signal to a process| 
+| uptime	| display system status| 
+| last| 	show last logins of users| 
+| users| 	print names of logged in users| 
+| lun	| list user names or login ID| 
+| vmstat| 	report virtual memory statistics| 
+| netstat| 	show network status| 
+| w	| show what logged in users are doing| 
+| who	| list logged in users| 
+| printenv	| display value of a shell variable| 
 
 
 ## * Printing Commands
 |   Command  | Description | 
 |---|---|
-
+| tl1_lw	| Teaching Lab 1 (C/2.04) laser printer| 
+| tl3_lw	| Teaching Lab 3 (C/2.08) laser printer| 
+| tl2_lw	| Teaching Lab 2 (C/2.05) laser printer| 
+| tl4_lw	| Teaching Lab 4 (C/2.10) laser printer| 
+| lpr -Pprinter	| send a file to a printer| 
+| dvips -Pprinter	| postprocess TeX file into Postscript and print on laser printer| 
+| a2ps -Pprinter	| format text file in PostScript and print on laser printer| 
 
 ## * Messages between Users
 |   Command  | Description | 
