@@ -256,5 +256,6 @@ Available for: Unix-like, macOS (only latest GPLv2 release; GPLv3 releases avail
 | sqldeveloper| 	Oracle SQL Developer GUI interface| 
 | mysql-workbench| 	GUI interface for MySQL| 
 
-
+## References
+[1] From https://docs.cs.cf.ac.uk/notes/linux-shell-commands/ <br/>
 
