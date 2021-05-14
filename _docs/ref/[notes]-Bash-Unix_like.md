@@ -113,18 +113,49 @@ Available for: Unix-like, macOS (only latest GPLv2 release; GPLv3 releases avail
 
 
 ## * Text Processing Commands
+### 1. General Commands
 |   Command  | Description | 
 |---|---|
+| fmt	| simple text formatter| 
+| evince| 	GNOME PostScript previewer| 
+| acroread	| PDF viewer| 
+| spell	| check text for spelling error| 
+| aspell| 	interactive spelling checker| 
+
+### 2. Troff Commands 
+|   Command  | Description | 
+|---|---|
+| eqn	| mathematical preprocessor for troff| 
+| tbl| 	prepare tables for nroff or troff| 
+| grap| 	pic preprocessor for drawing graphs| 
+| troff| 	text formatting and typesetting language| 
+| nroff	| text formatting language| 
+| groff	| GNU troff interface for laserprinting| 
+| pic	| troff preprocessor for drawing pictures| 
+
+
+### 3. TeX Commands
+|   Command  | Description | 
+|---|---|
+| ex	| text formatting and typesetting| 
+| latex	| latex formatter| 
+| pdflatex| 	latex formatter with PDF output| 
+| xdvi	| dvi previewer| 
+| dvips	| convert a DVI file to POSTSCRIPT| 
 
 
 ## * Word Processing Commands
 |   Command  | Description | 
 |---|---|
-
+| libreoffice	| start LibreOffice applications| 
 
 ## * Database Management Commands
 |   Command  | Description | 
 |---|---|
+| sqlplus	| run the Oracle SQL interpreter| 
+| mysql	| run the mysql SQL interpreter| 
+| sqldeveloper| 	Oracle SQL Developer GUI interface| 
+| mysql-workbench| 	GUI interface for MySQL| 
 
 
 
