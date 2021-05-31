@@ -20,3 +20,13 @@ print(df.head(5).to_csv("./getting_sample.csv"))
 df_n5 = df.head(5)
 transpose_sample = df_n5.T
 print(transpose_sample.to_csv("./transpose_n5_sample.csv"))
+
+#Count rows 
+import csv
+with open("./file_path", "r") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    next(csv_reader) # no headers 
+    n_total = -1 # because headers 
+    for filas_completas_data in csv_reader:
+        n_total = n_total + 1
+print(n_total)
