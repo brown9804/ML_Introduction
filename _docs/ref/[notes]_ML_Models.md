@@ -117,7 +117,7 @@ Assumptions:
 > consider removing outliers and possibly misclassified instances from your training data.
 > 
 > `Gaussian Distribution`: Logistic regression is a linear algorithm (with a non-linear transform 
-> on output). It does assume a linear relationship between the input variables with the output.
+> on output). It does assume a `linear relationship between the input variables with the output`.
 > Data transforms of your input variables that better expose this linear relationship can result
 > in a more accurate model. For example, you can use log, root, Box-Cox and other univariate 
 > transforms to better expose this relationship.
@@ -131,6 +131,8 @@ Assumptions:
 > in your data or the data is very sparse (e.g. lots of zeros in your input data).
 
 > > -- <cite> From [20] Machine Learning Mastery </cite>
+
+
 
 
 #### 1.3 Linear Regression
