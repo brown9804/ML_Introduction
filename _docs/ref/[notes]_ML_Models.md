@@ -423,3 +423,4 @@ According with google documentation (quoting):
 [22] From https://www.softwaretestinghelp.com/types-of-machine-learning-supervised-unsupervised/ <br/>
 [23] From https://www.analyticsvidhya.com/blog/2015/11/beginners-guide-on-logistic-regression-in-r/ <br/>
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
+[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/
