@@ -30,3 +30,6 @@ with open("./file_path", "r") as csv_file:
     for filas_completas_data in csv_reader:
         n_total = n_total + 1
 print(n_total)
+
+#Import Data Frame to csv
+DataFrame.to_csv('file_name.csv', encoding='utf-8')
