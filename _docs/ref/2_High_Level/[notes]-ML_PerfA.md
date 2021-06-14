@@ -58,40 +58,24 @@ From [24]:
 
 ### 2. Explainability metrics:
 
-#### 2.1 Accuracy 
-`-> Compare real prediction vs ml prediction`
-
-```math
-accuracy = (correctly predicted class / total testing class) × 100%
-```
-Using: <br/>
+Considering:
 
 `(TP)` True-Positive Rate = TP / TP + FN   <br/>
 `(FP)` False-Positive Rate = FP / FP + TN  <br/>
 `(TN)` True-Negative Rate = TN / TN + FP   <br/>
 `(FN)` False-Negative Rate  = FN / FN + TP  <br/>
 
-```math
-accuracy = (TP + TN)/(TP + TN + FP + FN)
-```
 
-#### 2.2 Precision 
-Is the ratio of correct positive predictions out of all positive predictions made, or the accuracy of minority class predictions.
 
-```math
-precision = TruePositives / (TruePositives + FalsePositives)
-```
+|   Performance Metric  | Formula | Definition |
+|---|---|---|
+| Accuracy | accuracy = (correctly predicted class / total testing class) × 100% or accuracy = (TP + TN)/(TP + TN + FP + FN)| Compare real prediction vs ml prediction |
+| Precision | precision = TruePositives / (TruePositives + FalsePositives) | Is the ratio of correct positive predictions out of all positive predictions made, or the accuracy of minority class predictions.|
+| Sensitivity | sensitivity = TP / TP + FN  | Is the metric that evaluates a model’s ability to predict true positives of each available category |
+| Specificity | specificity = TN / TN + FP  | Determines a model’s ability to predict if an observation does not belong to a specific category |
+|F-Measure| F-Measure = (2 * Precision * Recall) / (Precision + Recall) |Gives more weight to precision and less to recall. Fbeta-measure provides a configurable version of the F-measure to give more or less attention to the precision and recall measure when calculating a single score. |
 
-#### 2.3 Sensitivity 
 
-```math
-sensitivity = TP / TP + FN  
-```
-#### 2.4 Specificity 
-
-```math
-specificity = TN / TN + FP  
-```
 
 ## * References
 [1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
@@ -118,5 +102,5 @@ specificity = TN / TN + FP
 [22] From https://www.softwaretestinghelp.com/types-of-machine-learning-supervised-unsupervised/ <br/>
 [23] From https://www.analyticsvidhya.com/blog/2015/11/beginners-guide-on-logistic-regression-in-r/ <br/>
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
-[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/
-
+[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
+[26] From https://machinelearningmastery.com/fbeta-measure-for-machine-learning/#:~:text=The%20F0.,false%20negatives%2C%20then%20the%20F0 <br/>
