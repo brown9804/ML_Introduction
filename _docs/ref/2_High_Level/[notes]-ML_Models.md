@@ -205,6 +205,30 @@ Considering Microsoft documentation:
 > 
 > -- <cite> Microsoft Docs </cite>
 
+See the example of configuring an Automated Machine Learning Experiment from [26]:
+
+```python
+automl_settings = {
+    "n_cross_validations": 3,
+    "primary_metric": 'average_precision_score_weighted',
+    "enable_early_stopping": True,
+    "max_concurrent_iterations": 2, # This is a limit for testing purpose, please increase it as per cluster size
+    "experiment_timeout_hours": 0.25, # This is a time limit for testing purposes, remove it for real use cases, this will drastically limit ablity to find the best model possible
+    "verbosity": logging.INFO,
+}
+
+automl_config = AutoMLConfig(task = 'classification',
+                             debug_log = 'automl_errors.log',
+                             compute_target = compute_target,
+                             training_data = training_data,
+                             label_column_name = label_column_name,
+                             **automl_settings
+                            )
+```
+
+
+
+
 ### - Regression
 > Similar to classification, regression tasks are also a common 
 > supervised learning task. Azure Machine Learning 
@@ -339,4 +363,5 @@ According with google documentation (quoting):
 [22] From https://www.softwaretestinghelp.com/types-of-machine-learning-supervised-unsupervised/ <br/>
 [23] From https://www.analyticsvidhya.com/blog/2015/11/beginners-guide-on-logistic-regression-in-r/ <br/>
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
-[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/
+[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
+[26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
