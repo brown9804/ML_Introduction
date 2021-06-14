@@ -74,6 +74,15 @@ Considering:
 | Sensitivity | sensitivity = TP / TP + FN  | Is the metric that evaluates a model’s ability to predict true positives of each available category |
 | Specificity | specificity = TN / TN + FP  | Determines a model’s ability to predict if an observation does not belong to a specific category |
 |F-Measure| F-Measure = (2 * Precision * Recall) / (Precision + Recall) |Gives more weight to precision and less to recall. Fbeta-measure provides a configurable version of the F-measure to give more or less attention to the precision and recall measure when calculating a single score. |
+| | |
+| | |
+| | |
+| | |
+| | |
+| | |
+| | |
+| | |
+| | |
 
 
 
