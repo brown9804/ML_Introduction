@@ -93,3 +93,30 @@ sensitivity = TP / TP + FN
 specificity = TN / TN + FP  
 ```
 
+## * References
+[1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
+[2] From https://www.bbva.com/es/machine-learning-que-es-y-como-funciona/ <br/>
+[3] From https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9 <br/>
+[4] From https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/ <br/>
+[5] From https://cloud.google.com/automl-tables/docs/beginners-guide <br/>
+[6] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-auto-train-forecast.md <br/>
+[7] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-automated-ml.md <br/>
+[8] From https://www.datarobot.com/wiki/target/ <br/>
+[9] From https://ai.plainenglish.io/different-types-of-machine-learning-algorithms-28974016e108 <br/>
+[10] From https://www.researchgate.net/post/Class-imbalanced-dataset-for-Machine-Learning-how-to-test-it <br/>
+[11] From https://towardsdatascience.com/types-of-machine-learning-algorithms-you-should-know-953a08248861 <br/>
+[12] From https://www.potentiaco.com/what-is-machine-learning-definition-types-applications-and-examples/ <br/>
+[13] From https://corporatefinanceinstitute.com/resources/knowledge/other/decision-tree/ <br/>
+[14] From https://developer.ibm.com/technologies/artificial-intelligence/articles/cc-models-machine-learning/ <br/>
+[15] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
+[16] From https://www.javatpoint.com/unsupervised-machine-learning <br/>
+[17] From https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html <br/>
+[18] From https://medium.com/@Medmain/learning-through-trial-and-error-f83ab6e591dd <br/>
+[19] From https://machinelearningmastery.com/types-of-learning-in-machine-learning/ <br/>
+[20] From https://machinelearningmastery.com/logistic-regression-for-machine-learning/ <br/>
+[21] From https://www.javatpoint.com/linear-regression-vs-logistic-regression-in-machine-learning <br/>
+[22] From https://www.softwaretestinghelp.com/types-of-machine-learning-supervised-unsupervised/ <br/>
+[23] From https://www.analyticsvidhya.com/blog/2015/11/beginners-guide-on-logistic-regression-in-r/ <br/>
+[24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
+[25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/
+
