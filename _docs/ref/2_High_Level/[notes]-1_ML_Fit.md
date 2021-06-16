@@ -33,7 +33,21 @@ Considering Microsoft documentation:
 > -- <cite> Microsoft Docs From [27] </cite>
 
 ### How AutoML works
-> 
+From [27]:
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/automl_diagram.png)
+
+> Using Azure Machine Learning, you can design and run your automated ML training experiments with these steps:
+> 1. Identify the ML problem to be solved: classification, forecasting, or regression <br/>
+> 2. Choose whether you want to use the Python SDK or the studio web experience: Learn about the parity between the Python SDK and studio web experience. <br/>
+> - For limited or no code experience, try the Azure Machine Learning studio web experience at https://ml.azure.com <br/>
+> - For Python developers, check out the Azure Machine Learning Python SDK <br/>
+> 3. Specify the source and format of the labeled training data: Numpy arrays or Pandas dataframe <br/>
+> 4. Configure the compute target for model training, such as your local computer, Azure Machine Learning Computes, remote VMs, or Azure Databricks. <br/>
+> 5. Configure the automated machine learning parameters that determine how many iterations over different models, hyperparameter settings, advanced preprocessing/featurization, and what metrics to look at when determining the best model. <br/>
+> 6. Submit the training run. <br/>
+> 7. Review the results <br/>
+> -- <cite> Microsoft Docs From [27] </cite>
 
 ### Types of AutoML: classify, regression, & forecast
 ### - Classification 
