@@ -190,10 +190,14 @@ Considering Microsoft documentation:
 >  learning pipeline for any problem.
 >  
 >  Data scientists, analysts, and developers across industries can use automated ML to:
->  Implement ML solutions without extensive programming knowledge
->  Save time and resources
->  Leverage data science best practices
->  Provide agile problem-solving
+>  
+>  - Implement ML solutions without extensive programming knowledge
+>  
+>  - Save time and resources
+>  
+>  - Leverage data science best practices
+>  
+>  - Provide agile problem-solving
 
 > -- <cite> Microsoft Docs From [27] </cite>
 
