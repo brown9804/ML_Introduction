@@ -101,7 +101,7 @@ From [14]:
 > 
 > > -- <cite> From [13] CFI </cite>
 
-#### 1.2 Logictic Regression
+#### 1.2 Logistic Regression
 From [21]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/linear_logistic_regression_graph.png)
@@ -183,6 +183,19 @@ From [22]:
 ## * Auto ML 
 
 Considering Microsoft documentation:
+> Apply automated ML when you want Azure Machine Learning to train and tune a
+>  model for you using the target metric you specify. Automated ML democratizes 
+>  the machine learning model development process, and empowers its users, 
+>  no matter their data science expertise, to identify an end-to-end machine 
+>  learning pipeline for any problem.
+>  
+>  Data scientists, analysts, and developers across industries can use automated ML to:
+>  Implement ML solutions without extensive programming knowledge
+>  Save time and resources
+>  Leverage data science best practices
+>  Provide agile problem-solving
+
+> -- <cite> Microsoft Docs From [27] </cite>
 
 ### Types of AutoML: classify, regression, & forecast
 ### - Classification 
@@ -365,3 +378,4 @@ According with google documentation (quoting):
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
 [25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
 [26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
+[27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml
