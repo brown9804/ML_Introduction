@@ -33,3 +33,9 @@ print(n_total)
 
 #Import Data Frame to csv
 DataFrame.to_csv('file_name.csv', encoding='utf-8')
+
+# Get specific data (filter) of a dataset and export as csv
+import csv
+data_frame__filter_data = ToClean_df[ToClean_df['Column']=='value']
+data_frame__filter_data.to_csv('filter_data.csv', encoding='utf-8')
+print("Shape of the data set",data_frame__filter_data.shape)
