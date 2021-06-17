@@ -73,7 +73,7 @@ Considering:
 | Precision | precision = TruePositives / (TruePositives + FalsePositives) | Is the ratio of correct positive predictions out of all positive predictions made, or the accuracy of minority class predictions.|
 | Sensitivity | sensitivity = TP / (TP + FN)  | Is the metric that evaluates a model’s ability to predict true positives of each available category |
 | Specificity | specificity = TN / (TN + FP)  | Determines a model’s ability to predict if an observation does not belong to a specific category |
-| Recall | Recall = TP / (TP + FN) | Is the proportion of actual positives was identified correctly |
+| Recall | Recall = TP / (TP + FN) | Is the proportion of actual positives that was identified correctly |
 |F-Measure| F-Measure = (2 * Precision * Recall) / (Precision + Recall) |Gives more weight to precision and less to recall. Fbeta-measure provides a configurable version of the F-measure to give more or less attention to the precision and recall measure when calculating a single score. |
 | | |
 | | |
