@@ -17,6 +17,18 @@ From [10]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/How-to-Choose-a-Metric-for-Imbalanced-Classification-latest.png)
 
+
+## * Averaging Methods provided by Scikit-learn 
+
+From [27]: 
+
+|   Method  | Definition |
+|---|---|
+| Macro  | Calculate the metric for each class and take the unweighted average |
+| Micro  | Calculate the metric globally by counting the total true positives, false negatives, and false positives (independent of classes) |
+| Weighted | Calculate the metric for each class and take the weighted average based on the number of samples per class. |
+
+
 ### 1. Specific Model - Perfomance Analysis:
 
 #### 1.1 Evaluate Logistic regression model
@@ -75,7 +87,7 @@ Considering:
 | Specificity | specificity = TN / (TN + FP)  | Determines a model’s ability to predict if an observation does not belong to a specific category |
 | Recall | Recall = TP / (TP + FN) | Is the proportion of actual positives that was identified correctly |
 |F-Measure| F-Measure = (2 * Precision * Recall) / (Precision + Recall) |Gives more weight to precision and less to recall. Fbeta-measure provides a configurable version of the F-measure to give more or less attention to the precision and recall measure when calculating a single score. |
-| | |
+|AUC | |
 | | |
 | | |
 | | |
@@ -113,3 +125,4 @@ Considering:
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
 [25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
 [26] From https://machinelearningmastery.com/fbeta-measure-for-machine-learning/#:~:text=The%20F0.,false%20negatives%2C%20then%20the%20F0 <br/>
+[27] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml <br/>
