@@ -10,6 +10,22 @@ Jan, 2021
 
 ----------
 
+From [28]:
+
+### Transform Strategies
+
+|  Transform Strategies  |   Meaning  | Syntax     | 
+|     ---    |        ---       |         ---      |
+| Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
+| Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
+| Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
+
+
+
+
+
+
+
 
 ##  Auto ML 
 
@@ -48,6 +64,8 @@ From [27]:
 > 6. Submit the training run. <br/>
 > 7. Review the results <br/>
 > -- <cite> Microsoft Docs From [27] </cite>
+
+
 
 ### Types of AutoML: classify, regression, & forecast
 ### - Classification 
@@ -203,4 +221,5 @@ automl_config = AutoMLConfig(task = 'classification',
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
 [25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
 [26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
-[27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml
+[27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
+[28] From https://docs.microsoft.com/en-us/python/api/azureml-automl-core/azureml.automl.core.featurization.featurizationconfig.featurizationconfig?view=azure-ml-py <br/>
