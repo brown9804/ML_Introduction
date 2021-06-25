@@ -12,6 +12,10 @@ Jan, 2021
 
 From [28]:
 
+## FeaturizationConfig Class
+
+
+
 ### Transform Strategies
 
 |  Transform Strategies  |   Meaning  | Syntax     | 
