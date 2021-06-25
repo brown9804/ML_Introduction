@@ -29,7 +29,7 @@ From [27]:
 | Weighted | Calculate the metric for each class and take the weighted average based on the number of samples per class. |
 
 
-### 1. Explainability metrics:
+### 1. Performance metrics:
 
 Considering:
 
@@ -40,7 +40,7 @@ Considering:
 
 From [28]:
 
-|   Performance Metric  | Formula | Definition |
+|   Metric  | Formula | Definition |
 |---|---|---|
 | Accuracy |  <a href="https://www.codecogs.com/eqnedit.php?latex=accuracy&space;=&space;\frac{correctly&space;predicted&space;class&space;}{total&space;testing&space;class}&space;*100%" target="_blank"><img src="https://latex.codecogs.com/gif.latex?accuracy&space;=&space;\frac{correctly&space;predicted&space;class&space;}{total&space;testing&space;class}&space;*100%" title="accuracy = \frac{correctly predicted class }{total testing class} *100%" /></a> or <a href="https://www.codecogs.com/eqnedit.php?latex=accuracy&space;=&space;\frac{(TP&space;&plus;&space;TN)}{(TP&space;&plus;&space;TN&space;&plus;&space;FP&space;&plus;&space;FN)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?accuracy&space;=&space;\frac{(TP&space;&plus;&space;TN)}{(TP&space;&plus;&space;TN&space;&plus;&space;FP&space;&plus;&space;FN)}" title="accuracy = \frac{(TP + TN)}{(TP + TN + FP + FN)}" /></a>| `Compare real prediction vs ml prediction`. Accuracy is the ratio of predictions that exactly match the true class labels. Objective: Closer to 1 the better. Range: [0, 1]|
 | Precision | <a href="https://www.codecogs.com/eqnedit.php?latex=precision&space;=&space;\frac{TruePositives&space;}{&space;(TruePositives&space;&plus;&space;FalsePositives)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?precision&space;=&space;\frac{TruePositives&space;}{&space;(TruePositives&space;&plus;&space;FalsePositives)}" title="precision = \frac{TruePositives }{ (TruePositives + FalsePositives)}" /></a> | Is the ratio of correct positive predictions out of all positive predictions made, or the accuracy of minority class predictions.|
@@ -48,8 +48,8 @@ From [28]:
 | Specificity | <a href="https://www.codecogs.com/eqnedit.php?latex=specificity&space;=&space;\frac{TN&space;}{&space;(TN&space;&plus;&space;FP)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?specificity&space;=&space;\frac{TN&space;}{&space;(TN&space;&plus;&space;FP)}" title="specificity = \frac{TN }{ (TN + FP)}" /></a>  | Determines a model’s ability to predict if an observation does not belong to a specific category |
 | Recall | <a href="https://www.codecogs.com/eqnedit.php?latex=Recall&space;=&space;\frac{TP&space;}{(TP&space;&plus;&space;FN)&space;}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Recall&space;=&space;\frac{TP&space;}{(TP&space;&plus;&space;FN)&space;}" title="Recall = \frac{TP }{(TP + FN) }" /></a>| Is the proportion of actual positives that was identified correctly |
 |F-Measure| <a href="https://www.codecogs.com/eqnedit.php?latex=F-Measure&space;=&space;\frac{(2&space;*&space;Precision&space;*&space;Recall)&space;}{&space;(Precision&space;&plus;&space;Recall)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F-Measure&space;=&space;\frac{(2&space;*&space;Precision&space;*&space;Recall)&space;}{&space;(Precision&space;&plus;&space;Recall)}" title="F-Measure = \frac{(2 * Precision * Recall) }{ (Precision + Recall)}" /></a> |Gives more weight to precision and less to recall. Fbeta-measure provides a configurable version of the F-measure to give more or less attention to the precision and recall measure when calculating a single score. |
-|AUC | <a href="https://www.codecogs.com/eqnedit.php?latex=\int_{x_0}^{x_n}&space;ROC&space;dx" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\int_{x_0}^{x_n}&space;ROC&space;dx" title="\int_{x_0}^{x_n} ROC dx" /></a> | AUC is the Area under the Receiver Operating Characteristic Curve. Objective: Closer to 1 the better. Range: [0, 1]. AUC\_macro, AUC\_micro, AUC\_weighted
-| | |
+|AUC | <a href="https://www.codecogs.com/eqnedit.php?latex=\int_{x_0}^{x_n}&space;ROC&space;dx" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\int_{x_0}^{x_n}&space;ROC&space;dx" title="\int_{x_0}^{x_n} ROC dx" /></a> | AUC is the Area under the Receiver Operating Characteristic Curve. Objective: Closer to 1 the better. Range: [0, 1]. AUC\_macro, AUC\_micro, AUC\_weighted |
+| average_precision | |
 | | |
 | | |
 | | |
