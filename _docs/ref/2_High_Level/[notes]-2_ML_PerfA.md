@@ -29,7 +29,11 @@ From [27]:
 | Weighted | Calculate the metric for each class and take the weighted average based on the number of samples per class. |
 
 
-### 1. Performance metrics:
+### 1. Classification metrics:
+
+From [28]:
+
+Automated ML calculates performance metrics for each classification model generated for your experiment. These metrics are based on the scikit learn implementation.:
 
 Considering:
 
