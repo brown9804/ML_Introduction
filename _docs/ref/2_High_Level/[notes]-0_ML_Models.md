@@ -181,15 +181,6 @@ From [22]:
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/reinforcement_general_flow.png)
 
 
-### Transform Strategies
-
-|  Transform Strategies  |   Meaning  | Syntax     | 
-|     ---    |        ---       |         ---      |
-| Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
-| Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
-| Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
-
-
 ## * Data Tendency:
 
 
