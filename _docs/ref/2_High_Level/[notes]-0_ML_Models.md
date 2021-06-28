@@ -31,6 +31,10 @@ From [14]
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_types_input_output.png)
 
+From [28]
+<br/>
+![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_supervised_un.png)
+
 From [11]
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
@@ -226,4 +230,5 @@ According with google documentation (quoting):
 [24] From https://www.datasciencecentral.com/profiles/blogs/roc-curve-explained-in-one-picture <br/>
 [25] From https://aprendeconalf.es/docencia/estadistica/manual/regresion/ <br/>
 [26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
-[27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml
+[27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
+[28] From https://algorithmia.com/blog/how-machine-learning-works <br/>
