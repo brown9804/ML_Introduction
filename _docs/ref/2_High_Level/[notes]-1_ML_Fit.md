@@ -14,7 +14,7 @@ From [28]:
 
 ## FeaturizationConfig Class
 
-`Features <-> characteristics`
+`Features ⟷  characteristics`
 
 
 From [29]:
