@@ -14,7 +14,25 @@ From [28]:
 
 ## FeaturizationConfig Class
 
+`Features <-> characteristics`
 
+
+From [29]:
+
+> Training data consists of rows and columns. Each `row` is an `observation` or
+> record, and the `columns` of each row are the `features` that `describe` each 
+> record. Typically, the features that best characterize the patterns in 
+> the data are selected to create predictive models.
+> 
+> Although many of the raw data fields can be used directly 
+> to train a model, `it's often necessary to create additional 
+> (engineered) features that provide information that better 
+> differentiates patterns in the data`. This process is called feature 
+> engineering, where the use of domain knowledge of the data is leveraged 
+> to create features that, in turn, help machine learning 
+> algorithms to learn better.
+> 
+> > -- <cite> Microsoft Docs From [29] </cite>
 
 ### Transform Strategies
 
@@ -63,6 +81,7 @@ From [27]:
 > 5. Configure the automated machine learning parameters that determine how many iterations over different models, hyperparameter settings, advanced preprocessing/featurization, and what metrics to look at when determining the best model. <br/>
 > 6. Submit the training run. <br/>
 > 7. Review the results <br/>
+> 
 > -- <cite> Microsoft Docs From [27] </cite>
 
 
@@ -223,3 +242,4 @@ automl_config = AutoMLConfig(task = 'classification',
 [26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
 [27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
 [28] From https://docs.microsoft.com/en-us/python/api/azureml-automl-core/azureml.automl.core.featurization.featurizationconfig.featurizationconfig?view=azure-ml-py <br/>
+[29] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-features <br/>
