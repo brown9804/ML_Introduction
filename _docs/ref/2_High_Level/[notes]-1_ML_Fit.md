@@ -42,8 +42,21 @@ From [29]:
 | Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
 | Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
 
+This is an example, based on [29]:
 
+```python
+featurization_config = FeaturizationConfig()
+featurization_config.blocked_transformers = ['LabelEncoder']
+featurization_config.drop_columns = ['aspiration', 'stroke']
+featurization_config.add_column_purpose('engine-size', 'Numeric') # (column name, purpose) -> numeric 
+featurization_config.add_column_purpose('body-style', 'CategoricalHash')  # (column name, purpose) -> labeled 
+#default strategy mean, add transformer param for for 3 columns -> it can be general ... within a loop or some recursive function 
+featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"}) # (column name, strategy)
+featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "constant", "fill_value": 0}) # (column name, strategy)
+featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"}) # (column name, strategy)
 
+featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})                                                                                    
+```
 
 ##  Auto ML 
 
