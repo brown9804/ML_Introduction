@@ -13,7 +13,9 @@ Jan, 2021
 It is a branch of artificial intelligence that allows machines to learn without being expressly programmed to do so. The idea is to identify the patterns between the data to make predictions. That is, the relationships between the columns are analyzed.
 
 ## *  Dictionary
-`Target Variable`: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding. [8]
+**Target Variable**: The target variable of a dataset is the feature of a dataset about which you want to gain a deeper understanding [8]. <br/>
+**Machine Learning Algorithm**: Procedure that is run on data. `Machine Learning Algorithm ➔ Machine Learning Model` <br/>
+**Machine Learning Model**: The output of a ml algorithm that runs on data and represents what was learned. `Data + Prediction Algorithm` <br/>
 
 ## *  3 main Types of Learning:
 
@@ -232,3 +234,4 @@ According with google documentation (quoting):
 [26] From https://towardsdatascience.com/hidden-tricks-for-running-automl-experiment-from-azure-machine-learning-sdk-915d4e3f840e <br/>
 [27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
 [28] From https://algorithmia.com/blog/how-machine-learning-works <br/>
+[29] From https://medium.com/brandlitic/difference-between-ml-algorithm-and-model-801a798a6dc0 <br/>
