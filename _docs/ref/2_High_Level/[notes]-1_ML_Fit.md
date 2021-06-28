@@ -64,7 +64,7 @@ Considering Microsoft documentation:
 >  
 >  - Provide agile problem-solving
 
-> -- <cite> Microsoft Docs From [27] </cite>
+> > -- <cite> Microsoft Docs From [27] </cite>
 
 ### How AutoML works
 From [27]:
@@ -82,7 +82,7 @@ From [27]:
 > 6. Submit the training run. <br/>
 > 7. Review the results <br/>
 > 
-> -- <cite> Microsoft Docs From [27] </cite>
+> > -- <cite> Microsoft Docs From [27] </cite>
 
 
 
@@ -105,7 +105,7 @@ From [27]:
 > 2. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb" target="_top"> Marketing Prediction </a>
 > 3. <a href="https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b" target="_top"> Newsgroup Data Classification </a>
 > 
-> -- <cite> Microsoft Docs </cite>
+> > -- <cite> Microsoft Docs </cite>
 
 See the example of configuring an Automated Machine Learning Experiment from [26]:
 
@@ -150,7 +150,7 @@ automl_config = AutoMLConfig(task = 'classification',
 > learning for predictions in these Python notebooks: 
 > <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb" target="_top" > CPU Performance Prediction </a>
 > 
-> -- <cite> Microsoft Docs </cite>
+> > -- <cite> Microsoft Docs </cite>
 
 
 ### - Time-series forecasting
@@ -184,7 +184,7 @@ automl_config = AutoMLConfig(task = 'classification',
 > 2. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb" target="_top" > Demand Forecasting </a>
 > 3. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb" target="_top" >  Beverage Production Forecast </a>
 > 
-> -- <cite> Microsoft Docs </cite>
+> > -- <cite> Microsoft Docs </cite>
 
 
 ## Ensemble models
@@ -210,7 +210,7 @@ automl_config = AutoMLConfig(task = 'classification',
 >
 > See the how-to for changing default ensemble settings in automated machine learning.
 >
-> -- <cite> Microsoft Docs </cite>
+> > -- <cite> Microsoft Docs </cite>
 
 
 ## * References
