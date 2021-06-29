@@ -59,6 +59,14 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 ```
 
 ##  Auto ML 
+> During training, Azure Machine Learning creates a `number of pipelines`
+> in `parallel` that try `different algorithms` and `parameters` for you. The service
+> iterates through ML algorithms paired with feature selections, where each 
+> iteration produces a model with a training score. The `higher the score`, the 
+> `better the model` is considered to `"fit" your data`. It will stop once it hits 
+> the exit criteria defined in the experiment.
+> 
+> > -- <cite> Microsoft Docs From [27] </cite>
 
 Considering Microsoft documentation:
 > Apply automated ML when you want Azure Machine Learning to train and tune a
