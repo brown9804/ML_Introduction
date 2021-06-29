@@ -38,7 +38,7 @@ pd_df = pd.read_csv("./file_name.csv", sep=',', encoding='utf-8', engine='python
 print("Data Frame Shape:  ", pd_df.shape)
 ```
 
-## `IDENTIFICATION AND CLEANING`
+## `CLEANING & IDENTIFICATION `
 ```python 
 # Cleaning 
 pd_without_duplicates = pd_df.drop_duplicates()
