@@ -1,5 +1,14 @@
+# [Notes] Machine Learning Load Data
 
+----------
 
+Costa Rica
+
+Belinda Brown, belindabrownr04@gmail.com
+
+Jan, 2021
+
+----------
 
 
 ## Data Tendency:
