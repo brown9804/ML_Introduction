@@ -204,6 +204,32 @@ According with google documentation (quoting):
 
 > -- <cite> Google Cloud </cite>
 
+## `READ SOURCE DATA`:
+
+```python 
+import pandas as pd
+
+pd_df = pd.read_csv("./file_name.csv", sep=',', encoding='utf-8', engine='python',error_bad_lines=False)
+
+print("Data Frame Shape:  ", pd_df.shape)
+```
+
+## `IDENTIFICATION AND CLEANING`
+```python 
+# Cleaning 
+pd_without_duplicates = pd_df.drop_duplicates()
+print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
+
+# Identify columns 
+def Identify_columns(target_column, numerical_columns, categorical_columns, exclude_columns):
+# example of def categorical_columns = ['column_1','another_one']
+  pd_mapped = pd.DataFrame(target_column + numerical_columns + categorical_columns + exclude_columns)
+  # Debugger
+  if Origin_df.shape[1] != pd_mapped.shape[0]:
+      print("Need to review columns, something is missing since: \n Initial df size", Origin_df.shape[1], " vs ", pd_mapped.shape[0])
+  else:
+      print("All mapped")
+```
 
 ## * References
 [1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
