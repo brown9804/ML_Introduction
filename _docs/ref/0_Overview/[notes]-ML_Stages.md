@@ -24,4 +24,4 @@ From [2]:
 
 ## References 
 [1] From https://www.kubeflow.org/docs/started/kubeflow-overview/ <br/>
-[2] From Brown. B.FunctionalVerification. Available at Github <br/>
+[2] From Brown. B. Hight Level Stages diagram. Available at Github <br/>
