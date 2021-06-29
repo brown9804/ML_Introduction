@@ -1,4 +1,4 @@
-# [Notes] Machine Learning Fit Model
+# [Notes] Machine Learning Setup 
 
 ----------
 
