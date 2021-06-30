@@ -44,6 +44,10 @@ print("Data Frame Shape:  ", pd_df.shape)
 pd_without_duplicates = pd_df.drop_duplicates()
 print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
 
+# Mapping dataset
+mapped_dataset = pd_without_duplicates.groupby('objects_to_classify')['Classification'].value_counts()
+mapped_dataset.head(10) # print first 10 rows 
+
 # Identify columns 
 def Identify_columns(target_column, numerical_columns, categorical_columns, exclude_columns):
 # example of def categorical_columns = ['column_1','another_one']
@@ -54,3 +58,7 @@ def Identify_columns(target_column, numerical_columns, categorical_columns, excl
   else:
       print("All mapped")
 ```
+
+## * References 
+[1] From https://re-thought.com/pandas-value_counts/ <br/>
+[2] From  <br/>
