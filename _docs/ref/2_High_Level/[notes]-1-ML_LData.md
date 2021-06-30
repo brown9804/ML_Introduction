@@ -52,7 +52,8 @@ print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
 ## Remove null values 
 pd_without_duplicates_and_nulls = pd_without_duplicates[pd_without_duplicates.origin.notnull()]
 ## Filtering by important samples 
-filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)]
+filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
+# Operators >, < ==, != 
 
 # Mapping dataset
 mapped_dataset = pd_without_duplicates.groupby('objects_to_classify')['Classification'].value_counts()
