@@ -63,7 +63,7 @@ pd_without_duplicates_and_nulls = pd_without_duplicates[pd_without_duplicates.or
 # Operators >, < ==, != 
 filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
 ## ----------------- Change DataTypes 
-# df_units_conversation = pd_without_duplicates_and_nulls.astype({'col_name_2':'float64', 'col_name_3':'float64'})
+df_units_conversation = pd_without_duplicates_and_nulls.astype({'col_name_2':'float64', 'col_name_3':'float64'})
 
 
 # Mapping dataset
