@@ -44,7 +44,6 @@ It's important to consider lambda method:
 > It is not possible using def <br/>
 > > -- <cite> RSGB Business Consultan From [3] </cite>
 
-
 ### Types of Data for conversations 
 From [4]:
 ![Dtypes](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/python_dtype.png) 
@@ -59,12 +58,17 @@ pd_without_duplicates = pd_df.drop_duplicates()
 print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
 ## ----------------- Remove null values 
 pd_without_duplicates_and_nulls = pd_without_duplicates[pd_without_duplicates.origin.notnull()]
+## ----------------- Describe all data -> data characteristics 
+pd_without_duplicates_and_nulls.describe(include='all')
 ## ----------------- Filtering by important samples 
 # Operators >, < ==, != 
 filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
 ## ----------------- Change DataTypes 
 df_units_conversation = pd_without_duplicates_and_nulls.astype({'col_name_2':'float64', 'col_name_3':'float64'})
-
+## ----------------- Data Manipulatation by column
+df_units_conversation['Output_in_Another_column'] = df_units_conversation.apply(lambda x: (If_condition_happend_this_is_going_to_executed) if x.ConditionColumn != 'ConditionValue' else (do_this), axis=1)
+# Another example 
+# df_units_conversation['Output_in_Same_Column'] = df_units_conversation.apply(lambda x: x.Output_in_Same_Column if x.ConditionColumn != 'ConditionValue' else print("No changes"), axis=1)
 
 # Mapping dataset
 mapped_dataset = pd_without_duplicates.groupby('objects_to_classify')['Classification'].value_counts()
