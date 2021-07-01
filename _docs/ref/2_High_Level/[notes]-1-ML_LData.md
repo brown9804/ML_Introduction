@@ -47,10 +47,7 @@ It's important to consider lambda method:
 
 ### Types of Data for conversations 
 From [4]:
-![Dtypes]() <br/>
-
-
-
+![Dtypes](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/python_dtype.png) 
 
 ```python 
 import numpy as np
