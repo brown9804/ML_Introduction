@@ -44,19 +44,30 @@ It's important to consider lambda method:
 > It is not possible using def <br/>
 > > -- <cite> RSGB Business Consultan From [3] </cite>
 
+
+### Types of Data for conversations 
+From [4]:
+![Dtypes]() <br/>
+
+
+
+
 ```python 
 import numpy as np
 import pandas as pd
 
 # Cleaning 
-## Remove duplicates 
+## ----------------- Remove duplicates 
 pd_without_duplicates = pd_df.drop_duplicates()
 print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
-## Remove null values 
+## ----------------- Remove null values 
 pd_without_duplicates_and_nulls = pd_without_duplicates[pd_without_duplicates.origin.notnull()]
-## Filtering by important samples 
-filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
+## ----------------- Filtering by important samples 
 # Operators >, < ==, != 
+filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
+## ----------------- Change DataTypes 
+# df_units_conversation = pd_without_duplicates_and_nulls.astype({'col_name_2':'float64', 'col_name_3':'float64'})
+
 
 # Mapping dataset
 mapped_dataset = pd_without_duplicates.groupby('objects_to_classify')['Classification'].value_counts()
@@ -77,3 +88,5 @@ def Identify_columns(target_column, numerical_columns, categorical_columns, excl
 [1] From https://re-thought.com/pandas-value_counts/ <br/>
 [2] From https://www.listendata.com/2019/07/how-to-filter-pandas-dataframe.html <br/>
 [3] From https://www.listendata.com/2019/04/python-lambda-function.html <br/>
+[4] From https://pbpython.com/pandas_dtypes.html <br/>
+
