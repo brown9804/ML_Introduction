@@ -45,6 +45,9 @@ It's important to consider lambda method:
 > > -- <cite> RSGB Business Consultan From [3] </cite>
 
 ```python 
+import numpy as np
+import pandas as pd
+
 # Cleaning 
 ## Remove duplicates 
 pd_without_duplicates = pd_df.drop_duplicates()
