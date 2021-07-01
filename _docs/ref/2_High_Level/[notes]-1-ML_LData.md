@@ -67,7 +67,7 @@ filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.ap
 df_units_conversation = pd_without_duplicates_and_nulls.astype({'col_name_2':'float64', 'col_name_3':'float64'})
 ## ----------------- Data Manipulatation by column
 df_units_conversation['Output_in_Another_column'] = df_units_conversation.apply(lambda x: (If_condition_happend_this_is_going_to_executed) if x.ConditionColumn != 'ConditionValue' else (do_this), axis=1)
-# Another example 
+# Differents ways 
 # df_units_conversation['Output_in_Same_Column'] = df_units_conversation.apply(lambda x: x.Output_in_Same_Column if x.ConditionColumn != 'ConditionValue' else print("No changes"), axis=1)
 
 # Mapping dataset
