@@ -58,8 +58,6 @@ pd_without_duplicates = pd_df.drop_duplicates()
 print("Data Frame Shape without duplicates: ",pd_without_duplicates.shape)
 ## ----------------- Remove null values 
 pd_without_duplicates_and_nulls = pd_without_duplicates[pd_without_duplicates.origin.notnull()]
-## ----------------- Describe all data -> data characteristics 
-pd_without_duplicates_and_nulls.describe(include='all')
 ## ----------------- Filtering by important samples 
 # Operators >, < ==, != 
 filtered_df = pd_without_duplicates_and_nulls[pd_without_duplicates_and_nulls.apply(lambda x: x["columnName_1"] == 'Column_value_want_it' and x["columnName_2"] != 'No_want_it_value', axis=1)] 
@@ -71,21 +69,46 @@ df_units_conversation['Output_in_Another_column'] = df_units_conversation.apply(
 # df_units_conversation['Output_in_Same_Column'] = df_units_conversation.apply(lambda x: x.Output_in_Same_Column if x.ConditionColumn != 'ConditionValue' else print("No changes"), axis=1)
 
 # Mapping dataset
-mapped_dataset = pd_without_duplicates.groupby('objects_to_classify')['Classification'].value_counts()
+mapped_dataset = df_units_conversation.groupby('objects_to_classify')['Classification'].value_counts()
 mapped_dataset.head(10) # print first 10 rows 
 
-# Identify columns 
-def Identify_columns(target_column, numerical_columns, categorical_columns, exclude_columns):
+# Debug Mapped columns 
+def debug_mapped_columns(target_column, numerical_columns, categorical_columns, exclude_columns):
 # example of def categorical_columns = ['column_1','another_one']
   pd_mapped = pd.DataFrame(target_column + numerical_columns + categorical_columns + exclude_columns)
   # Debugger
-  if Origin_df.shape[1] != pd_mapped.shape[0]:
-      print("Need to review columns, something is missing since: \n Initial df size", Origin_df.shape[1], " vs ", pd_mapped.shape[0])
+  if pd_without_duplicates.shape[1] != pd_mapped.shape[0]:
+      print("Need to review columns, something is missing since: \n Initial df size without duplicates", pd_without_duplicates.shape[1], " vs Debug Mapped df: ", pd_mapped.shape[0])
   else:
-      print("All mapped")
+      print("All mapped")    
 ```
 
 ## `Identification of datasets`
+
+``` python 
+# Identify columns class from mapped dataset
+target_column = mapped_dataset['column_name_0', 'column_name_1']
+numerical_columns = mapped_dataset['column_name_2', 'column_name_5']
+categorical_columns = mapped_dataset['column_name_6', 'column_name_7']
+exclude_columns = mapped_dataset['column_name_8', 'column_name_9']
+## ----------------- Debug Mapped columns 
+debug_mapped_df = debug_mapped_columns(target_column, numerical_columns, categorical_columns, exclude_columns)
+
+# Describe all data -> data characteristics 
+debug_mapped_df.describe(include='all')
+```
+
+### `→ For Supervised:`
+```python
+
+
+```
+
+
+### `→ For Unsupervised:`
+
+### `→ For Reinforcement:`
+
 
 
 ## * References 
