@@ -324,3 +324,4 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 [27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
 [28] From https://docs.microsoft.com/en-us/python/api/azureml-automl-core/azureml.automl.core.featurization.featurizationconfig.featurizationconfig?view=azure-ml-py <br/>
 [29] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-features <br/>
+[30] From https://stackoverflow.com/questions/63464807/how-to-save-traceback-error-information-into-a-file <br/>
