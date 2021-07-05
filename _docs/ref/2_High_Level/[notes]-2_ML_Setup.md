@@ -62,7 +62,7 @@ From [27]:
 
 See the example of configuring an Automated Machine Learning Experiment from [26]:
 
-Based from [31]:
+Based on [31]:
 
 Task names:
 - regression
@@ -99,7 +99,7 @@ results = {}
 def automl_setup(performance_metric, n_times):
     automl_settings = {
     "n_cross_validations": 3,
-    "performance_metric": 'average_precision_score_weighted',
+    "performance_metric": 'metric_name',
     "enable_early_stopping": True,
     # A limit for testing purpose, 
     # please increase it as per cluster size
@@ -136,14 +136,12 @@ def experiment_setup(performance_metric, experiment_details_folder_name):
     best_run, fitted_model = run.get_output()
     print(performance_metric,' best run: ',best_run)       
     return performance_metric, best_run, fitted_model
- 
-with open('./exp_outputs/Exp_Details.txt', 'w+') as f:
-
-try:
-    experiment_setup(performance_metric, experiment_details_folder)
-except ValueError:
-    print('ValueError in performance metric: ', performance_metric, ' Details saved in exp_outputs folder: /n', sys.exc_info())
-    traceback.print_exc(file=f)     
+    with open('./exp_outputs/Exp_Details.txt', 'w+') as f:
+    try:
+        experiment_setup(performance_metric, experiment_details_folder)
+    except ValueError:
+        print('ValueError in performance metric: ', performance_metric, ' Details saved in exp_outputs folder: /n', sys.exc_info())
+        traceback.print_exc(file=f)     
 ```
 
 ### - Classification 
@@ -369,8 +367,16 @@ test_dataset.take(3).to_pandas_dataframe()
 ```
 
 ## `Auto ML execution`
+Based on [31]:
 
-
+```python 
+# Examples of performance metrics, see other stage to understand other metrics
+# average_precision_score_weighted
+# precision_score_weighted
+automl_setup(performance_metric, n_times)
+performance_metric, best_run, fitted_model =  experiment_setup(performance_metric, experiment_details_folder_name)
+results[performance_metric] = [best_run,fitted_model]
+```
 
 ## * References
 [1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
