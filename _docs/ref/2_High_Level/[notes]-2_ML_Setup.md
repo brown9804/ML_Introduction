@@ -10,55 +10,36 @@ Jan, 2021
 
 ----------
 
+## Ensemble models
+> Automated machine learning supports ensemble models, which are enabled by default. 
+> Ensemble learning improves machine learning results and predictive performance by 
+> combining multiple models as opposed to using single models. The ensemble iterations 
+> appear as the final iterations of your run. Automated machine learning uses both voting
+> and stacking ensemble methods for combining models:
+>
+> - Voting: predicts based on the weighted average of predicted class probabilities 
+> (for classification tasks) or predicted regression targets (for regression tasks).
+> - Stacking: stacking combines heterogenous models and trains a meta-model based on 
+> the output from the individual models. The current default meta-models are LogisticRegression for 
+> classification tasks and ElasticNet for regression/forecasting tasks.
+>
+> The Caruana ensemble selection algorithm with sorted ensemble initialization is used 
+> to decide which models to use within the ensemble. At a high level, this algorithm initializes 
+> the ensemble with up to five models with the best individual scores, and verifies that these 
+> models are within 5% threshold of the best score to avoid a poor initial ensemble. Then for 
+> each ensemble iteration, a new model is added to the existing ensemble and the resulting score 
+> is calculated. If a new model improved the existing ensemble score, the ensemble is 
+> updated to include the new model.
+>
+> See the how-to for changing default ensemble settings in automated machine learning.
+>
+> > -- <cite> Microsoft Docs </cite>
+
+
 From [28]:
 
-## FeaturizationConfig Class
+## `Auto ML setup`
 
-`Features ⟷  characteristics`
-
-
-From [29]:
-
-> Training data consists of rows and columns. Each `row` is an `observation` or
-> record, and the `columns` of each row are the `features` that `describe` each 
-> record. Typically, the features that best characterize the patterns in 
-> the data are selected to create predictive models.
-> 
-> Although many of the raw data fields can be used directly 
-> to train a model, `it's often necessary to create additional 
-> (engineered) features that provide information that better 
-> differentiates patterns in the data`. This process is called feature 
-> engineering, where the use of domain knowledge of the data is leveraged 
-> to create features that, in turn, help machine learning 
-> algorithms to learn better.
-> 
-> > -- <cite> Microsoft Docs From [29] </cite>
-
-### Transform Strategies
-
-|  Transform Strategies  |   Meaning  | Syntax     | 
-|     ---    |        ---       |         ---      |
-| Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
-| Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
-| Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
-
-This is an example, based on [29]:
-
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric') # (column name, purpose) -> numeric 
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')  # (column name, purpose) -> labeled 
-#default strategy mean, add transformer param for for 3 columns -> it can be general ... within a loop or some recursive function 
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"}) # (column name, strategy)
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "constant", "fill_value": 0}) # (column name, strategy)
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"}) # (column name, strategy)
-
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})                                                                                    
-```
-
-##  Auto ML 
 > During training, Azure Machine Learning creates a `number of pipelines`
 > in `parallel` that try `different algorithms` and `parameters` for you. The service
 > iterates through ML algorithms paired with feature selections, where each 
@@ -105,9 +86,92 @@ From [27]:
 > 
 > > -- <cite> Microsoft Docs From [27] </cite>
 
-
-
 ### Types of AutoML: classify, regression, & forecast
+
+See the example of configuring an Automated Machine Learning Experiment from [26]:
+
+Task names:
+- regression
+- forecasting
+- classification
+
+```python
+import os
+import glob
+import logging
+import sys
+from tqdm import tqdm
+import sklearn
+from datetime import date
+import traceback
+import azureml.train.automl.utilities
+from azureml.automl.core.featurization import FeaturizationConfig
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
+from azureml.train.automl import AutoMLConfig
+from azureml.widgets import RunDetails
+from azureml.core.run import Run
+from azureml.core import Experiment
+from azureml.core import Workspace, Dataset
+from sklearn import preprocessing
+from sklearn import metrics
+
+# Project Directory 
+project_folder = './temp_outputs/'
+experiment_details_folder = './exp_outputs/'
+data_path = os.path.join(project_folder,'*.jpg')
+files = glob.glob(data_path)
+results = {}
+
+def automl_setup(performance_metric, n_times):
+    automl_settings = {
+    "n_cross_validations": 3,
+    "performance_metric": 'average_precision_score_weighted',
+    "enable_early_stopping": True,
+    # A limit for testing purpose, 
+    # please increase it as per cluster size
+    "max_concurrent_iterations": 2, 
+    # Time limit for testing purposes,
+    # remove it for real use cases, this 
+    # will drastically limit ablity to 
+    # find the best model possible
+    "experiment_timeout_hours": 0.25,
+    "verbosity": logging.INFO,
+    }
+
+    automl_config = AutoMLConfig(task = task_name,
+                                 debug_log = 'automl_errors.log',
+                                 compute_target = compute_target,
+                                 training_data = training_data,
+                                 label_column_name = label_column_name,
+                                 max_cores_per_iteration = 4,
+                                 mem_in_mb=1024,
+                                 iteration_timeout_minutes = 30,
+                                 iterations = n_iteration, 
+                                 featurization=featurization_config,
+                                 verbosity = logging.INFO,
+                                 validation_data = validation_data,
+                                 path = project_folder,
+                                 model_explainability= True,
+                                 **automl_settings
+                                )
+  
+def experiment_setup(performance_metric, experiment_details_folder_name):
+    experiment_name = Experiment(workspace=ws, name=experiment_name) 
+    print('Summitting experiment of ', performance_metric)
+    run = experiment_name.submit(automl_config, show_output=True)
+    best_run, fitted_model = run.get_output()
+    print(performance_metric,' best run: ',best_run)       
+    return performance_metric, best_run, fitted_model
+ 
+with open('./exp_outputs/Exp_Details.txt', 'w+') as f:
+
+try:
+    experiment_setup(performance_metric, experiment_details_folder)
+except ValueError:
+    print('ValueError in performance metric: ', performance_metric, ' Details saved in exp_outputs folder: /n', sys.exc_info())
+    traceback.print_exc(file=f)     
+```
+
 ### - Classification 
 > Classification is a common machine learning task. Classification is a 
 > type of supervised learning in which models learn using training data, 
@@ -127,30 +191,6 @@ From [27]:
 > 3. <a href="https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b" target="_top"> Newsgroup Data Classification </a>
 > 
 > > -- <cite> Microsoft Docs </cite>
-
-See the example of configuring an Automated Machine Learning Experiment from [26]:
-
-```python
-automl_settings = {
-    "n_cross_validations": 3,
-    "primary_metric": 'average_precision_score_weighted',
-    "enable_early_stopping": True,
-    "max_concurrent_iterations": 2, # This is a limit for testing purpose, please increase it as per cluster size
-    "experiment_timeout_hours": 0.25, # This is a time limit for testing purposes, remove it for real use cases, this will drastically limit ablity to find the best model possible
-    "verbosity": logging.INFO,
-}
-
-automl_config = AutoMLConfig(task = 'classification',
-                             debug_log = 'automl_errors.log',
-                             compute_target = compute_target,
-                             training_data = training_data,
-                             label_column_name = label_column_name,
-                             **automl_settings
-                            )
-```
-
-
-
 
 ### - Regression
 > Similar to classification, regression tasks are also a common 
@@ -208,30 +248,50 @@ automl_config = AutoMLConfig(task = 'classification',
 > > -- <cite> Microsoft Docs </cite>
 
 
-## Ensemble models
-> Automated machine learning supports ensemble models, which are enabled by default. 
-> Ensemble learning improves machine learning results and predictive performance by 
-> combining multiple models as opposed to using single models. The ensemble iterations 
-> appear as the final iterations of your run. Automated machine learning uses both voting
-> and stacking ensemble methods for combining models:
->
-> - Voting: predicts based on the weighted average of predicted class probabilities 
-> (for classification tasks) or predicted regression targets (for regression tasks).
-> - Stacking: stacking combines heterogenous models and trains a meta-model based on 
-> the output from the individual models. The current default meta-models are LogisticRegression for 
-> classification tasks and ElasticNet for regression/forecasting tasks.
->
-> The Caruana ensemble selection algorithm with sorted ensemble initialization is used 
-> to decide which models to use within the ensemble. At a high level, this algorithm initializes 
-> the ensemble with up to five models with the best individual scores, and verifies that these 
-> models are within 5% threshold of the best score to avoid a poor initial ensemble. Then for 
-> each ensemble iteration, a new model is added to the existing ensemble and the resulting score 
-> is calculated. If a new model improved the existing ensemble score, the ensemble is 
-> updated to include the new model.
->
-> See the how-to for changing default ensemble settings in automated machine learning.
->
-> > -- <cite> Microsoft Docs </cite>
+### FeaturizationConfig Class
+
+`Features ⟷  characteristics`
+
+From [29]:
+
+> Training data consists of rows and columns. Each `row` is an `observation` or
+> record, and the `columns` of each row are the `features` that `describe` each 
+> record. Typically, the features that best characterize the patterns in 
+> the data are selected to create predictive models.
+> 
+> Although many of the raw data fields can be used directly 
+> to train a model, `it's often necessary to create additional 
+> (engineered) features that provide information that better 
+> differentiates patterns in the data`. This process is called feature 
+> engineering, where the use of domain knowledge of the data is leveraged 
+> to create features that, in turn, help machine learning 
+> algorithms to learn better.
+> 
+> > -- <cite> Microsoft Docs From [29] </cite>
+
+|  Transform Strategies  |   Meaning  | Syntax     | 
+|     ---    |        ---       |         ---      |
+| Constant   |   Fill missing values in the target column or features, with zeroes    |   featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "constant", "fill_value": 0})  | 
+| Median     | Fill mising values in the target column with median value                |      featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "median"}) | 
+| Most Frequent  |      Fill mising values in the target column with most frequent value         |        featurization_config.add_transformer_params('Imputer', target_columns, {"strategy": "most_frequent"})           | 
+
+This is an example, based on [29]:
+
+```python
+featurization_config = FeaturizationConfig()
+featurization_config.blocked_transformers = ['LabelEncoder']
+featurization_config.drop_columns = ['aspiration', 'stroke']
+featurization_config.add_column_purpose('engine-size', 'Numeric') # (column name, purpose) -> numeric 
+featurization_config.add_column_purpose('body-style', 'CategoricalHash')  # (column name, purpose) -> labeled 
+#default strategy mean, add transformer param for for 3 columns -> it can be general ... within a loop or some recursive function 
+featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"}) # (column name, strategy)
+featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "constant", "fill_value": 0}) # (column name, strategy)
+featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"}) # (column name, strategy)
+
+featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})        
+```
+
+## `Workspace Setup`
 
 
 ## * References
