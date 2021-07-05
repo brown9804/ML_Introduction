@@ -118,7 +118,7 @@ from sklearn import metrics
 # Project Directory 
 project_folder = './temp_outputs/'
 experiment_details_folder = './exp_outputs/'
-data_path = os.path.join(project_folder,'*.jpg')
+data_path = os.path.join(project_folder,'/*')
 files = glob.glob(data_path)
 results = {}
 
