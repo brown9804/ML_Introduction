@@ -72,6 +72,10 @@ From [28]:
 
 |   Metric   | Definition |
 |---|---|
+explained\_variance | Explained variance measures the extent to which a model accounts for the variation in the target variable. It is the percent decrease in variance of the original data to the variance of the errors. When the mean of the errors is 0, it is equal to the coefficient of determination (see r2_score below). Objective: Closer to 1 the better. Range: (-inf, 1] |
+|mean\_absolute\_error| Mean absolute error is the expected value of absolute value of difference between the target and the prediction. Objective: Closer to 0 the better. Range: [0, inf). Types: `mean_absolute_error`, `normalized_mean_absolute_error`, the mean_absolute_error divided by the range of the data. |
+|mean\_absolute\_percentage\_error | Mean absolute percentage error (MAPE) is a measure of the average difference between a predicted value and the actual value. Objective: Closer to 0 the better. Range: [0, inf). |
+|median\_absolute\_error | Median absolute error is the median of all absolute differences between the target and the prediction. This loss is robust to outliers. Objective: Closer to 0 the better. Range: [0, inf). Types: `median_absolute_error`, `normalized_median_absolute_error`: the median_absolute_error divided by the range of the data. |
 
 
 
