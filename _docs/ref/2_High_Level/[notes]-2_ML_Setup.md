@@ -295,6 +295,85 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 
 ## `Workspace Setup`
 
+> The following table shows each development environment covered in this article, along with pros and cons.
+> ![Workspace types](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/workspace_types.png)
+> 
+> > -- <cite> Microsoft Docs From [32] </cite>
+
+For high scale systems, based on [32], [33], [34]:
+
+``` python 
+from azureml.core import Workspace
+import datetime
+import time
+from azureml.core.compute import ComputeTarget, ComputeInstance
+from azureml.telemetry import set_diagnostics_collection
+from azureml.core.compute_target import ComputeTargetException
+from azureml.core import Dataset
+import os
+import glob
+import logging
+import sys
+from tqdm import tqdm
+
+# Set workspace
+subscription_id = '<subscription-id>'
+resource_group  = '<resource-group>'
+workspace_name  = '<workspace-name>'
+try:
+    ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+    ws.write_config()
+    print('Library configuration succeeded')
+except:
+    print('Workspace not found')
+
+set_diagnostics_collection(send_diagnostics = True)
+
+# Create and manage an Azure Machine Learning compute cluster     
+# Choose a name for your CPU cluster
+cpu_cluster_name = "cpu-cluster"
+# Verify that the cluster does not exist already
+try:
+    cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+    print('Found existing cluster, use it.')
+except ComputeTargetException:
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                           max_nodes=4, 
+                                                           idle_seconds_before_scaledown=2400)
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+cpu_cluster.wait_for_completion(show_output=True)
+
+# Setup In/Out paths 
+folder = './dataset_folder'
+training_df = folder + '/training_dataset.csv' 
+test_df = folder + '/test_dataset.csv' 
+
+try:
+    os.path.exists(folder):
+    print("Create empty folder")
+    os.makedirs(folder)
+exception:
+    print("Folder already exists, so create new one...")
+    os.makedirs('ODatasets'+date.today().strftime("%m%d_"))
+    
+X_train[selected_columns].to_csv(training_df, index=False)
+X_test[selected_columns].to_csv(test_df, index=False)
+# Get the datastore to upload prepared data
+datastore_path = ws.get_default_datastore()
+# Upload files
+datastore_path.upload(folder, target_path=folder, overwrite=False, show_progress=True)
+training_dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, training_df)])
+# preview the first 3 rows of the dataset
+training_dataset.take(3).to_pandas_dataframe()
+test_dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, test_df)])
+# preview the first 3 rows of the dataset
+test_dataset.take(3).to_pandas_dataframe()   
+```
+
+## `Auto ML execution`
+
+
 
 ## * References
 [1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
@@ -328,3 +407,6 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 [29] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-features <br/>
 [30] From https://stackoverflow.com/questions/63464807/how-to-save-traceback-error-information-into-a-file <br/>
 [31] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-auto-train <br/>
+[32] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-configure-environment.md <br/>
+[33] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-configure-environment.md <br/>
+[34] From https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py <br/>
