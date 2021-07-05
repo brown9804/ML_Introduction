@@ -14,6 +14,8 @@ Based on [2], and [3]:
 ``` python 
 from azureml.widgets import RunDetails
 import numpy as np
+import datetime
+import time
 import matplotlib.pyplot as plt
 from sklearn import svm, datasets
 from sklearn.model_selection import train_test_split
@@ -21,6 +23,11 @@ from sklearn.metrics import plot_confusion_matrix
 
 # Show best run details 
 RunDetails(best_run).show()
+best_run_id = best_run.id 
+experiment_name = 'Experiment_name'+date.today().strftime("%m%d_")
+experiment_within_workspace= Experiment(ws, experiment_name)
+best_run = Run(experiment_within_workspace, best_run_id)
+print(best_run.get_metrics())
 
 # Create Confusion Matrix 
 #### ------ Run classifier, using a model that is too regularized (C too low) to see
@@ -102,6 +109,125 @@ class_probability = fitted_model.predict_proba(X_validation)
 
 ## `Explainability`
 
+Based on [6], [7], 
+
+```python 
+from azureml.interpret import ExplanationClient
+import numpy as np
+import pandas as pd
+
+# Download the raw feature importances from the best run
+client = ExplanationClient.from_run(best_run)
+raw_explanations = client.download_model_explanation(raw=True)
+print(raw_explanations.get_feature_importance_dict())
+```
+
+Based on [9], [10], [11], [12], and [13]:
+
+- `mse` - Mean Squared Error:  tells you how close a regression line is to a set of points. It does this by taking the distances from the points to the regression line (these distances are the “errors”) and squaring them. The squaring is necessary to remove any negative signs. It also gives more weight to larger differences. It’s called the mean squared error as you’re finding the average of a set of errors. The lower the MSE, the better the forecast. 
+- `mae` - Mean Absolute Error: measures the average magnitude of the errors in a set of predictions, without considering their direction. It's the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
+- `mape` - Mean Absolute Percentage Error: is a measure of how accurate a forecast system is. It measures this accuracy as a percentage, and can be calculated as the average absolute percent error for each time period minus actual values divided by actual values.
+- `cosine` - Calculate similarity between dictionaries
+
+```python
+import sys
+from tqdm import tqdm
+import sklearn
+from sklearn import preprocessing
+from sklearn import metrics
+from azureml.widgets import RunDetails
+from azureml.core.run import Run
+from azureml.core import Experiment
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core import Workspace, Dataset
+
+# Get best run files 
+best_run_files = pd.DataFrame(data=best_run.get_file_names()) 
+runs_ids = {}
+run_metrics_details = {}
+
+# Create dictionaries within experiments and key_metrics 
+for run_n in tqdm(experiment_within_workspace.get_runs()):
+    metrics = run_n.get_metrics()
+    print(run_n)
+    if 'metric_key_name' in metrics.keys():
+        runs_ids[run_n.id] = run_n
+        run_metrics_details[run_n.id] = metrics
+        
+# Register the model 
+model_folder = './outputs/models'
+model_name_selected= 'model_name'+date.today().strftime("%m%d_")
+model = best_run.register_model(model_name=model_name_selected, model_path=model_folder+model_name_selected+'.pkl')
+```
+
+Based on [1], [13]:
+
+```python 
+from interpret.ext.blackbox import TabularExplainer
+from interpret.ext.blackbox import MimicExplainer
+# you can use one of the following four interpretable models as a global surrogate to the black box model
+from interpret.ext.glassbox import LGBMExplainableModel
+from interpret.ext.glassbox import LinearExplainableModel
+from interpret.ext.glassbox import SGDExplainableModel
+from interpret.ext.glassbox import DecisionTreeExplainableModel
+from interpret.ext.blackbox import PFIExplainer
+from azureml.interpret import ExplanationClient
+from azureml.core.run import Run
+from azureml.interpret import MimicWrapper
+
+# Global explanation 
+ranked_global_values = raw_explanations.get_ranked_global_values()
+ranked_global_names = raw_explanations.get_ranked_global_names()
+print('Ranked Global Values: {}'.format(global_importance_values))
+print('Ranked Global Names: {}'.format(global_importance_names))
+
+# Local explanation
+local_explanation = raw_explanations.explain_local(X_validation[0:5])
+ranked_local__names = sorted(local_explanation.get_ranked_local_names())
+ranked_local_values = sorted(local_explanation.get_ranked_local_values())
+
+# Mimic Explainer
+# "features" and "classes" fields are optional
+# augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
+# max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
+# LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
+explainer = MimicExplainer(fitted_model, 
+                           X_validations, 
+                           LGBMExplainableModel, 
+                           augment_data=True, 
+                           max_num_of_augmentations=10, 
+                           features=categorical_columns,
+                           classes=target_column
+                           )
+# Mimic Wrapper
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
+                explainable_model=automl_explainer_setup_obj.surrogate_model,
+                init_dataset=automl_explainer_setup_obj.X_transform, run=best_run,
+                features=automl_explainer_setup_obj.engineered_feature_names,
+                feature_maps=[automl_explainer_setup_obj.feature_map],
+                classes=automl_explainer_setup_obj.classes,
+                explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
+                
+# Tabular Explainer
+run = best_run.get_context()
+client = ExplanationClient.from_run(run)
+# write code to get and split your data into train and test sets here
+# write code to train your model here 
+# explain predictions on your local machine
+# "features" and "classes" fields are optional
+explainer = TabularExplainer(fitted_model, 
+                             X_validations.dropna(), 
+                             features=categorical_columns, 
+                             classes=target_column)
+# explain overall model predictions (global explanation)
+global_explanation = explainer.explain_global(X_validations.dropna())
+# uploading global model explanation data for storage or visualization in webUX
+# the explanation can then be downloaded on any compute
+# multiple explanations can be uploaded
+client.upload_model_explanation(global_explanation, comment='global explanation: all features')
+# or you can only upload the explanation object with the top k feature info
+#client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+```
 
 ## * References 
 [1] From  https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml <br/>
@@ -109,3 +235,11 @@ class_probability = fitted_model.predict_proba(X_validation)
 [3] From https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html <br/>
 [4] From https://vitalflux.com/roc-curve-auc-python-false-positive-true-positive-rate/ <br/>
 [5] From https://stackoverflow.com/questions/61184906/difference-between-predict-vs-predict-proba-in-scikit-learn <br/>
+[6] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-automl <br/>
+[7] From https://github.com/MicrosoftDocs/azure-docs.es-es/blob/master/articles/machine-learning/how-to-machine-learning-interpretability-aml.md <br/>
+[8] From https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html <br/>
+[9] From https://machinelearningmastery.com/custom-metrics-deep-learning-keras-python/ <br/>
+[10] From https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/mean-squared-error/ <br/>
+[11] From https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d#:~:text=Mean%20Absolute%20Error%20(MAE)%3A,individual%20differences%20have%20equal%20weight <br/>
+[12] From https://www.statisticshowto.com/mean-absolute-percentage-error-mape/#:~:text=The%20mean%20absolute%20percentage%20error,values%20divided%20by%20actual%20values. <br/>
+[13] From https://docs.microsoft.com/en-us/python/api/azureml-interpret/azureml.interpret.mimicwrapper?view=azure-ml-py <br/>
