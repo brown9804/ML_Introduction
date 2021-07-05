@@ -99,21 +99,80 @@ debug_mapped_df.describe(include='all')
 ```
 
 ### `→ For Supervised:`
+Classification example based from [5]:
+
 ```python
-
-
+from sklearn.model_selection import train_test_split
+# Split into inputs and outputs the dataset
+X, y = debug_mapped_df[:, :-1], debug_mapped_df[:, -1]
+print(X.shape, y.shape)
+# Split into Train Test Sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
+print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 ```
 
 
 ### `→ For Unsupervised:`
+KNeighborsClassifier example based from [6]:
+
+```python
+n_samples = 6
+x = debug_mapped_df.iloc[:, :2]
+y = debug_mapped_df.iloc[:, -1]
+
+model_KNeighborsClassifier = KNeighborsClassifier(n_samples, weights='distance')
+model_KNeighborsClassifier.fit(x, y)
+```
+
 
 ### `→ For Reinforcement:`
+Data-driven reinforcement learning (RL), with PyBullet example based from [7]:
 
+```python
+# d4rl dataset, is the first standardized dataset for this domain
+import gym
+import d4rl_pybullet
 
+# dataset will be automatically downloaded into ~/.d4rl/datasets
+env = gym.make('hopper-bullet-mixed-v0')
+
+# interaction with its environment
+env.reset()
+env.step(env.action_space.sample())
+
+# access to the dataset
+dataset = env.get_dataset()
+dataset['observations'] # observation data in N x dim_observation
+dataset['actions'] # action data in N x dim_action
+dataset['rewards'] # reward data in N x 1
+dataset['terminals'] # terminal flags in N x 1
+```
+
+Data-driven reinforcement learning (RL), with  Atari datasets released by Google example based from [7]:
+
+``` python
+import gym
+import d4rl_atari
+
+env = gym.make('breakout-mixed-v0', stack=False) # -v{0, 1, 2, 3, 4} for datasets with the other random seeds
+
+# interaction with its environment through dopamine-style Atari wrapper
+env.reset() # observation is resized to 1x84x84
+env.step(env.action_space.sample())
+
+# dataset will be automatically downloaded into ~/.d4rl/datasets/[GAME]/[INDEX]/[EPOCH]
+dataset = env.get_dataset()
+dataset['observations'] # observation data in 1000000x1x84x84
+dataset['actions'] # action data in 1M
+dataset['rewards'] # reward data in 1M
+dataset['terminals'] # terminal flags in 1M
+```
 
 ## * References 
 [1] From https://re-thought.com/pandas-value_counts/ <br/>
 [2] From https://www.listendata.com/2019/07/how-to-filter-pandas-dataframe.html <br/>
 [3] From https://www.listendata.com/2019/04/python-lambda-function.html <br/>
 [4] From https://pbpython.com/pandas_dtypes.html <br/>
-
+[5] From https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/ <br/>
+[6] From https://github.com/SidsMav2000/TSF-Task-2---Data-Science-Business-Analytics-Tasks/blob/main/irisPrediction/Prediction.py <br/>
+[7] From https://towardsdatascience.com/introducing-completely-free-datasets-for-data-driven-deep-reinforcement-learning-a51e9bed85f9 <br/>
