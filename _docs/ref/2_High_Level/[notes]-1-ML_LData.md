@@ -99,7 +99,7 @@ debug_mapped_df.describe(include='all')
 ```
 
 ### `→ For Supervised:`
-Classification example based from [5]:
+Classification example based on [5]:
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -113,7 +113,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 
 ### `→ For Unsupervised:`
-KNeighborsClassifier example based from [6]:
+KNeighborsClassifier example based on [6]:
 
 ```python
 n_samples = 6
@@ -126,7 +126,7 @@ model_KNeighborsClassifier.fit(x, y)
 
 
 ### `→ For Reinforcement:`
-Data-driven reinforcement learning (RL), with PyBullet example based from [7]:
+Data-driven reinforcement learning (RL), with PyBullet example based on [7]:
 
 ```python
 # d4rl dataset, is the first standardized dataset for this domain
@@ -148,7 +148,7 @@ dataset['rewards'] # reward data in N x 1
 dataset['terminals'] # terminal flags in N x 1
 ```
 
-Data-driven reinforcement learning (RL), with  Atari datasets released by Google example based from [7]:
+Data-driven reinforcement learning (RL), with  Atari datasets released by Google example based on [7]:
 
 ``` python
 import gym
