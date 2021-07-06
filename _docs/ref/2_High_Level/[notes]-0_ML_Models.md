@@ -52,7 +52,7 @@ From [14]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_model_in_out.png)
 
-From [19]:
+Based on [19]:
 <br/>
 
 |   Category  | Definition | 
@@ -81,8 +81,8 @@ From [22]:
 > Classification trees, where the target variable is a discrete value and the leaves represent class labels (as shown in the example tree), and <br/>
 > Regression trees, where the target variable can take continuous values.
 > 
-> > -- <cite> From [14] IBM </cite>
-> > 
+> > -- <cite> IBM From [14] </cite>
+
 
 From [14]:
 <br/>
@@ -95,7 +95,7 @@ From [14]:
 > can be yes or no. The categories mean that every stage of the decision 
 > process falls into one of the categories, and there are no in-betweens.
 > 
-> > -- <cite> From [13] CFI </cite>
+> > -- <cite> CFI From [13]  </cite>
 
 
 ##### 1.1.1 Regression Trees (Continuous data types)
@@ -136,7 +136,7 @@ Assumptions:
 > the coefficients to fail to converge. This can happen if there are many highly correlated inputs
 > in your data or the data is very sparse (e.g. lots of zeros in your input data).
 
-> > -- <cite> From [20] Machine Learning Mastery </cite>
+> > -- <cite> Machine Learning Mastery From [20] </cite>
 
 
 
