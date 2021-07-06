@@ -109,6 +109,18 @@ class_probability = fitted_model.predict_proba(X_validation)
 
 ## `Explainability`
 
+Based on [14], and [15]:
+
+![model agnostic vs specific](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/model_agnostic_vs_specific.png)
+
+
+![tabular_diagram_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/tabular_interpretation_techniques.png)
+
+
+![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type.png)
+
+
+
 Based on [6], [7], 
 
 ```python 
@@ -161,6 +173,7 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 ```
 
 Based on [1], [13]:
+
 
 ```python 
 from interpret.ext.blackbox import TabularExplainer
@@ -243,3 +256,5 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 [11] From https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d#:~:text=Mean%20Absolute%20Error%20(MAE)%3A,individual%20differences%20have%20equal%20weight <br/>
 [12] From https://www.statisticshowto.com/mean-absolute-percentage-error-mape/#:~:text=The%20mean%20absolute%20percentage%20error,values%20divided%20by%20actual%20values. <br/>
 [13] From https://docs.microsoft.com/en-us/python/api/azureml-interpret/azureml.interpret.mimicwrapper?view=azure-ml-py <br/>
+[14] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability <br/>
+[15] From https://arxiv.org/pdf/2009.11698v1.pdf <br/>
