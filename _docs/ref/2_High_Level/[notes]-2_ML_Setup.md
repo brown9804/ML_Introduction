@@ -376,8 +376,10 @@ results[performance_metric] = [best_run,fitted_model]
 
 
 ### `→ For Classification:`
-Based on [31]:
-Metrics:
+Based on [31]: <br/>
+
+Performance Metric:
+ 
 - `average_precision_score_weighted`
 - `precision_score_weighted`
 - `accuracy`
@@ -387,16 +389,20 @@ Metrics:
 
 
 ### `→ For Regression:`
-Based on [31]:
-Metrics:
-- `spearman_correlation`
+Based on [31]: <br/>
+
+Performance Metric:
+ 
+ - `spearman_correlation`
 - `normalized_root_mean_squared_error`	
 - `r2_score`	
 - `normalized_mean_absolute_error`
 
 ### `→ For Forecasting:`
-Based on [31]:
-Metrics:
+Based on [31]: <br/>
+
+Performance Metric:
+ 
 - `normalized_root_mean_squared_error`
 - `r2_score`
 - `normalized_mean_absolute_error`
