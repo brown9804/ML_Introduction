@@ -41,7 +41,7 @@ From [11]
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
 
-### Type #1 Supervised Learning 
+##`Type #1 Supervised Learning`
 
 |   Use  | % | 
 |---|---|
@@ -70,6 +70,23 @@ From [22]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_general_flow.png)
 
+### `→ Supervised Learning algorithms:`
+Based on [32]:
+
+- Decision trees
+- Logistic Regression
+- Linear regression
+- Support vector machine (SVM)
+- k-Nearest Neighbors
+- Naive Bayes
+- Random forest
+- polynomial regression
+- SVM for regression
+
+Based on [30]: <br/>
+
+![visual_supervised_examples](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_visual_0.png)
+
 #### 1.1 Decision Trees
 > A decision tree is a supervised learning method for classification. 
 > Algorithms of this variety create trees that predict the result of an 
@@ -88,7 +105,7 @@ From [14]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/typical_decision_tree.png)
 
-##### 1.1.1 Classification Trees (Discrete/Binary - Yes/No types)
+`→  →  Classification Trees (Discrete/Binary - Yes/No types)` 
 
 > A categorical variable decision tree includes categorical target 
 > variables that are divided into categories. For example, the categories 
@@ -98,7 +115,7 @@ From [14]:
 > > -- <cite> CFI From [13]  </cite>
 
 
-##### 1.1.1 Regression Trees (Continuous data types)
+`→  →  Regression Trees (Continuous data types)`
 
 > A continuous variable decision tree is a decision tree with a continuous 
 > target variable. For example, the income of an individual whose income is
@@ -138,16 +155,16 @@ Assumptions:
 
 > > -- <cite> Machine Learning Mastery From [20] </cite>
 
-
-
-
 #### 1.3 Linear Regression
 
 From [21]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_logistic_vs_linear_regression.png)
 
-### Type #2 Unsupervised Learning 
+
+
+
+## `Type #2 Unsupervised Learning`
 
 From [14]:
 <br/>
@@ -165,6 +182,24 @@ From [16]:
 From [22]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/unsupervised_general_flow.png)
+
+### `→ Unsupervised Learning algorithms:`
+Based on [31]:
+
+- K-means clustering
+- KNN (k-nearest neighbors)
+- Hierarchal clustering
+- Anomaly detection
+- Neural Networks
+- Principle Component Analysis
+- Independent Component Analysis
+- Apriori algorithm
+- Singular value decomposition
+
+
+Based on [30]: <br/>
+
+![visual_unsupervised_examples](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/unsupervised_visual_0.png)
 
 ### Type #3 Reinforcement Learning 
 From [14]:
@@ -217,3 +252,6 @@ From [22]:
 [27] From https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml <br/>
 [28] From https://algorithmia.com/blog/how-machine-learning-works <br/>
 [29] From https://medium.com/brandlitic/difference-between-ml-algorithm-and-model-801a798a6dc0 <br/>
+[30] From https://arxiv.org/pdf/2009.11698v1.pdf <br/>
+[31] From https://www.javatpoint.com/unsupervised-machine-learning <br/>
+[32] From https://dataaspirant.com/supervised-and-unsupervised-learning/ <br/>
