@@ -13,14 +13,14 @@ Jan, 2021
 ## *  How to choose a Performance Metric
 
 
-From [10]:
+Based on [10]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/How-to-Choose-a-Metric-for-Imbalanced-Classification-latest.png)
 
 
 ## * Averaging Methods provided by Scikit-learn 
 
-From [27]: 
+Based on [27]: 
 
 |   Method  | Definition |
 |---|---|
@@ -31,7 +31,7 @@ From [27]:
 
 ### 1. Classification metrics:
 
-From [28]:
+Based on [28]:
 
 Automated ML calculates performance metrics for each classification model generated for your experiment. These metrics are based on the scikit learn implementation.:
 
@@ -42,7 +42,7 @@ Considering:
 `(TN)` True-Negative Rate = TN / TN + FP   <br/>
 `(FN)` False-Negative Rate  = FN / FN + TP  <br/>
 
-From [28]:
+Based on [28]:
 
 |   Metric  | Formula | Definition |
 |---|---|---|
@@ -68,7 +68,7 @@ Considering:
 `(TN)` True-Negative Rate = TN / TN + FP   <br/>
 `(FN)` False-Negative Rate  = FN / FN + TP  <br/>
 
-From [28]:
+Based on [28]:
 
 |   Metric   | Definition |
 |---|---|
@@ -108,8 +108,9 @@ explained\_variance | Explained variance measures the extent to which a model ac
 > is a perfect performance metric for ROC curve. Higher the area under curve, better the prediction 
 > power of the model. Below is a sample ROC curve. The ROC of a perfect predictive model has TP 
 > equals 1 and FP equals 0. This curve will touch the top left corner of the graph.
->
-From [24]:
+
+
+Based on [24]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/roc_curve_graph.png)
 
