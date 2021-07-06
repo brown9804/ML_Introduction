@@ -373,6 +373,10 @@ Based on [31]:
 # Examples of performance metrics, see other stage to understand other metrics
 # average_precision_score_weighted
 # precision_score_weighted
+# accuracy
+# norm_macro_recall
+# AUC_weighted
+
 automl_setup(performance_metric, n_times)
 performance_metric, best_run, fitted_model =  experiment_setup(performance_metric, experiment_details_folder_name)
 results[performance_metric] = [best_run,fitted_model]
