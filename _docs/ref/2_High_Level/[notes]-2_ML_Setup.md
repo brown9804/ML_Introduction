@@ -178,7 +178,6 @@ def experiment_setup(performance_metric, experiment_details_folder_name):
 >  safety rating, etc. Learn more and see an example of 
 >  <a href="https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/tutorial-auto-train-models.md" target="_top"> regression with automated machine learning </a>.
 >
->
 > See examples of regression and automated machine 
 > learning for predictions in these Python notebooks: 
 > <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb" target="_top" > CPU Performance Prediction </a>
