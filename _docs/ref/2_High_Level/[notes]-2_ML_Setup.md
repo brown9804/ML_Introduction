@@ -369,17 +369,37 @@ test_dataset.take(3).to_pandas_dataframe()
 Based on [31]:
 
 ```python 
-# Examples of supported performance metrics, see other stage to understand other metrics
-# average_precision_score_weighted
-# precision_score_weighted
-# accuracy
-# norm_macro_recall
-# AUC_weighted
-
 automl_setup(performance_metric, n_times)
 performance_metric, best_run, fitted_model =  experiment_setup(performance_metric, experiment_details_folder_name)
 results[performance_metric] = [best_run,fitted_model]
 ```
+
+
+### `→ For Classification:`
+Based on [31]:
+Metrics:
+- `average_precision_score_weighted`
+- `precision_score_weighted`
+- `accuracy`
+- `norm_macro_recall`
+- `AUC_weighted`
+
+
+
+### `→ For Regression:`
+Based on [31]:
+Metrics:
+- `spearman_correlation`
+- `normalized_root_mean_squared_error`	
+- `r2_score`	
+- `normalized_mean_absolute_error`
+
+### `→ For Forecasting:`
+Based on [31]:
+Metrics:
+- `normalized_root_mean_squared_error`
+- `r2_score`
+- `normalized_mean_absolute_error`
 
 ## * References
 [1] From https://searchcloudcomputing.techtarget.com/definition/Microsoft-Azure-Machine-Learning#:~:text=Microsoft%20Azure%20Machine%20Learning%20is,through%20its%20Azure%20public%20cloud <br/>
