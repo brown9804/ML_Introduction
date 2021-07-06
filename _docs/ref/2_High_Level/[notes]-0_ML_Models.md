@@ -87,7 +87,7 @@ Based on [30]: <br/>
 
 ![visual_supervised_examples](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_visual_0.png)
 
-#### 1.1 Decision Trees
+### 1.1 Decision Trees
 > A decision tree is a supervised learning method for classification. 
 > Algorithms of this variety create trees that predict the result of an 
 > input vector based on decision rules inferred from the features present 
@@ -124,7 +124,7 @@ From [14]:
 > 
 > > -- <cite> From [13] CFI </cite>
 
-#### 1.2 Logistic Regression
+### 1.2 Logistic Regression
 From [21]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/linear_logistic_regression_graph.png)
@@ -155,13 +155,11 @@ Assumptions:
 
 > > -- <cite> Machine Learning Mastery From [20] </cite>
 
-#### 1.3 Linear Regression
+### 1.3 Linear Regression
 
 From [21]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_logistic_vs_linear_regression.png)
-
-
 
 
 ## `Type #2 Unsupervised Learning`
