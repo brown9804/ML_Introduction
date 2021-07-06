@@ -370,7 +370,7 @@ test_dataset.take(3).to_pandas_dataframe()
 Based on [31]:
 
 ```python 
-# Examples of performance metrics, see other stage to understand other metrics
+# Examples of supported performance metrics, see other stage to understand other metrics
 # average_precision_score_weighted
 # precision_score_weighted
 # accuracy
