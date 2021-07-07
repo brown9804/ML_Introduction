@@ -172,8 +172,7 @@ model_name_selected= 'model_name'+date.today().strftime("%m%d_")
 model = best_run.register_model(model_name=model_name_selected, model_path=model_folder+model_name_selected+'.pkl')
 ```
 
-Based on [1], [13]:
-
+Based on [1], [13], and [16]:
 
 ```python 
 from interpret.ext.blackbox import TabularExplainer
@@ -187,6 +186,10 @@ from interpret.ext.blackbox import PFIExplainer
 from azureml.interpret import ExplanationClient
 from azureml.core.run import Run
 from azureml.interpret import MimicWrapper
+from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.interpret.mimic_wrapper import MimicWrapper
+from interpret_community.widget import ExplanationDashboard
+
 
 # Global explanation 
 ranked_global_values = raw_explanations.get_ranked_global_values()
@@ -212,6 +215,7 @@ explainer = MimicExplainer(fitted_model,
                            features=categorical_columns,
                            classes=target_column
                            )
+                           
 # Mimic Wrapper
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 explainable_model=automl_explainer_setup_obj.surrogate_model,
@@ -219,8 +223,28 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 features=automl_explainer_setup_obj.engineered_feature_names,
                 feature_maps=[automl_explainer_setup_obj.feature_map],
                 classes=automl_explainer_setup_obj.classes,
-                explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
-                
+                explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params) 
+#---- task_name:
+# ************ regression
+# ************ forecasting
+# ************ classification
+automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
+                                                             X_test=X_test, y=y_train,
+                                                             task='task_name')                         
+#---- Engineered Explanations
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
+print(engineered_explanations.get_feature_importance_dict()),
+#---- Dashboard setup
+ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
+#---- Raw Explanations
+raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
+                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
+                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
+print(raw_explanations.get_feature_importance_dict()),
+#---- Dashboard setup
+ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
+
+  
 # Tabular Explainer
 run = best_run.get_context()
 client = ExplanationClient.from_run(run)
@@ -258,3 +282,4 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 [13] From https://docs.microsoft.com/en-us/python/api/azureml-interpret/azureml.interpret.mimicwrapper?view=azure-ml-py <br/>
 [14] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability <br/>
 [15] From https://arxiv.org/pdf/2009.11698v1.pdf <br/>
+[16] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-machine-learning-interpretability-automl.md <br/>
