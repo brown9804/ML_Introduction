@@ -283,3 +283,4 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 [14] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability <br/>
 [15] From https://arxiv.org/pdf/2009.11698v1.pdf <br/>
 [16] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-machine-learning-interpretability-automl.md <br/>
+[17] From https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb <br/>
