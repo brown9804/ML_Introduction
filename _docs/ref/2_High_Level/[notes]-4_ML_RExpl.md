@@ -195,7 +195,14 @@ raw_explanations = client.download_model_explanation(raw=True)
 print(raw_explanations.get_feature_importance_dict())
 ```
 
-### `→ Dictionary within experiment keymetrics`
+### `→ Dictionary within experiment keymetrics:`
+
+
+Metric rules for point forecasting, from [24]:
+
+![mape, mse, mae, r2, explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/Three-metric-rules-for-point-forecasting_mape_mae_mse_cosine.png)
+
+
 Based on [9], [10], [11], [12], and [13]:
 
 - `mse` - Mean Squared Error:  tells you how close a regression line is to a set of points. It does this by taking the distances from the points to the regression line (these distances are the “errors”) and squaring them. The squaring is necessary to remove any negative signs. It also gives more weight to larger differences. It’s called the mean squared error as you’re finding the average of a set of errors. The lower the MSE, the better the forecast. 
@@ -233,7 +240,9 @@ local_explanation = raw_explanations.explain_local(X_validation[0:5])
 ranked_local__names = sorted(local_explanation.get_ranked_local_names())
 ranked_local_values = sorted(local_explanation.get_ranked_local_values())
 ```
+
 ### `→Mimic Explainer:`
+
 Based on [1], [13], and [16]:
 ```python 
 # "features" and "classes" fields are optional
@@ -311,9 +320,12 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 ```
 
 ### `→ Model registration:`
+
+![pkl visual explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/pkl_explain.png)
+
 ```python
 model_folder = './outputs/models'
-model_name_selected= 'model_name'+date.today().strftime("%m%d_")
+model_name_selected= 'model_name'+date.today().strftime("__%m%d")
 model = best_run.register_model(model_name=model_name_selected, model_path=model_folder+model_name_selected+'.pkl')
 ```
 
@@ -340,4 +352,6 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [20] From https://ailearnerhub.com/2020/05/10/what-is-the-confusion-matrix/ <br/>
 [21] From https://www.youtube.com/watch?v=afQ_DyKMxUo <br/>
 [22] From https://ai-ml-analytics.com/classification-metrics-in-machine-learning/ <br/>
-[23] Fromhttps://sketchplanations.com/accuracy-and-precision <br/>
+[23] From https://sketchplanations.com/accuracy-and-precision <br/>
+[24] From https://www.researchgate.net/figure/Three-metric-rules-for-point-forecasting_tbl1_314201097 <br/>
+[25] From https://atrium.ai/resources/build-and-deploy-a-docker-containerized-python-machine-learning-model-on-heroku/ <br/>
