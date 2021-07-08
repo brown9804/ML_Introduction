@@ -137,28 +137,9 @@ Based on [14], and [15]:
 ![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type.png)
 
 
-
-Based on [6], [7]:
-
-```python 
-from azureml.interpret import ExplanationClient
+ ```python 
 import numpy as np
 import pandas as pd
-
-# Download the raw feature importances from the best run
-client = ExplanationClient.from_run(best_run)
-raw_explanations = client.download_model_explanation(raw=True)
-print(raw_explanations.get_feature_importance_dict())
-```
-
-Based on [9], [10], [11], [12], and [13]:
-
-- `mse` - Mean Squared Error:  tells you how close a regression line is to a set of points. It does this by taking the distances from the points to the regression line (these distances are the “errors”) and squaring them. The squaring is necessary to remove any negative signs. It also gives more weight to larger differences. It’s called the mean squared error as you’re finding the average of a set of errors. The lower the MSE, the better the forecast. 
-- `mae` - Mean Absolute Error: measures the average magnitude of the errors in a set of predictions, without considering their direction. It's the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
-- `mape` - Mean Absolute Percentage Error: is a measure of how accurate a forecast system is. It measures this accuracy as a percentage, and can be calculated as the average absolute percent error for each time period minus actual values divided by actual values.
-- `cosine` - Calculate similarity between dictionaries
-
-```python
 import sys
 from tqdm import tqdm
 import sklearn
@@ -169,29 +150,7 @@ from azureml.core.run import Run
 from azureml.core import Experiment
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core import Workspace, Dataset
-
-# Get best run files 
-best_run_files = pd.DataFrame(data=best_run.get_file_names()) 
-runs_ids = {}
-run_metrics_details = {}
-
-# Create dictionaries within experiments and key_metrics 
-for run_n in tqdm(experiment_within_workspace.get_runs()):
-    metrics = run_n.get_metrics()
-    print(run_n)
-    if 'metric_key_name' in metrics.keys():
-        runs_ids[run_n.id] = run_n
-        run_metrics_details[run_n.id] = metrics
-        
-# Register the model 
-model_folder = './outputs/models'
-model_name_selected= 'model_name'+date.today().strftime("%m%d_")
-model = best_run.register_model(model_name=model_name_selected, model_path=model_folder+model_name_selected+'.pkl')
-```
-
-Based on [1], [13], and [16]:
-
-```python 
+from azureml.interpret import ExplanationClient
 from interpret.ext.blackbox import TabularExplainer
 from interpret.ext.blackbox import MimicExplainer
 # you can use one of the following four interpretable models as a global surrogate to the black box model
@@ -200,14 +159,50 @@ from interpret.ext.glassbox import LinearExplainableModel
 from interpret.ext.glassbox import SGDExplainableModel
 from interpret.ext.glassbox import DecisionTreeExplainableModel
 from interpret.ext.blackbox import PFIExplainer
-from azureml.interpret import ExplanationClient
-from azureml.core.run import Run
 from azureml.interpret import MimicWrapper
 from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
 from azureml.interpret.mimic_wrapper import MimicWrapper
 from interpret_community.widget import ExplanationDashboard
+ ```
 
+### `→ Download Explanation:`
 
+Based on [6], [7]:
+
+```python 
+# Download the raw feature importances from the best run
+client = ExplanationClient.from_run(best_run)
+raw_explanations = client.download_model_explanation(raw=True)
+print(raw_explanations.get_feature_importance_dict())
+```
+
+### `→ Dictionary within experiment keymetrics`
+Based on [9], [10], [11], [12], and [13]:
+
+- `mse` - Mean Squared Error:  tells you how close a regression line is to a set of points. It does this by taking the distances from the points to the regression line (these distances are the “errors”) and squaring them. The squaring is necessary to remove any negative signs. It also gives more weight to larger differences. It’s called the mean squared error as you’re finding the average of a set of errors. The lower the MSE, the better the forecast. 
+- `mae` - Mean Absolute Error: measures the average magnitude of the errors in a set of predictions, without considering their direction. It's the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
+- `mape` - Mean Absolute Percentage Error: is a measure of how accurate a forecast system is. It measures this accuracy as a percentage, and can be calculated as the average absolute percent error for each time period minus actual values divided by actual values.
+- `cosine` - Calculate similarity between dictionaries
+
+```python
+# Get best run files 
+best_run_files = pd.DataFrame(data=best_run.get_file_names()) 
+runs_ids = {}
+run_metrics_details = {}
+
+# Filtering by keymetric
+for run_n in tqdm(experiment_within_workspace.get_runs()):
+    metrics = run_n.get_metrics()
+    print(run_n)
+    if 'metric_key_name' in metrics.keys():
+        runs_ids[run_n.id] = run_n
+        run_metrics_details[run_n.id] = metrics
+```
+### `→ Global/Local explanation:`
+
+Based on [1], [13], and [16]:
+
+```python 
 # Global explanation 
 ranked_global_values = raw_explanations.get_ranked_global_values()
 ranked_global_names = raw_explanations.get_ranked_global_names()
@@ -218,8 +213,10 @@ print('Ranked Global Names: {}'.format(global_importance_names))
 local_explanation = raw_explanations.explain_local(X_validation[0:5])
 ranked_local__names = sorted(local_explanation.get_ranked_local_names())
 ranked_local_values = sorted(local_explanation.get_ranked_local_values())
-
-# Mimic Explainer
+```
+### `→Mimic Explainer:`
+Based on [1], [13], and [16]:
+```python 
 # "features" and "classes" fields are optional
 # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
 # max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
@@ -232,8 +229,21 @@ explainer = MimicExplainer(fitted_model,
                            features=categorical_columns,
                            classes=target_column
                            )
-                           
-# Mimic Wrapper
+```
+
+### `→ Mimic Wrapper:`
+
+Based on [1], [13], and [16]:
+
+```python 
+#---- task_name:
+# ************ regression
+# ************ forecasting
+# ************ classification
+automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
+                                                             X_test=X_test, y=y_train,
+                                                             task='task_name') 
+                                                             
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 explainable_model=automl_explainer_setup_obj.surrogate_model,
                 init_dataset=automl_explainer_setup_obj.X_transform, run=best_run,
@@ -241,13 +251,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 feature_maps=[automl_explainer_setup_obj.feature_map],
                 classes=automl_explainer_setup_obj.classes,
                 explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params) 
-#---- task_name:
-# ************ regression
-# ************ forecasting
-# ************ classification
-automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
-                                                             X_test=X_test, y=y_train,
-                                                             task='task_name')                         
+                        
 #---- Engineered Explanations
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
@@ -260,9 +264,13 @@ raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
 print(raw_explanations.get_feature_importance_dict()),
 #---- Dashboard setup
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
+```
 
-  
-# Tabular Explainer
+### `→ Tabular Explainer:`
+
+ Based on [1], [13], and [16]:
+ 
+ ```python 
 run = best_run.get_context()
 client = ExplanationClient.from_run(run)
 # write code to get and split your data into train and test sets here
@@ -281,6 +289,13 @@ global_explanation = explainer.explain_global(X_validations.dropna())
 client.upload_model_explanation(global_explanation, comment='global explanation: all features')
 # or you can only upload the explanation object with the top k feature info
 #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+```
+
+### `→ Model registration:`
+```python
+model_folder = './outputs/models'
+model_name_selected= 'model_name'+date.today().strftime("%m%d_")
+model = best_run.register_model(model_name=model_name_selected, model_path=model_folder+model_name_selected+'.pkl')
 ```
 
 ## * References 
