@@ -152,8 +152,6 @@ Based on [14], and [15]:
 
 ![tabular_diagram_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/tabular_interpretation_techniques.png)
 
-![permutation_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_permutation_explainer.png)
-
  ```python 
 import numpy as np
 import pandas as pd
@@ -209,6 +207,9 @@ Based on [9], [10], [11], [12], and [13]:
 - `cosine` - Calculate similarity between dictionaries
 
 ```python
+# Print get run content
+run = best_run.get_context()
+print(str(run))
 # Get best run files 
 best_run_files = pd.DataFrame(data=best_run.get_file_names()) 
 runs_ids = {}
@@ -222,29 +223,6 @@ for run_n in tqdm(experiment_within_workspace.get_runs()):
         runs_ids[run_n.id] = run_n
         run_metrics_details[run_n.id] = metrics
 ```
-### `→ Global/Local explanation:`
-
-Based on [26]:
-
-![local_vs_global_explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_vs_global_explain.png)
-
-
-Based on [1], [13], and [16]:
-
-```python 
-# Local explanation
-local_explanation = raw_explanations.explain_local(X_validation[0:5])
-ranked_local__names = sorted(local_explanation.get_ranked_local_names())
-ranked_local_values = sorted(local_explanation.get_ranked_local_values())
-print('Ranked Local Values: {}'.format(ranked_local__names))
-print('Ranked Local Names: {}'.format(ranked_local_values))
-
-# Global explanation 
-ranked_global_values = raw_explanations.get_ranked_global_values()
-ranked_global_names = raw_explanations.get_ranked_global_names()
-print('Ranked Global Values: {}'.format(ranked_global_values))
-print('Ranked Global Names: {}'.format(ranked_global_names))
-```
 
 ### `→ Tabular Explainer:`
 
@@ -253,19 +231,26 @@ print('Ranked Global Names: {}'.format(ranked_global_names))
 
  Based on [1], [13], and [16]:
  
+ Task names:
+- regression
+- forecasting
+- classification
+ 
  ```python 
-run = best_run.get_context()
-client = ExplanationClient.from_run(run)
+automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
+                                                             X_test=X_test, y=y_train, 
+                                                             task='task_name')
+
 # write code to get and split your data into train and test sets here
 # write code to train your model here 
 # explain predictions on your local machine
 # "features" and "classes" fields are optional
-explainer = TabularExplainer(fitted_model, 
+tabular_explainer = TabularExplainer(fitted_model, 
                              X_validations.dropna(), 
-                             features=categorical_columns, 
-                             classes=target_column)
+                             features=automl_explainer_setup_obj.engineered_feature_names, 
+                             classes=automl_explainer_setup_obj.classes)                  
 # explain overall model predictions (global explanation)
-global_explanation = explainer.explain_global(X_validations.dropna())
+global_explanation = tabular_.explain_global(X_validations.dropna())
 # uploading global model explanation data for storage or visualization in webUX
 # the explanation can then be downloaded on any compute
 # multiple explanations can be uploaded
@@ -279,23 +264,28 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 ![mimic_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_mimic_explainer.png)
 
 
-Based on [1], [13], and [16]:
+Based on [1], [13], [16], and [28]:
+
 ```python 
+automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
+                                                             X_test=X_test, y=y_train, 
+                                                             task='task_name')
+
 # "features" and "classes" fields are optional
 # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
 # max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
 # LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
-explainer_mimic = MimicExplainer(fitted_model, 
-                           X_validations, 
+mimic_explainer = MimicExplainer(fitted_model, 
+                           X_train, 
                            LGBMExplainableModel, 
                            augment_data=True, 
                            max_num_of_augmentations=10, 
-                           features=categorical_columns,
-                           classes=target_column
+                           features=automl_explainer_setup_obj.engineered_feature_names,
+                           classes=automl_explainer_setup_obj.classes 
                            )
                            
-Mimic_Explainer_ranked_global_values = explainer_mimic.get_ranked_global_values()
-Mimic_Explainer_ranked_global_names = explainer_mimic.get_ranked_global_names()
+Mimic_Explainer_ranked_global_values = mimic_explainer.get_ranked_global_values()
+Mimic_Explainer_ranked_global_names = mimic_explainer.get_ranked_global_names()
 print('Ranked Global Values: {}'.format(Mimic_Explainer_ranked_global_values))
 print('Ranked Global Names: {}'.format(Mimic_Explainer_ranked_global_names))
 ```
@@ -317,7 +307,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              X_test=X_test, y=y_train,
                                                              task='task_name') 
                                                              
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
+mimic_wrapper_explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 explainable_model=automl_explainer_setup_obj.surrogate_model,
                 init_dataset=automl_explainer_setup_obj.X_transform, run=best_run,
                 features=automl_explainer_setup_obj.engineered_feature_names,
@@ -327,7 +317,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 
 # Local/Global Explanation                       
 #---- Engineered Explanations
-engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
+engineered_explanations = mimic_wrapper_explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
 #---- Dashboard setup
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
@@ -340,6 +330,49 @@ print(raw_explanations.get_feature_importance_dict()),
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 
+### `→ PFI Explainer:`
+
+![permutation_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_permutation_explainer.png)
+
+Based on [27];
+```python 
+
+automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
+                                                             X_test=X_test, y=y_train,
+                                                             task='task_name') 
+pfi_explainer = PFIExplainer(fitted_model, 
+                         features=automl_explainer_setup_obj.engineered_feature_names, 
+                         classes=automl_explainer_setup_obj.classes)
+
+```
+### `→ Global/Local explanation:`
+
+Based on [26]:
+
+![local_vs_global_explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_vs_global_explain.png)
+
+Explainability Model Type Output:
+- `tabular_explainer`
+- `mimic_explainer`
+- `mimic_wrapper_explainer`
+- `pfi_explainer`
+
+Based on [1], [13], and [16]:
+
+```python 
+# Local explanation
+local_explanation = explainability_model_type_output.explain_local(X_validation[0:5])
+ranked_local__names = sorted(local_explanation.get_ranked_local_names())
+ranked_local_values = sorted(local_explanation.get_ranked_local_values())
+print('Ranked Local Values: {}'.format(ranked_local__names))
+print('Ranked Local Names: {}'.format(ranked_local_values))
+
+# Global explanation 
+ranked_global_values = explainability_model_type.get_ranked_global_values()
+ranked_global_names = raw_explanations.get_ranked_global_names()
+print('Ranked Global Values: {}'.format(ranked_global_values))
+print('Ranked Global Names: {}'.format(ranked_global_names))
+```
 ### `→ Model registration:`
 
 ![pkl visual explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/pkl_explain.png)
@@ -377,3 +410,5 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [24] From https://www.researchgate.net/figure/Three-metric-rules-for-point-forecasting_tbl1_314201097 <br/>
 [25] From https://atrium.ai/resources/build-and-deploy-a-docker-containerized-python-machine-learning-model-on-heroku/ <br/>
 [26] From https://spectra.pub/ml/demystify-post-hoc-explainability <br/>
+[27] From https://scikit-learn.org/stable/modules/permutation_importance.html <br/>
+[28] From https://github.com/interpretml/interpret-community <br/>
