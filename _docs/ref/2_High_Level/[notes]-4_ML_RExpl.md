@@ -302,6 +302,8 @@ print('Ranked Global Names: {}'.format(Mimic_Explainer_ranked_global_names))
 
 ### `→ Mimic Wrapper:`
 
+`Based on best_run`.
+
 A wrapper explainer is which reduces the number of function calls necessary to use the explain model package.
 
 Based on [1], [13], and [16]:
@@ -322,7 +324,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                 feature_maps=[automl_explainer_setup_obj.feature_map],
                 classes=automl_explainer_setup_obj.classes,
                 explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params) 
-                        
+                
+# Local/Global Explanation                       
 #---- Engineered Explanations
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
