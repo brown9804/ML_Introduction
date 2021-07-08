@@ -17,13 +17,13 @@ From [35]:
 
 ![speed_vs_memory](https://github.com/brown9804/ML_DS_path/blob/ac97cfd956db4c624104f510d9407b568b75ccba/_docs/img/vm_memory_speed.png)
 
-From [37]:
-
-![number_system]()
-
 From [36]:
 
-![bytes_binary_decimal_equivalent]()
+![bytes_binary_decimal_equivalent](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/binary_vs_decimal_data_measurements.png)
+
+From [37]:
+
+![number_system](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/summary_of_number_system.png)
 
 ## `Auto ML setup`
 
