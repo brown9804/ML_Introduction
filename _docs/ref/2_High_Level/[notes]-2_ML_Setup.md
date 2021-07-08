@@ -12,9 +12,18 @@ Jan, 2021
 ## VM selection
 
 ### Typical structure of a computer memory hierarchy
+
 From [35]:
 
 ![speed_vs_memory](https://github.com/brown9804/ML_DS_path/blob/ac97cfd956db4c624104f510d9407b568b75ccba/_docs/img/vm_memory_speed.png)
+
+From [37]:
+
+![number_system]()
+
+From [36]:
+
+![bytes_binary_decimal_equivalent]()
 
 ## `Auto ML setup`
 
@@ -190,7 +199,6 @@ def experiment_setup(performance_metric, experiment_details_folder_name):
 > 
 > > -- <cite> Microsoft Docs </cite>
 
-
 ### - Time-series forecasting
 > Building forecasts is an integral part of any business, whether it's revenue,
 > inventory, sales, or customer demand. You can use automated ML to combine 
@@ -223,7 +231,6 @@ def experiment_setup(performance_metric, experiment_details_folder_name):
 > 3. <a href="https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb" target="_top" >  Beverage Production Forecast </a>
 > 
 > > -- <cite> Microsoft Docs </cite>
-
 
 ### FeaturizationConfig Class
 
@@ -449,3 +456,5 @@ Performance Metrics:
 [33] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-configure-environment.md <br/>
 [34] From https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py <br/>
 [35] From https://www.researchgate.net/figure/Typical-structure-of-a-computer-memory-hierarchy_fig1_281805561 <br/>
+[36] From https://devopedia.org/units-of-information <br/>
+[37] From https://www.krivalar.com/number-system <br/>
