@@ -302,3 +302,4 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 [16] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-machine-learning-interpretability-automl.md <br/>
 [17] From https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb <br/>
 [18] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html <br/>
+[19] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html <br/>
