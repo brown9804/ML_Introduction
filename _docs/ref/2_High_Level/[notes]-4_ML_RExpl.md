@@ -241,7 +241,7 @@ ranked_local__names = sorted(local_explanation.get_ranked_local_names())
 ranked_local_values = sorted(local_explanation.get_ranked_local_values())
 ```
 
-### `→Mimic Explainer:`
+### `→ Mimic Explainer:`
 
 Based on [1], [13], and [16]:
 ```python 
