@@ -95,25 +95,6 @@ explained\_variance | Explained variance measures the extent to which a model ac
 >  
 > 3. `Confusion Matrix` – It is nothing but a tabular representation of Actual vs Predicted values.
 >  This helps us to find the accuracy of the model and avoid overfitting. 
-Based on [33]:
-```python 
-from sklearn.datasets import make_classification
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-X, y = make_classification(random_state=0)
-X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                    random_state=0)
-clf = SVC(random_state=0)
-clf.fit(X_train, y_train)
-
-predictions = clf.predict(X_test)
-cm = confusion_matrix(y_test, predictions, labels=clf.classes_)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm,
-                              display_labels=clf.classes_)
-disp.plot() 
-```
-
 >  This is how it looks like:
 >  ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/confusion_table.png)
 >  
@@ -176,4 +157,4 @@ Based on [24]:
 [30] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html <br/>
 [31] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html <br/>
 [32] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html <br/>
-[33] From https://scikit- <br/>learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html <br/>
+[33] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html <br/>
