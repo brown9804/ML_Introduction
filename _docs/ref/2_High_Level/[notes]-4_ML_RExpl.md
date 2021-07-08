@@ -63,7 +63,7 @@ for title, normalize in titles_options:
 ```
 
 
-### `→ ROC and AUC:`
+### `→ ROC/AUC:`
 Based on [4]:
 ```python 
 # Create the estimator - pipeline
