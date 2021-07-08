@@ -226,19 +226,24 @@ for run_n in tqdm(experiment_within_workspace.get_runs()):
 ```
 ### `→ Global/Local explanation:`
 
+Based on [26]:
+
+![local_vs_global_explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_vs_global_explain.png)
+
+
 Based on [1], [13], and [16]:
 
 ```python 
+# Local explanation
+local_explanation = raw_explanations.explain_local(X_validation[0:5])
+ranked_local__names = sorted(local_explanation.get_ranked_local_names())
+ranked_local_values = sorted(local_explanation.get_ranked_local_values())
+
 # Global explanation 
 ranked_global_values = raw_explanations.get_ranked_global_values()
 ranked_global_names = raw_explanations.get_ranked_global_names()
 print('Ranked Global Values: {}'.format(global_importance_values))
 print('Ranked Global Names: {}'.format(global_importance_names))
-
-# Local explanation
-local_explanation = raw_explanations.explain_local(X_validation[0:5])
-ranked_local__names = sorted(local_explanation.get_ranked_local_names())
-ranked_local_values = sorted(local_explanation.get_ranked_local_values())
 ```
 
 ### `→ Mimic Explainer:`
@@ -355,3 +360,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [23] From https://sketchplanations.com/accuracy-and-precision <br/>
 [24] From https://www.researchgate.net/figure/Three-metric-rules-for-point-forecasting_tbl1_314201097 <br/>
 [25] From https://atrium.ai/resources/build-and-deploy-a-docker-containerized-python-machine-learning-model-on-heroku/ <br/>
+[26] From https://spectra.pub/ml/demystify-post-hoc-explainability <br/>
