@@ -42,6 +42,10 @@ print(best_run.get_metrics())
 
 
 ### `→ Confusion Matrix:`
+
+Based on [20]:
+![confusion matrix explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/confusion_matrix_explain.png)
+
 ``` python
 # Create Confusion Matrix 
 #### ------ Run classifier, using a model that is too regularized (C too low) to see
@@ -64,6 +68,11 @@ for title, normalize in titles_options:
 
 
 ### `→ ROC/AUC:`
+
+From [21]:
+
+![roc uac explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/roc_auc_explain.png)
+
 Based on [4]:
 ```python 
 # Create the estimator - pipeline
@@ -101,6 +110,16 @@ plt.show()
 ```
 ### `→ Other Metrics:`
 
+From [22]:
+
+![Other metrics explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/other_metrics_explain.png)
+
+Difference between accuracy and precision, from [23]:
+
+![diff_accuracy_precision](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/accuracy_vs_precision_explain.png)
+
+
+
 Considering:
 > `predict()` is used to predict the actual class (In your case one of 0, 1 or 1). <br/>
 > `predict_proba()` is used to predict the class probabilities <br/>
@@ -118,8 +137,8 @@ Based on [18], [19]:
 # - micro 
 X_validation = validation_data.drop_columns(columns=target_column).to_pandas_dataframe()
 y_validation = validation_data.keep_columns(columns=target_column, validate=True).to_pandas_dataframe()
-predictions_0_1 = fitted_model.predict(X_validation)
-class_probability = fitted_model.predict_proba(X_validation)
+predictions_0_1 = fitted_model.predict(X_validation) # calculate y predictions 
+class_probability = fitted_model.predict_proba(X_validation) # calculate probability by classes 
 precision_recall_fscore = precision_recall_fscore_support(y_validation, predictions_0_1, average='weighted')
 accuracy = accuracy_score(y_validation, predictions_0_1, normalize=False) # it's set by defult (true) so expected value is 0-1
 ```
@@ -318,3 +337,7 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [17] From https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb <br/>
 [18] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html <br/>
 [19] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html <br/>
+[20] From https://ailearnerhub.com/2020/05/10/what-is-the-confusion-matrix/ <br/>
+[21] From https://www.youtube.com/watch?v=afQ_DyKMxUo <br/>
+[22] From https://ai-ml-analytics.com/classification-metrics-in-machine-learning/ <br/>
+[23] Fromhttps://sketchplanations.com/accuracy-and-precision <br/>
