@@ -10,8 +10,7 @@ Jan, 2021
 ----------
 
 ## `Display Results`
-Based on [2], and [3]:
-``` python 
+```python 
 from azureml.widgets import RunDetails
 import numpy as np
 import datetime
@@ -20,15 +19,30 @@ import matplotlib.pyplot as plt
 from sklearn import svm, datasets
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import plot_confusion_matrix
+from sklearn import datasets
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_curve, au
+from sklearn.metrics import accuracy_score
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics import precision_recall_fscore_support
+```
 
+### `→ Display Details:`
+Based on [2], and [3]:
+``` python 
 # Show best run details 
 RunDetails(best_run).show()
 best_run_id = best_run.id 
-experiment_name = 'Experiment_name'+date.today().strftime("%m%d_")
+experiment_name = 'Experiment_name'+date.today().strftime("_%m%d")
 experiment_within_workspace= Experiment(ws, experiment_name)
 best_run = Run(experiment_within_workspace, best_run_id)
 print(best_run.get_metrics())
+```
 
+
+### `→ Confusion Matrix:`
+``` python
 # Create Confusion Matrix 
 #### ------ Run classifier, using a model that is too regularized (C too low) to see
 # the impact on the results
@@ -48,16 +62,10 @@ for title, normalize in titles_options:
   print(disp.confusion_matrix)
 ```
 
+
+### `→ ROC and AUC:`
 Based on [4]:
 ```python 
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_curve, auc
-import matplotlib.pyplot as plt
-from sklearn.pipeline import make_pipeline
-
 # Create the estimator - pipeline
 pipeline = make_pipeline(StandardScaler(), LogisticRegression(random_state=1))
 # Create training test splits using two features
@@ -91,6 +99,8 @@ plt.ylabel('True positive rate')
 plt.legend(loc="lower right")
 plt.show()
 ```
+### `→ Other Metrics:`
+
 Considering:
 > `predict()` is used to predict the actual class (In your case one of 0, 1 or 1). <br/>
 > `predict_proba()` is used to predict the class probabilities <br/>
@@ -100,11 +110,18 @@ Considering:
 > for classes 0, 1 and 2 are 0.6, 0.2 and 0.2 respectively. <br/>
 > > -- <cite> Stack Overflow from [5] </cite>
 
+Based on [18], [19]:
 ``` python 
+# For precision recall average can be:
+# - weighted
+# - macro
+# - micro 
 X_validation = validation_data.drop_columns(columns=target_column).to_pandas_dataframe()
 y_validation = validation_data.keep_columns(columns=target_column, validate=True).to_pandas_dataframe()
 predictions_0_1 = fitted_model.predict(X_validation)
 class_probability = fitted_model.predict_proba(X_validation)
+precision_recall_fscore = precision_recall_fscore_support(y_validation, predictions_0_1, average='weighted')
+accuracy = accuracy_score(y_validation, predictions_0_1, normalize=False) # it's set by defult (true) so expected value is 0-1
 ```
 
 ## `Explainability`
@@ -121,7 +138,7 @@ Based on [14], and [15]:
 
 
 
-Based on [6], [7], 
+Based on [6], [7]:
 
 ```python 
 from azureml.interpret import ExplanationClient
@@ -284,3 +301,4 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 [15] From https://arxiv.org/pdf/2009.11698v1.pdf <br/>
 [16] From https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-machine-learning-interpretability-automl.md <br/>
 [17] From https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb <br/>
+[18] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html <br/>
