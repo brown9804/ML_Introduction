@@ -152,9 +152,7 @@ Based on [14], and [15]:
 
 ![tabular_diagram_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/tabular_interpretation_techniques.png)
 
-
-![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type.png)
-
+![permutation_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_permutation_explainer.png)
 
  ```python 
 import numpy as np
@@ -248,7 +246,38 @@ print('Ranked Global Values: {}'.format(ranked_global_values))
 print('Ranked Global Names: {}'.format(ranked_global_names))
 ```
 
+### `→ Tabular Explainer:`
+
+![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type_tabular.png)
+
+
+ Based on [1], [13], and [16]:
+ 
+ ```python 
+run = best_run.get_context()
+client = ExplanationClient.from_run(run)
+# write code to get and split your data into train and test sets here
+# write code to train your model here 
+# explain predictions on your local machine
+# "features" and "classes" fields are optional
+explainer = TabularExplainer(fitted_model, 
+                             X_validations.dropna(), 
+                             features=categorical_columns, 
+                             classes=target_column)
+# explain overall model predictions (global explanation)
+global_explanation = explainer.explain_global(X_validations.dropna())
+# uploading global model explanation data for storage or visualization in webUX
+# the explanation can then be downloaded on any compute
+# multiple explanations can be uploaded
+client.upload_model_explanation(global_explanation, comment='global explanation: all features')
+# or you can only upload the explanation object with the top k feature info
+#client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+```
+
 ### `→ Mimic Explainer:`
+
+![mimic_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_mimic_explainer.png)
+
 
 Based on [1], [13], and [16]:
 ```python 
@@ -306,31 +335,6 @@ raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
 print(raw_explanations.get_feature_importance_dict()),
 #---- Dashboard setup
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
-```
-
-### `→ Tabular Explainer:`
-
- Based on [1], [13], and [16]:
- 
- ```python 
-run = best_run.get_context()
-client = ExplanationClient.from_run(run)
-# write code to get and split your data into train and test sets here
-# write code to train your model here 
-# explain predictions on your local machine
-# "features" and "classes" fields are optional
-explainer = TabularExplainer(fitted_model, 
-                             X_validations.dropna(), 
-                             features=categorical_columns, 
-                             classes=target_column)
-# explain overall model predictions (global explanation)
-global_explanation = explainer.explain_global(X_validations.dropna())
-# uploading global model explanation data for storage or visualization in webUX
-# the explanation can then be downloaded on any compute
-# multiple explanations can be uploaded
-client.upload_model_explanation(global_explanation, comment='global explanation: all features')
-# or you can only upload the explanation object with the top k feature info
-#client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
 ```
 
 ### `→ Model registration:`
