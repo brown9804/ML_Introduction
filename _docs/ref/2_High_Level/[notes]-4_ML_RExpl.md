@@ -226,6 +226,8 @@ for run_n in tqdm(experiment_within_workspace.get_runs()):
 
 ### `→ Tabular Explainer:`
 
+`SHAP`: SHapley Additive exPlanations
+
 From [14]:
 
 ![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type_tabular.png)
