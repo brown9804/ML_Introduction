@@ -226,6 +226,8 @@ for run_n in tqdm(experiment_within_workspace.get_runs()):
 
 ### `→ Tabular Explainer:`
 
+From [14]:
+
 ![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type_tabular.png)
 
 
@@ -260,6 +262,8 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 ```
 
 ### `→ Mimic Explainer:`
+
+From [14]:
 
 ![mimic_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_mimic_explainer.png)
 
