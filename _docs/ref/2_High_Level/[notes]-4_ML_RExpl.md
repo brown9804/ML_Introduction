@@ -292,7 +292,7 @@ print('Ranked Global Names: {}'.format(Mimic_Explainer_ranked_global_names))
 
 ### `→ Mimic Wrapper:`
 
-`Based on best_run`.
+Based on `best_run`. Surrogate model as `LinearModel`.
 
 A wrapper explainer is which reduces the number of function calls necessary to use the explain model package.
 
