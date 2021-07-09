@@ -170,14 +170,6 @@ from azureml.core import Experiment
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core import Workspace, Dataset
 from azureml.interpret import ExplanationClient
-from interpret.ext.blackbox import TabularExplainer
-from interpret.ext.blackbox import MimicExplainer
-# you can use one of the following four interpretable models as a global surrogate to the black box model
-from interpret.ext.glassbox import LGBMExplainableModel
-from interpret.ext.glassbox import LinearExplainableModel
-from interpret.ext.glassbox import SGDExplainableModel
-from interpret.ext.glassbox import DecisionTreeExplainableModel
-from interpret.ext.blackbox import PFIExplainer
 from azureml.interpret import MimicWrapper
 from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
 from azureml.interpret.mimic_wrapper import MimicWrapper
@@ -228,6 +220,20 @@ for run_n in tqdm(experiment_within_workspace.get_runs()):
         run_metrics_details[run_n.id] = metrics
 ```
 
+### `→ Global/Local explanation:`
+
+Based on [26]:
+
+![local_vs_global_explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_vs_global_explain.png)
+
+Based on [1], [13], and [16]:
+
+Explainability Model Type Output:
+- `tabular_explainer` (Global explanation MicrosoftDocs recommended)
+- `mimic_explainer` (Global/Local)
+- `mimic_wrapper_explainer`
+- `pfi_explainer` (Global/ no Local support)
+
 ### `→ Tabular Explainer:`
 
 `SHAP`: SHapley Additive exPlanations
@@ -244,21 +250,46 @@ From [14]:
 - forecasting
 - classification
  
+ From [1]:
+ 
  ```python 
-automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
-                                                             X_test=X_test, y=y_train, 
-                                                             task='task_name')
+# load breast cancer dataset, a well-known small dataset that comes with scikit-learn
+from sklearn.datasets import load_breast_cancer
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from azureml.interpret import ExplanationClient
+from azureml.core.run import Run
+from interpret.ext.blackbox import TabularExplainer
+
+breast_cancer_data = load_breast_cancer()
+classes = breast_cancer_data.target_names.tolist()
+
+# split data into train and test
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(breast_cancer_data.data,            
+                                                    breast_cancer_data.target,  
+                                                    test_size=0.2,
+                                                    random_state=0)
+clf = svm.SVC(gamma=0.001, C=100., probability=True)
+fitted_model = clf.fit(x_train, y_train)
+
+# automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
+#                                                              X_test=X_test, y=y_train, 
+#                                                              task='classification')
+
+# bes_run_context = best_run.get_context()
+# client = ExplanationClient.from_run(bes_run_context)
 
 # write code to get and split your data into train and test sets here
 # write code to train your model here 
-# explain predictions on your local machine
-# "features" and "classes" fields are optional
+    
 tabular_explainer = TabularExplainer(fitted_model, 
-                             X_validations.dropna(), 
-                             features=automl_explainer_setup_obj.engineered_feature_names, 
-                             classes=automl_explainer_setup_obj.classes)                  
+                             x_train.dropna().iloc[0:5000,:], 
+                             features=automl_explainer_setup_obj.engineered_feature_names,
+                             classes=automl_explainer_setup_obj.classes )
+
 # explain overall model predictions (global explanation)
-global_explanation = tabular_.explain_global(X_validations.dropna())
+global_explanation = tabular_explainer.explain_global(x_train.dropna().iloc[0:5000,:])
 # uploading global model explanation data for storage or visualization in webUX
 # the explanation can then be downloaded on any compute
 # multiple explanations can be uploaded
@@ -274,35 +305,64 @@ From [14]:
 ![mimic_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_mimic_explainer.png)
 
 
-Based on [1], [13], [16], and [28]:
+From [1]:
 
 ```python 
-automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
-                                                             X_test=X_test, y=y_train, 
-                                                             task='task_name')
+# load breast cancer dataset, a well-known small dataset that comes with scikit-learn
+from sklearn.datasets import load_breast_cancer
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from interpret.ext.blackbox import MimicExplainer
+# you can use one of the following four interpretable models as a global surrogate to the black box model
+from interpret.ext.glassbox import LGBMExplainableModel
+from interpret.ext.glassbox import LinearExplainableModel
+from interpret.ext.glassbox import SGDExplainableModel
+from interpret.ext.glassbox import DecisionTreeExplainableModel
+
+breast_cancer_data = load_breast_cancer()
+classes = breast_cancer_data.target_names.tolist()
+
+# split data into train and test
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(breast_cancer_data.data,            
+                                                    breast_cancer_data.target,  
+                                                    test_size=0.2,
+                                                    random_state=0)
+clf = svm.SVC(gamma=0.001, C=100., probability=True)
+model = clf.fit(x_train, y_train)
 
 # "features" and "classes" fields are optional
 # augment_data is optional and if true, oversamples the initialization examples to improve surrogate model accuracy to fit original model.  Useful for high-dimensional data where the number of rows is less than the number of columns.
 # max_num_of_augmentations is optional and defines max number of times we can increase the input data size.
 # LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
-mimic_explainer = MimicExplainer(fitted_model, 
-                           X_train, 
+mimic_explainer = MimicExplainer(model, 
+                           x_train, 
                            LGBMExplainableModel, 
                            augment_data=True, 
                            max_num_of_augmentations=10, 
-                           features=automl_explainer_setup_obj.engineered_feature_names,
-                           classes=automl_explainer_setup_obj.classes 
-                           )
-                           
-Mimic_Explainer_ranked_global_values = mimic_explainer.get_ranked_global_values()
-Mimic_Explainer_ranked_global_names = mimic_explainer.get_ranked_global_names()
-print('Ranked Global Values: {}'.format(Mimic_Explainer_ranked_global_values))
-print('Ranked Global Names: {}'.format(Mimic_Explainer_ranked_global_names))
+                           features=breast_cancer_data.feature_names, 
+                           classes=classes)
+# Local explanation                           
+# get explanation for the first data point in the test set
+local_explanation = explainer.explain_local(x_test[0:5])
+# sorted feature importance values and feature names
+sorted_local_importance_names = local_explanation.get_ranked_local_names()
+sorted_local_importance_values = local_explanation.get_ranked_local_values()   
+
+# Global explanation
+# you can use the training data or the test data here, but test data would allow you to use Explanation Exploration
+global_explanation = explainer.explain_global(x_test)
+# sorted feature importance values and feature names
+sorted_global_importance_values = global_explanation.get_ranked_global_values()
+sorted_global_importance_names = global_explanation.get_ranked_global_names()
+dict(zip(sorted_global_importance_names, sorted_global_importance_values))
+# alternatively, you can print out a dictionary that holds the top K feature names and values -> need to print in a text file since it's a lot of information
+# global_explanation.get_feature_importance_dict()
 ```
 
 ### `→ Mimic Wrapper:`
 
-Based on `best_run`. Surrogate model as `LinearModel`.
+Based on `best_run`. 
 
 A wrapper explainer is which reduces the number of function calls necessary to use the explain model package.
 
@@ -313,6 +373,7 @@ Based on [1], [13], and [16]:
 # ************ regression
 # ************ forecasting
 # ************ classification
+
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
                                                              X_test=X_test, y=y_train,
                                                              task='task_name') 
@@ -342,18 +403,44 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### `→ PFI Explainer:`
 
+From [14]:
+
 ![permutation_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_description_type_permutation_explainer.png)
 
-Based on [27];
+From on [1];
+
 ```python 
+# load breast cancer dataset, a well-known small dataset that comes with scikit-learn
+from sklearn.datasets import load_breast_cancer
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from interpret.ext.blackbox import PFIExplainer
 
-automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
-                                                             X_test=X_test, y=y_train,
-                                                             task='task_name') 
-pfi_explainer = PFIExplainer(fitted_model, 
-                         features=automl_explainer_setup_obj.engineered_feature_names, 
-                         classes=automl_explainer_setup_obj.classes)
+breast_cancer_data = load_breast_cancer()
+classes = breast_cancer_data.target_names.tolist()
+# split data into train and test
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(breast_cancer_data.data,            
+                                                    breast_cancer_data.target,  
+                                                    test_size=0.2,
+                                                    random_state=0)
+clf = svm.SVC(gamma=0.001, C=100., probability=True)
+model = clf.fit(x_train, y_train)
 
+# "features" and "classes" fields are optional
+pfi_explainer = PFIExplainer(model,
+                         features=breast_cancer_data.feature_names, 
+                         classes=classes)
+
+# if you used the PFIExplainer in the previous step, use the next line of code instead
+global_explanation = pfi_explainer.explain_global(x_train, true_labels=y_train)
+
+# sorted feature importance values and feature names
+sorted_global_importance_values = global_explanation.get_ranked_global_values()
+sorted_global_importance_names = global_explanation.get_ranked_global_names()
+dict(zip(sorted_global_importance_names, sorted_global_importance_values))
+# alternatively, you can print out a dictionary that holds the top K feature names and values -> need to print in a text file since it's a lot of information
+# global_explanation.get_feature_importance_dict()                     
 ```
 
 ### `→ LIME Explainer:`
@@ -439,33 +526,7 @@ i = 1
 exp = explainer.explain_instance(df_titanic.loc[i,feat].astype(int).values, prob, num_features=5)
 ```
 
-### `→ Global/Local explanation:`
 
-Based on [26]:
-
-![local_vs_global_explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_vs_global_explain.png)
-
-Explainability Model Type Output:
-- `tabular_explainer`
-- `mimic_explainer`
-- `pfi_explainer`
-
-Based on [1], [13], and [16]:
-
-```python 
-# Local explanation
-local_explanation = explainability_model_type_output.explain_local(X_validation[0:5])
-ranked_local__names = sorted(local_explanation.get_ranked_local_names())
-ranked_local_values = sorted(local_explanation.get_ranked_local_values())
-print('Ranked Local Values: {}'.format(ranked_local__names))
-print('Ranked Local Names: {}'.format(ranked_local_values))
-
-# Global explanation 
-ranked_global_values = explainability_model_type.get_ranked_global_values()
-ranked_global_names = raw_explanations.get_ranked_global_names()
-print('Ranked Global Values: {}'.format(ranked_global_values))
-print('Ranked Global Names: {}'.format(ranked_global_names))
-```
 ### `→ Model registration:`
 
 ![pkl visual explain](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/pkl_explain.png)
