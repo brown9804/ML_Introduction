@@ -83,6 +83,51 @@ explained\_variance | Explained variance measures the extent to which a model ac
 
 ### 3. Specific Model - Perfomance Analysis:
 
+
+`Generalised Linear Models`:
+> Generalised Linear Models (GLM’s) are all based on the following principle:
+> if you take a linear combination of your features x with the model weights w,
+> and feed the result through a squash function f, you can use it to predict a wide 
+> variety of response variables. Most common applications for GLM’s are regression 
+> (linear regression), classification (logistic regression) or modelling Poisson 
+> processes (Poisson regression). The weights that are obtained after training are 
+> a direct proxy of feature importance and they provide very concrete interpretation 
+> of the model internals. e.g. when building a text classifier you can plot the most 
+> important features and `verify whether the model is overfitting on noise`. If the most 
+> important words do not correspond to your intuition (e.g. names or stopwords), 
+> it probably means that the model is fitting to noise in the dataset and 
+> it won’t perform well on new data. <br/>
+
+`Random forest and SVM’s`:
+> Even non-linear models such as tree based models (e.g. Random Forest) 
+> also allow to obtain information on the feature importance. In Random 
+> Forest, feature importance comes for free when training a model, so it is a 
+> great way to verify initial hypotheses and identify ‘what’ the model is learning. 
+> The weights in kernel based approaches such as SVM’s are often not a very 
+> good proxy of feature importance. The advantage of kernel methods is that you are 
+> able to `capture non-linear relations between variables by projecting the features
+> into kernel space`. On the other hand, just looking at the weights as feature
+> importance does not do justice to the feature interaction. <br/>
+
+`Deep learning`:
+> Deep learning models are notorious for their un-interpretability due to 
+> the shear number of parameters and the complex approach to extracting and 
+> combining features. As this class of models is able to obtain state-of-the-art 
+> performance on a lot of tasks, a lot of research is focused on linking
+> model predictions to the inputs. The two main approaches are either 
+> gradient-based or attention-based.
+> In `gradient-based methods`, the gradients of the target concept calculated in 
+> a` backward pass are used to produce a map that highlights the important regions 
+> in the input for predicting the target concept`. This is typically applied in 
+> the context of `computer vision`. <br/>
+> `Attention-based` methods are typically used with `sequential data (e.g. text data)`. 
+> In addition to the normal weights of the network, attention weights are trained that act as 
+> ‘input gates’. `These attention weights determine how much each of the different elements in
+> the final network output`. Besides interpretability, attention within the context of the e.g.
+> text-based question-answering also leads to better results as the network 
+> is able to ‘focus’ its attention.
+> > -- <cite> Towards DataScience from [34] </cite>
+
 #### * Evaluate Logistic regression model
 > 1. `AIC (Akaike Information Criteria)` – The analogous metric of adjusted R² in logistic 
 > regression is AIC. AIC is the measure of fit which penalizes model for the number of 
@@ -158,3 +203,4 @@ Based on [24]:
 [31] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html <br/>
 [32] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html <br/>
 [33] From https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html <br/>
+[34] From https://towardsdatascience.com/interpretability-in-machine-learning-70c30694a05f <br/>
