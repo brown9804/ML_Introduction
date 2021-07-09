@@ -83,6 +83,7 @@ explained\_variance | Explained variance measures the extent to which a model ac
 
 ### 3. Specific Model - Perfomance Analysis:
 
+Black-Box Models for interpreting your models regarding feature importance:
 
 `Generalised Linear Models`:
 > Generalised Linear Models (GLM’s) are all based on the following principle:
@@ -125,7 +126,16 @@ explained\_variance | Explained variance measures the extent to which a model ac
 > ‘input gates’. `These attention weights determine how much each of the different elements in
 > the final network output`. Besides interpretability, attention within the context of the e.g.
 > text-based question-answering also leads to better results as the network 
-> is able to ‘focus’ its attention.
+> is able to ‘focus’ its attention. <br/>
+
+`LIME`:
+> Lime is a more general framework that aims to `make the predictions of 
+> ‘any’ machine learning model more interpretable`. In order to remain model-independent, 
+> LIME works by `modifying the input to the model locally`. So instead of trying to 
+> understand the entire model at the same time, `a specific input instance is modified and 
+> the impact on the predictions are monitored`. In the context of text classification, 
+> this means that some of `the words are e.g. replaced, to determine which elements 
+> of the input impact the predictions`.
 > > -- <cite> Towards DataScience from [34] </cite>
 
 #### * Evaluate Logistic regression model
