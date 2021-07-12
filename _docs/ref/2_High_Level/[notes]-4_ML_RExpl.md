@@ -197,13 +197,13 @@ Difference between accuracy and precision, from [23]:
 ![diff_accuracy_precision](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/accuracy_vs_precision_explain.png)
 
 Considering:
-> `predict()` is used to predict the actual class (In your case one of 0, 1 or 1). <br/>
+> `predict()` is used to predict the actual class (example of clases 0, 1 or 2). <br/>
 > `predict_proba()` is used to predict the class probabilities <br/>
 > As an example: <br/>
 > `predict()` would output class 0 since the class probability for 0 is 0.6. <br/>
 > [0.6, 0.2, 0.2] is the output of `predict_proba` that simply denotes that the class probability  <br/>
 > for classes 0, 1 and 2 are 0.6, 0.2 and 0.2 respectively. <br/>
-> > -- <cite> Stack Overflow from [5] </cite>
+> > -- <cite> Based on Stack Overflow from [5] </cite>
 
 Based on [18], [19]:
 ``` python 
