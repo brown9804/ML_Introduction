@@ -236,6 +236,17 @@ Explainability Model Type Output:
 
 ### `→ Tabular Explainer:`
 
+ >  Tabular Explainer is an explainer that acts as a wrapper around various SHAP explainer algorithms, automatically choosing the one that is most appropriate for your model architecture.
+> > -- <cite> CourseHero from [32] </cite>
+
+
+> TabularExplainer `calls one of the three SHAP 
+> explainers underneath` (TreeExplainer, DeepExplainer, or KernelExplainer). <br/>
+> TabularExplainer `automatically selects the most appropriate` one for 
+>  your use case, but you can call each of its three underlying 
+>  explainers directly.
+> > -- <cite> MicrosoftDocs from [1] </cite>
+
  Based on [1], [13], and [16]:
  
  Task names:
@@ -631,3 +642,5 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [29] From https://towardsdatascience.com/decrypting-your-machine-learning-model-using-lime-5adc035109b5 <br/>
 [30] From https://github.com/slundberg/shap <br/>
 [31] From https://slundberg.github.io/shap/notebooks/tree_explainer/Census%20income%20classification%20with%20LightGBM.html#SHAP-Summary-Plot <br/>
+[32] From https://www.coursehero.com/file/p53lo034/Visualizing-Summary-Importance-Switching-to-the-Summary-Importance/ <br/>
+[33] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
