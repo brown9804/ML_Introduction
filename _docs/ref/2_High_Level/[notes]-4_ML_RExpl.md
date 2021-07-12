@@ -149,12 +149,26 @@ accuracy = accuracy_score(y_validation, predictions_0_1, normalize=False) # it's
 
 ## `Explainability`
 
+From [33]:
+
+![how_to_explain_your_model](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/how_to_explain_your_model.png)
+
+
+From [33]:
+
+![direct_vs_meta_explainers](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/direct_vs_meta_explainers.png)
+
+
+
+From [33]:
+
+![ml_interpretability](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_interpretability.png)
+
+
 Based on [14], and [15]:
 
 ![model agnostic vs specific](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/model_agnostic_vs_specific.png)
 
-
-![tabular_diagram_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/tabular_interpretation_techniques.png)
 
  ```python 
 import numpy as np
@@ -253,6 +267,10 @@ Explainability Model Type Output:
 - regression
 - forecasting
 - classification
+
+Based on [14], and [15]:
+
+![tabular_diagram_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/tabular_interpretation_techniques.png)
  
  From [1]:
  
