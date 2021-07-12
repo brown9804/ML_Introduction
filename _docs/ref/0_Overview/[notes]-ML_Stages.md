@@ -18,11 +18,13 @@ From [1]:
 
 ## Hight Level Stages
 From [2]:
+
 ![My4stages](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/%5Bmodel%5D-ml_logic_general_flow.jpeg)
 
 
 ## E2E ML Model Process Flow
 From [3]:
+
 ![[model]-ml_process_general_flow](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/%5Bmodel%5D-ml_process_general_flow.png)
 
 
