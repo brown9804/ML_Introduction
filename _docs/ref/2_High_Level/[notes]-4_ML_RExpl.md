@@ -499,6 +499,62 @@ shap_values = e.shap_values(x_test[1:5])
 # plot the feature attributions
 shap.image_plot(shap_values, -x_test[1:5])
 ```
+
+### `→ SHAP Linear Explainer:`
+
+From [34]:
+
+```python
+import sklearn
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+import numpy as np
+import shap
+shap.initjs()
+#------> Load the IMDB dataset
+corpus,y = shap.datasets.imdb()
+corpus_train, corpus_test, y_train, y_test = train_test_split(corpus, y, test_size=0.2, random_state=7)
+vectorizer = TfidfVectorizer(min_df=10)
+X_train = vectorizer.fit_transform(corpus_train)
+X_test = vectorizer.transform(corpus_test)
+#------> Fit a linear logistic regression model
+model = sklearn.linear_model.LogisticRegression(penalty="l1", C=0.1)
+model.fit(X_train, y_train)
+#------> Explain the linear model
+explainer = shap.LinearExplainer(model, X_train, feature_dependence="independent")
+shap_values = explainer.shap_values(X_test)
+X_test_array = X_test.toarray() # we need to pass a dense version for the plotting functions
+#------> Summarize the effect of all the features
+shap.summary_plot(shap_values, X_test_array, feature_names=vectorizer.get_feature_names())
+#------> Explain the first review's sentiment prediction
+ind = 0
+shap.force_plot(
+    explainer.expected_value, shap_values[ind,:], X_test_array[ind,:],
+    feature_names=vectorizer.get_feature_names()
+)
+print("Positive" if y_test[ind] else "Negative", "Review:")
+print(corpus_test[ind])
+#------> Explain the second review's sentiment prediction
+ind = 1
+shap.force_plot(
+    explainer.expected_value, shap_values[ind,:], X_test_array[ind,:],
+    feature_names=vectorizer.get_feature_names()
+)
+print("Positive" if y_test[ind] else "Negative", "Review:")
+print(corpus_test[ind])
+#------> Explain the third review's sentiment prediction
+ind = 2
+shap.force_plot(
+    explainer.expected_value, shap_values[ind,:], X_test_array[ind,:],
+    feature_names=vectorizer.get_feature_names()
+)
+print("Positive" if y_test[ind] else "Negative", "Review:")
+print(corpus_test[ind])
+```
+
+### `→ SHAP Kernel Explainer:`
+
+
 ### `→ PFI Explainer:`
 
 From [14]:
@@ -668,3 +724,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [31] From https://slundberg.github.io/shap/notebooks/tree_explainer/Census%20income%20classification%20with%20LightGBM.html#SHAP-Summary-Plot <br/>
 [32] From https://www.coursehero.com/file/p53lo034/Visualizing-Summary-Importance-Switching-to-the-Summary-Importance/ <br/>
 [33] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
+[34] From https://slundberg.github.io/shap/notebooks/linear_explainer/Sentiment%20Analysis%20with%20Logistic%20Regression.html <br/>
