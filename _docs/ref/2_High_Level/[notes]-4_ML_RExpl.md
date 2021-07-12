@@ -313,7 +313,7 @@ Based on [1], [13], and [16]:
 Explainability Model Type Output:
 - `tabular_explainer` (Global explanation MicrosoftDocs recommended)
 - `mimic_explainer` (Global/Local)
-- `mimic_wrapper_explainer`
+- `mimic_wrapper_explainer` (Global/Local)
 - `pfi_explainer` (Global/ no Local support)
 
 From [33]:
