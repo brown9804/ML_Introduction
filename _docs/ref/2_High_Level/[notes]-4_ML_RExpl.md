@@ -10,6 +10,13 @@ Jan, 2021
 ----------
 
 ## `Display Results`
+
+Considering that:
+> In probability theory, an `event` is an `outcome or defined collection of outcomes of a random experiment`. 
+> Since the collection of `all possible outcomes` to a random `experiment` is called the sample 
+> `space`, another definiton of `event` is any `subset of a sample space`.
+> > -- <cite> Statistics from [37] </cite>
+
 ```python 
 from azureml.widgets import RunDetails
 import numpy as np
@@ -69,6 +76,9 @@ for title, normalize in titles_options:
   print(title)
   print(disp.confusion_matrix)
 ```
+From [38]:
+
+![confusion_matrix_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/confusion_matrix_good_bad.png)
 
 
 ### `→ ROC/AUC:`
@@ -112,6 +122,41 @@ plt.ylabel('True positive rate')
 plt.legend(loc="lower right")
 plt.show()
 ```
+
+From [38]:
+
+![roc_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/roc_good_bad.png)
+
+
+### `→ Lift Curve:`
+ 
+> Is a way of visualizing the performance of a classification model.
+> `How does my model compare to random guessing given X number of samples`
+> > -- <cite> Perkowski from [36] </cite>
+
+From [38]:
+
+![lift_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/lift_good_bad.png)
+
+
+
+### `→ Cumulative Gains:`
+> Shows the total number of events captured by a model over a given number of samples.
+> `how many events can I expect given X number of samples`
+> > -- <cite> Perkowski from [36] </cite>
+
+From [38]:
+
+![comulative_gains_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/comulative_gains_good_bad.png)
+
+### `→ Calibration curve:`
+
+From [38]:
+
+![calibration_curve_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/calibration_curve_good_bad.png)
+
+
+
 ### `→ Other Metrics:`
 
 From [22]:
@@ -773,7 +818,7 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 ```
 
 ## * References 
-[1] From  https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml <br/>
+[1] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml <br/>
 [2] From https://docs.microsoft.com/en-us/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py <br/>
 [3] From https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html <br/>
 [4] From https://vitalflux.com/roc-curve-auc-python-false-positive-true-positive-rate/ <br/>
@@ -808,3 +853,6 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [33] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
 [34] From https://slundberg.github.io/shap/notebooks/linear_explainer/Sentiment%20Analysis%20with%20Logistic%20Regression.html <br/>
 [35] From https://slundberg.github.io/shap/notebooks/Iris%20classification%20with%20scikit-learn.html <br/>
+[36] From https://www.quora.com/Whats-Lift-curve <br/>
+[37] From https://www.statistics.com/glossary/event/ <br/>
+[38] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml <br/>
