@@ -554,6 +554,88 @@ print(corpus_test[ind])
 
 ### `→ SHAP Kernel Explainer:`
 
+From [35]:
+
+```python
+# Iris classification with scikit-learn
+#------> Load the data
+import sklearn
+from sklearn.model_selection import train_test_split
+import numpy as np
+import shap
+import time
+X_train,X_test,Y_train,Y_test = train_test_split(*shap.datasets.iris(), test_size=0.2, random_state=0)
+# rather than use the whole training set to estimate expected values, we could summarize with
+# a set of weighted kmeans, each weighted by the number of points they represent. But this dataset
+# is so small we don't worry about it
+#X_train_summary = shap.kmeans(X_train, 50)
+def print_accuracy(f):
+    print("Accuracy = {0}%".format(100*np.sum(f(X_test) == Y_test)/len(Y_test)))
+    time.sleep(0.5) # to let the print get out before any progress bars
+shap.initjs()
+#------> K-nearest neighbors
+knn = sklearn.neighbors.KNeighborsClassifier()
+knn.fit(X_train, Y_train)
+print_accuracy(knn.predict)
+# --> Explain a single prediction from the test set
+explainer = shap.KernelExplainer(knn.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test.iloc[0,:])
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0,:])
+# --> Explain all the predictions in the test set
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Support vector machine with a linear kernel
+svc_linear = sklearn.svm.SVC(kernel='linear', probability=True)
+svc_linear.fit(X_train, Y_train)
+print_accuracy(svc_linear.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(svc_linear.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Support vector machine with a radial basis function kernel
+svc_linear = sklearn.svm.SVC(kernel='rbf', probability=True)
+svc_linear.fit(X_train, Y_train)
+print_accuracy(svc_linear.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(svc_linear.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Logistic regression
+linear_lr = sklearn.linear_model.LogisticRegression()
+linear_lr.fit(X_train, Y_train)
+print_accuracy(linear_lr.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(linear_lr.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Decision tree
+import sklearn.tree 
+dtree = sklearn.tree.DecisionTreeClassifier(min_samples_split=2)
+dtree.fit(X_train, Y_train)
+print_accuracy(dtree.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(dtree.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Random forest
+from sklearn.ensemble import RandomForestClassifier
+rforest = RandomForestClassifier(n_estimators=100, max_depth=None, min_samples_split=2, random_state=0)
+rforest.fit(X_train, Y_train)
+print_accuracy(rforest.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(rforest.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+#------> Neural network
+from sklearn.neural_network import MLPClassifier
+nn = MLPClassifier(solver='lbfgs', alpha=1e-1, hidden_layer_sizes=(5, 2), random_state=0)
+nn.fit(X_train, Y_train)
+print_accuracy(nn.predict)
+# explain all the predictions in the test set
+explainer = shap.KernelExplainer(nn.predict_proba, X_train)
+shap_values = explainer.shap_values(X_test)
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test)
+```
 
 ### `→ PFI Explainer:`
 
@@ -725,3 +807,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [32] From https://www.coursehero.com/file/p53lo034/Visualizing-Summary-Importance-Switching-to-the-Summary-Importance/ <br/>
 [33] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
 [34] From https://slundberg.github.io/shap/notebooks/linear_explainer/Sentiment%20Analysis%20with%20Logistic%20Regression.html <br/>
+[35] From https://slundberg.github.io/shap/notebooks/Iris%20classification%20with%20scikit-learn.html <br/>
