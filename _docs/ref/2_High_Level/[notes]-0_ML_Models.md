@@ -70,7 +70,7 @@ From [22]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/supervised_general_flow.png)
 
-### `→ Supervised Learning algorithms:`
+### `→ Supervised Learning algorithms (statistical models):`
 Based on [32]:
 
 - Decision trees
@@ -181,7 +181,7 @@ From [22]:
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/unsupervised_general_flow.png)
 
-### `→ Unsupervised Learning algorithms:`
+### `→ Unsupervised Learning algorithms (statistical models):`
 Based on [31]:
 
 - K-means clustering
