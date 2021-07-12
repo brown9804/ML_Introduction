@@ -138,6 +138,18 @@ From [38]:
 
 ![lift_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/lift_good_bad.png)
 
+### `→ Precision-recall curve:`
+
+> The precision-recall curve plots the relationship between precision and recall as 
+> the decision threshold changes. Recall is the ability of a model to detect all positive 
+> samples and precision is the ability of a model to avoid labeling negative samples as 
+> positive. Some business problems might require higher recall and some higher precision 
+> depending on the relative importance of avoiding false negatives vs false positives.
+> > -- <cite> MicrosoftDocs from [38] </cite>
+
+From [38]:
+
+![precisionrecall_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/precisionrecall_good_bad.png)
 
 
 ### `→ Cumulative Gains:`
@@ -151,10 +163,27 @@ From [38]:
 
 ### `→ Calibration curve:`
 
+`Proportion of confidence by confidence level`. `Calibrated - the level has the expected value`
+
+> The calibration curve plots a `model's confidence` in its `predictions against` the proportion 
+> of `positive samples at each confidence level`. A `well-calibrated` model will correctly classify
+> 100% of the predictions to which it assigns 100% confidence, 50% of the predictions it assigns 
+> 50% confidence, 20% of the predictions it assigns a 20% confidence, and so on. A perfectly 
+> calibrated model will have a calibration curve following the y = x line where the model perfectly 
+> predicts the probability that samples belong to each class. <br/>
+> An `over-confident model` will over-predict probabilities close to zero and one,
+> rarely being uncertain about the class of each sample and the `calibration curve` will look similar 
+> to `backward "S"`. An `under-confident` model will assign a lower probability on average to the class
+> it predicts and the associated calibration curve will look `similar to an "S"`. The calibration 
+> curve does not depict a model's ability to classify correctly, but instead its ability to
+> correctly assign confidence to its predictions. A bad model can still have a good calibration
+> curve if the model correctly assigns low confidence and high uncertainty.
+> > -- <cite> MicrosoftDocs from [1] </cite>
+
+
 From [38]:
 
 ![calibration_curve_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/calibration_curve_good_bad.png)
-
 
 
 ### `→ Other Metrics:`
@@ -166,8 +195,6 @@ From [22]:
 Difference between accuracy and precision, from [23]:
 
 ![diff_accuracy_precision](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/accuracy_vs_precision_explain.png)
-
-
 
 Considering:
 > `predict()` is used to predict the actual class (In your case one of 0, 1 or 1). <br/>
