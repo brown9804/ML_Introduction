@@ -162,7 +162,7 @@ From [33]:
 
 From [33]:
 
-![ml_interpretability](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_interpretability.png)
+![ml_interpretability](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_interpretability_table_general.png)
 
 
 Based on [14], and [15]:
