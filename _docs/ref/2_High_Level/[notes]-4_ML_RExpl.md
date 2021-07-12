@@ -140,8 +140,8 @@ From [38]:
 
 ### `→ Precision-recall curve:`
 
-> The precision-recall curve plots the relationship between precision and recall as 
-> the decision threshold changes. Recall is the ability of a model to detect all positive 
+> The precision-recall curve plots the `relationship between precision and recall` as 
+> the `decision threshold changes`. Recall is the ability of a model to detect all positive 
 > samples and precision is the ability of a model to avoid labeling negative samples as 
 > positive. Some business problems might require higher recall and some higher precision 
 > depending on the relative importance of avoiding false negatives vs false positives.
