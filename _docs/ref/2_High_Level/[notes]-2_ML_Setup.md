@@ -73,6 +73,9 @@ From [27]:
 > 
 > > -- <cite> Microsoft Docs From [27] </cite>
 
+From [38]:
+![automl process](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/automl_process.png)
+
 ### Types of AutoML: classify, regression, & forecast
 
 See the example of configuring an Automated Machine Learning Experiment from [26]:
@@ -458,3 +461,4 @@ Performance Metrics:
 [35] From https://www.researchgate.net/figure/Typical-structure-of-a-computer-memory-hierarchy_fig1_281805561 <br/>
 [36] From https://devopedia.org/units-of-information <br/>
 [37] From https://www.krivalar.com/number-system <br/>
+[38] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
