@@ -475,21 +475,25 @@ Based on [1], [13], and [16]:
 # ************ forecasting
 # ************ classification
 
+best_run, fitted_model = remote_run.get_output()
+from interpret.ext.glassbox import LGBMExplainableModel
+from azureml.interpret.mimic_wrapper import MimicWrapper
+from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from interpret_community.widget import ExplanationDashboard
+
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train,
                                                              X_test=X_test, y=y_train,
-                                                             task='task_name') 
-                                                             
-mimic_wrapper_explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
-                explainable_model=automl_explainer_setup_obj.surrogate_model,
-                init_dataset=automl_explainer_setup_obj.X_transform, run=best_run,
-                features=automl_explainer_setup_obj.engineered_feature_names,
-                feature_maps=[automl_explainer_setup_obj.feature_map],
-                classes=automl_explainer_setup_obj.classes,
-                explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params) 
-                
+                                                             task='task_name')
+
+# LGBMExplainableModel can be replaced with LinearExplainableModel, SGDExplainableModel, or DecisionTreeExplainableModel
+mimic_wrapper_explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
+                         init_dataset=automl_explainer_setup_obj.X_transform, run=best_run,
+                         features=automl_explainer_setup_obj.engineered_feature_names,
+                         feature_maps=[automl_explainer_setup_obj.feature_map],
+                         classes=automl_explainer_setup_obj.classes)
 # Local/Global Explanation                       
-#---- Engineered Explanations
-engineered_explanations = mimic_wrapper_explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
+#---- Engineered Explanations                         
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
 #---- Dashboard setup
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
