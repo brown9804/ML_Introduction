@@ -41,7 +41,7 @@ From [11]
 <br/>
 ![](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/machine_learning_types.png)
 
-##`Type #1 Supervised Learning`
+## `Type #1 Supervised Learning`
 
 |   Use  | % | 
 |---|---|
