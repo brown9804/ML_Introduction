@@ -74,6 +74,7 @@ From [27]:
 > > -- <cite> Microsoft Docs From [27] </cite>
 
 From [38]:
+
 ![automl process](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/automl_process_what_to_expect.png)
 
 ### Types of AutoML: classify, regression, & forecast
