@@ -253,7 +253,7 @@ From [33]:
 ![local_explain_output_example](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_explain_output_example.png)
 
 
-### Meta Explainers
+## Meta Explainers
 
 ### `→ Tabular Explainer:`
 
@@ -430,7 +430,7 @@ print(raw_explanations.get_feature_importance_dict()),
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 
-### Direct Explainers 
+## Direct Explainers 
 
 `SHAP`: SHapley Additive exPlanations
 
