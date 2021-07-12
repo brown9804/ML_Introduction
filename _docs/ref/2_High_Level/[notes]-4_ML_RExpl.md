@@ -153,17 +153,13 @@ From [33]:
 
 ![how_to_explain_your_model](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/how_to_explain_your_model.png)
 
-
 From [33]:
 
 ![direct_vs_meta_explainers](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/direct_vs_meta_explainers.png)
 
-
-
 From [33]:
 
 ![ml_interpretability](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/ml_interpretability_table_general.png)
-
 
 Based on [14], and [15]:
 
@@ -248,6 +244,17 @@ Explainability Model Type Output:
 - `mimic_wrapper_explainer`
 - `pfi_explainer` (Global/ no Local support)
 
+From [33]:
+
+![global_explain_output_example](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/global_explain_output_example.png)
+
+From [33]:
+
+![local_explain_output_example](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/local_explain_output_example.png)
+
+
+### Meta Explainers
+
 ### `→ Tabular Explainer:`
 
  >  Tabular Explainer is an explainer that acts as a wrapper around various SHAP explainer algorithms, automatically choosing the one that is most appropriate for your model architecture.
@@ -319,75 +326,6 @@ client.upload_model_explanation(global_explanation, comment='global explanation:
 # or you can only upload the explanation object with the top k feature info
 #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
 ```
-
-`SHAP`: SHapley Additive exPlanations
-
-From [14]:
-
-![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type_tabular.png)
-
-From [31]:
-
-```python 
-# SHAP Tree Explainer 
-from sklearn.model_selection import train_test_split
-import lightgbm as lgb
-import shap
-# print the JS visualization code to the notebook
-shap.initjs()
-#------> Load data set 
-X,y = shap.datasets.adult()
-X_display,y_display = shap.datasets.adult(display=True)
-# create a train/test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
-d_train = lgb.Dataset(X_train, label=y_train)
-d_test = lgb.Dataset(X_test, label=y_test)
-#------> Train the model 
-params = {
-    "max_bin": 512,
-    "learning_rate": 0.05,
-    "boosting_type": "gbdt",
-    "objective": "binary",
-    "metric": "binary_logloss",
-    "num_leaves": 10,
-    "verbose": -1,
-    "min_data": 100,
-    "boost_from_average": True
-}
-model = lgb.train(params, d_train, 10000, valid_sets=[d_test], early_stopping_rounds=50, verbose_eval=1000)
-#------> Explain predictions
-explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X)
-#------> Visualize a single prediction
-shap.force_plot(explainer.expected_value[1], shap_values[1][0,:], X_display.iloc[0,:])
-#------> Visualize many predictions
-shap.force_plot(explainer.expected_value[1], shap_values[1][:1000,:], X_display.iloc[:1000,:])
-#------> SHAP Summary Plot
-shap.summary_plot(shap_values, X)
-#------> SHAP Dependence Plots
-for name in X_train.columns:
-    shap.dependence_plot(name, shap_values[1], X, display_features=X_display)
-```
-
-From [30]:
-
-```python 
-# SHAP Deep Explainer 
-# ...include code from https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py
-import shap
-import numpy as np
-# select a set of background examples to take an expectation over
-background = x_train[np.random.choice(x_train.shape[0], 100, replace=False)]
-# explain predictions of the model on four images
-e = shap.DeepExplainer(model, background)
-# ...or pass tensors directly
-# e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
-shap_values = e.shap_values(x_test[1:5])
-# plot the feature attributions
-shap.image_plot(shap_values, -x_test[1:5])
-```
-
-
 
 ### `→ Mimic Explainer:`
 
@@ -492,6 +430,75 @@ print(raw_explanations.get_feature_importance_dict()),
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 
+### Direct Explainers 
+
+`SHAP`: SHapley Additive exPlanations
+
+From [14]:
+
+![tabular_table_explain_options](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/table_interpretability_technique_descrip_type_tabular.png)
+
+### `→ SHAP Tree Explainer:`
+
+From [31]:
+
+```python 
+from sklearn.model_selection import train_test_split
+import lightgbm as lgb
+import shap
+# print the JS visualization code to the notebook
+shap.initjs()
+#------> Load data set 
+X,y = shap.datasets.adult()
+X_display,y_display = shap.datasets.adult(display=True)
+# create a train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
+d_train = lgb.Dataset(X_train, label=y_train)
+d_test = lgb.Dataset(X_test, label=y_test)
+#------> Train the model 
+params = {
+    "max_bin": 512,
+    "learning_rate": 0.05,
+    "boosting_type": "gbdt",
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "num_leaves": 10,
+    "verbose": -1,
+    "min_data": 100,
+    "boost_from_average": True
+}
+model = lgb.train(params, d_train, 10000, valid_sets=[d_test], early_stopping_rounds=50, verbose_eval=1000)
+#------> Explain predictions
+explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X)
+#------> Visualize a single prediction
+shap.force_plot(explainer.expected_value[1], shap_values[1][0,:], X_display.iloc[0,:])
+#------> Visualize many predictions
+shap.force_plot(explainer.expected_value[1], shap_values[1][:1000,:], X_display.iloc[:1000,:])
+#------> SHAP Summary Plot
+shap.summary_plot(shap_values, X)
+#------> SHAP Dependence Plots
+for name in X_train.columns:
+    shap.dependence_plot(name, shap_values[1], X, display_features=X_display)
+```
+
+### `→ SHAP Deep Explainer:`
+From [30]:
+
+```python 
+# ...include code from https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py
+import shap
+import numpy as np
+# select a set of background examples to take an expectation over
+background = x_train[np.random.choice(x_train.shape[0], 100, replace=False)]
+# explain predictions of the model on four images
+e = shap.DeepExplainer(model, background)
+# ...or pass tensors directly
+# e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
+shap_values = e.shap_values(x_test[1:5])
+# plot the feature attributions
+shap.image_plot(shap_values, -x_test[1:5])
+```
 ### `→ PFI Explainer:`
 
 From [14]:
@@ -616,7 +623,6 @@ mode='classification',training_labels=df_titanic['Survived'],feature_names=model
 i = 1
 exp = explainer.explain_instance(df_titanic.loc[i,feat].astype(int).values, prob, num_features=5)
 ```
-
 
 ### `→ Model registration:`
 
