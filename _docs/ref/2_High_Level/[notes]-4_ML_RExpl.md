@@ -508,7 +508,16 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ## Direct Explainers 
 
-`SHAP`: SHapley Additive exPlanations
+`SHAP`: SHapley Additive exPlanations 
+
+> SHAP (SHapley Additive exPlanations) is a game theoretic approach to explain the output of any
+> machine learning model. It connects optimal credit allocation with local explanations using 
+> the classic Shapley values from game theory and their related extensions 
+> (see papers for details and citations).
+> > -- <cite> SHAP from [39] </cite>
+
+From [39]: 
+![shap](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/shap.png)
 
 From [14]:
 
@@ -887,3 +896,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [36] From https://www.quora.com/Whats-Lift-curve <br/>
 [37] From https://www.statistics.com/glossary/event/ <br/>
 [38] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml <br/>
+[39] From https://shap.readthedocs.io/en/latest/index.html <br/>
