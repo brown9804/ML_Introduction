@@ -257,10 +257,6 @@ from azureml.core import Experiment
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core import Workspace, Dataset
 from azureml.interpret import ExplanationClient
-from azureml.interpret import MimicWrapper
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
-from azureml.interpret.mimic_wrapper import MimicWrapper
-from interpret_community.widget import ExplanationDashboard
  ```
 
 ### `→ Download Explanation:`
@@ -481,6 +477,7 @@ Based on [1], [13], and [16]:
 # ************ classification
 
 best_run, fitted_model = remote_run.get_output()
+
 from interpret.ext.glassbox import LGBMExplainableModel
 from azureml.interpret.mimic_wrapper import MimicWrapper
 from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
@@ -573,25 +570,53 @@ for name in X_train.columns:
 ```
 
 ### `→ SHAP Deep Explainer:`
-From [30]:
+Based on [30], [41]:
 
 ```python 
 !pip install tensorflow==1.2.0 --ignore-installed
 
-# ...include code from https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py
+!pip uninstall tensorflow -y
+!conda create --name tensorflow python=3.5 -y; 
+!pip install --ignore-installed --upgrade tensorflow 
+
 import shap
 import numpy as np
-import tensorflow as tf
+import pandas as pd
+from sklearn.model_selection import train_test_split
+import tensorflow as tf    
+tf.compat.v1.disable_v2_behavior() # <-- HERE !
+import tensorflow.keras.backend as K
+from tensorflow.keras.utils import to_categorical
+from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras import Sequential
+from tensorflow.keras import optimizers
 
+print("SHAP version is:", shap.__version__)
+print("Tensorflow version is:", tf.__version__)
+X_train, X_test, Y_train, Y_test = train_test_split(
+    *shap.datasets.iris(), test_size=0.2, random_state=0
+)
+Y_train = to_categorical(Y_train, num_classes=3)
+Y_test = to_categorical(Y_test, num_classes=3)
+# Define baseline model
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Dense(8, input_dim=len(X_train.columns), activation="relu"))
+model.add(tf.keras.layers.Dense(3, activation="softmax"))
+# model.summary()
+# compile the model
+model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+hist = model.fit(X_train, Y_train, batch_size=5, epochs=200, verbose=0)
 # select a set of background examples to take an expectation over
-background = x_train[np.random.choice(x_train.shape[0], 100, replace=False)] # x_train.iloc[:100]
-# explain predictions of the model on four images
-e = shap.DeepExplainer(model, background) #fitted model
-# ...or pass tensors directly
-# e = shap.DeepExplainer((model.layers[0].input, model.layers[-1].output), background)
-shap_values = e.shap_values(x_test[1:5])
-# plot the feature attributions
-shap.image_plot(shap_values, -x_test[1:5])
+background = X_train.iloc[np.random.choice(X_train.shape[0], 100, replace=False)]
+explainer = shap.DeepExplainer(
+    (model.layers[0].input, model.layers[-1].output), background
+)
+shap_values = explainer.shap_values(X_test[:3].values) # <-- HERE !
+# print the JS visualization code to the notebook
+shap.initjs()
+shap.force_plot(
+    explainer.expected_value[0], shap_values[0][0], feature_names=X_train.columns
+)
 ```
 
 ### `→ SHAP Linear Explainer:`
@@ -907,3 +932,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [38] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml <br/>
 [39] From https://shap.readthedocs.io/en/latest/index.html <br/>
 [40] From https://human-centered.ai/wordpress/wp-content/uploads/2020/02/04-Explainable-AI-Global-Local-Antehoc-Posthoc-Overview.pdf <br/>
+[41] From https://stackoverflow.com/questions/66814523/shap-deepexplainer-with-tensorflow-2-4-error <br/>
