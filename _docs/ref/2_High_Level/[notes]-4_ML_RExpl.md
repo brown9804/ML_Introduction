@@ -221,6 +221,11 @@ accuracy = accuracy_score(y_validation, predictions_0_1, normalize=False) # it's
 
 ## `Explainability`
 
+From [40]:
+
+![explainability_definiton](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/explainability_definiton.png)
+
+
 From [33]:
 
 ![how_to_explain_your_model](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/how_to_explain_your_model.png)
@@ -901,3 +906,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [37] From https://www.statistics.com/glossary/event/ <br/>
 [38] From https://docs.microsoft.com/en-us/azure/machine-learning/how-to-understand-automated-ml <br/>
 [39] From https://shap.readthedocs.io/en/latest/index.html <br/>
+[40] From https://human-centered.ai/wordpress/wp-content/uploads/2020/02/04-Explainable-AI-Global-Local-Antehoc-Posthoc-Overview.pdf <br/>
