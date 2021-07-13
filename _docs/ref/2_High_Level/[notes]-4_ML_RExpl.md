@@ -576,8 +576,9 @@ Based on [30], [41]:
 !pip install tensorflow==1.2.0 --ignore-installed
 
 !pip uninstall tensorflow -y
-!echo "y" | conda create --name tensorflow python=3.5;
-!pip install --ignore-installed --upgrade tensorflow 
+!echo "y" | conda create --name tensorflow-env python=3.8 pip
+!conda activate tensorflow-env
+!pip install tensorflow
 
 import shap
 import numpy as np
