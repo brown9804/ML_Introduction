@@ -206,7 +206,7 @@ From [44]:
 # Prepare Data
 df = pd.read_csv("https://github.com/selva86/datasets/raw/master/mtcars.csv")
 x = df.loc[:, ['mpg']]
-df['mpg_z'] = (x - x.mean())/x.std()
+df['mpg_z'] = (x - x.mean())/x.std() # ZSCORE formula
 df['colors'] = ['red' if x < 0 else 'green' for x in df['mpg_z']]
 df.sort_values('mpg_z', inplace=True)
 df.reset_index(inplace=True)
