@@ -185,6 +185,16 @@ From [38]:
 
 ![calibration_curve_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/calibration_curve_good_bad.png)
 
+### `→ Zscore:`
+
+From [42]:
+
+![zscore](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/zscore.png)
+
+From [43]:
+
+![zscore_graph](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/zscore_graph.png)
+
 
 ### `→ Other Metrics:`
 
@@ -934,3 +944,5 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [39] From https://shap.readthedocs.io/en/latest/index.html <br/>
 [40] From https://human-centered.ai/wordpress/wp-content/uploads/2020/02/04-Explainable-AI-Global-Local-Antehoc-Posthoc-Overview.pdf <br/>
 [41] From https://stackoverflow.com/questions/66814523/shap-deepexplainer-with-tensorflow-2-4-error <br/>
+[42] From https://slideplayer.com/slide/1388845/ <br/>
+[43] From http://www.robertbarrington.net/wp-content/uploads/2013/04/ZScores.jpg <br/>
