@@ -152,14 +152,6 @@ From [38]:
 ![precisionrecall_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/precisionrecall_good_bad.png)
 
 
-### `→ Cumulative Gains:`
-> Shows the total number of events captured by a model over a given number of samples.
-> `how many events can I expect given X number of samples`
-> > -- <cite> Perkowski from [36] </cite>
-
-From [38]:
-
-![comulative_gains_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/comulative_gains_good_bad.png)
 
 ### `→ Calibration curve:`
 
@@ -185,6 +177,15 @@ From [38]:
 
 ![calibration_curve_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/calibration_curve_good_bad.png)
 
+### `→ Cumulative Gains:`
+> Shows the total number of events captured by a model over a given number of samples.
+> `how many events can I expect given X number of samples`
+> > -- <cite> Perkowski from [36] </cite>
+
+From [38]:
+
+![comulative_gains_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/comulative_gains_good_bad.png)
+
 ### `→ Zscore:`
 
 From [42]:
@@ -195,6 +196,32 @@ From [43]:
 
 ![zscore_graph](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/zscore_graph.png)
 
+From [44]:
+
+![example_using_zscore](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/example_using_zscore.png)
+
+From [44]:
+
+```python 
+# Prepare Data
+df = pd.read_csv("https://github.com/selva86/datasets/raw/master/mtcars.csv")
+x = df.loc[:, ['mpg']]
+df['mpg_z'] = (x - x.mean())/x.std()
+df['colors'] = ['red' if x < 0 else 'green' for x in df['mpg_z']]
+df.sort_values('mpg_z', inplace=True)
+df.reset_index(inplace=True)
+
+# Draw plot
+plt.figure(figsize=(14,10), dpi= 80)
+plt.hlines(y=df.index, xmin=0, xmax=df.mpg_z, color=df.colors, alpha=0.4, linewidth=5)
+
+# Decorations
+plt.gca().set(ylabel='$Model$', xlabel='$Mileage$')
+plt.yticks(df.index, df.cars, fontsize=12)
+plt.title('Diverging Bars of Car Mileage', fontdict={'size':20})
+plt.grid(linestyle='--', alpha=0.5)
+plt.show()
+```
 
 ### `→ Other Metrics:`
 
@@ -946,3 +973,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [41] From https://stackoverflow.com/questions/66814523/shap-deepexplainer-with-tensorflow-2-4-error <br/>
 [42] From https://slideplayer.com/slide/1388845/ <br/>
 [43] From http://www.robertbarrington.net/wp-content/uploads/2013/04/ZScores.jpg <br/>
+[44] From https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/ <br/>
