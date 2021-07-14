@@ -127,7 +127,6 @@ From [38]:
 
 ![roc_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/roc_good_bad.png)
 
-
 ### `→ Lift Curve:`
  
 > Is a way of visualizing the performance of a classification model.
@@ -150,7 +149,6 @@ From [38]:
 From [38]:
 
 ![precisionrecall_good_bad](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/precisionrecall_good_bad.png)
-
 
 
 ### `→ Calibration curve:`
@@ -191,6 +189,11 @@ From [38]:
 From [42]:
 
 ![zscore](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/zscore.png)
+
+From [45]:
+
+![mean_std_desv_formulas](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/mean_std_desv_formulas.png)
+
 
 From [43]:
 
@@ -974,3 +977,4 @@ model = best_run.register_model(model_name=model_name_selected, model_path=model
 [42] From https://slideplayer.com/slide/1388845/ <br/>
 [43] From http://www.robertbarrington.net/wp-content/uploads/2013/04/ZScores.jpg <br/>
 [44] From https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/ <br/>
+[45] From https://www.kristakingmath.com/blog/mean-variance-standard-deviation <br/>
