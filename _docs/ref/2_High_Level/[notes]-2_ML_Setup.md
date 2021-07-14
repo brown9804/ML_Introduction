@@ -25,6 +25,20 @@ From [37]:
 
 ![number_system](https://github.com/brown9804/ML_DS_path/blob/main/_docs/img/summary_of_number_system.png)
 
+### Performance Analysis 
+
+Based on [39]:
+
+Computer performance is the amount of work accomplished by a computer system. Depends on:
+- `Response time:` is the time from start to completion of a task. This also includes:
+        * Operating system overhead.
+        * Waiting for I/O and other processes
+        * Accessing disk and memory
+        * Time spent executing on the CPU or execution time.
+-  `Throughput:` is the total amount of work done in a given time.  
+-  `Execution time of a computer system:` is the total time a CPU spends computing on a given task. It also excludes time for I/O or running other programs. This is also referred to as simply CPU time.
+
+
 ## `Auto ML setup`
 
 > During training, Azure Machine Learning creates a `number of pipelines`
@@ -463,3 +477,4 @@ Performance Metrics:
 [36] From https://devopedia.org/units-of-information <br/>
 [37] From https://www.krivalar.com/number-system <br/>
 [38] From https://www.slideshare.net/FrancescaLazzeriPhD/using-auto-ml-to-automate-selection-of-machine-learning-models-and-hyperparameters-ai-conference-sj-2019 <br/>
+[39] From https://www.geeksforgeeks.org/computer-organization-performance-of-computer/ <br/>
