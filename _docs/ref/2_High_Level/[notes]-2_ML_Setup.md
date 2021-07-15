@@ -29,15 +29,34 @@ From [37]:
 
 Based on [39]:
 
-Computer performance is the amount of work accomplished by a computer system. Depends on:
-- `Response time:` is the time from start to completion of a task. This also includes:
-        * Operating system overhead.
-        * Waiting for I/O and other processes
-        * Accessing disk and memory
-        * Time spent executing on the CPU or execution time.
+Computer performance is the amount of work accomplished by a computer system. 
+
+<img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;Performance&space;=&space;\frac{1}{Execution&space;\&space;time}" title="Performance = \frac{1}{Execution \ time}" />
+
+<img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;\frac{Performance&space;\&space;of&space;\&space;A}{Performance&space;\&space;of&space;\&space;B}&space;=&space;\frac{Execution&space;\&space;Time&space;\&space;of&space;\&space;B}{Execution&space;\&space;Time&space;\&space;of&space;\&space;A}" title="\frac{Performance \ of \ A}{Performance \ of \ B} = \frac{Execution \ Time \ of \ B}{Execution \ Time \ of \ A}" />
+
+Depends on:
+- `Response time:` is the time from start to completion of a task. This also includes: <br/>
+        * Operating system overhead. <br/>
+        * Waiting for I/O and other processes  <br/>
+        * Accessing disk and memory  <br/>
+        * Time spent executing on the CPU or execution time.  <br/>
 -  `Throughput:` is the total amount of work done in a given time.  
 -  `Execution time of a computer system:` is the total time a CPU spends computing on a given task. It also excludes time for I/O or running other programs. This is also referred to as simply CPU time.
 
+| Formula |
+| ---|
+| <img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;Execution&space;\&space;time&space;&space;=&space;\frac{CPU&space;\&space;clock&space;\&space;cycles}{clock&space;\&space;rate}" title="Execution \ time = \frac{CPU \ clock \ cycles}{clock \ rate}" /> |
+| <img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;Execution&space;\&space;Time&space;&space;=&space;CPU&space;\&space;clock&space;\&space;cycles&space;*&space;Clock&space;\&space;cycle&space;\&space;time&space;" title="Execution \ Time = CPU \ clock \ cycles * Clock \ cycle \ time " /> | 
+| <img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;Execution&space;\&space;time&space;=&space;Instruction&space;\&space;Count&space;*&space;CPI&space;*&space;Clock&space;\&space;cycle&space;\&space;time" title="Execution \ time = Instruction \ Count * CPI * Clock \ cycle \ time" /> |
+|<img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;Execution&space;\&space;time&space;=&space;\frac{Instruction&space;\&space;Count&space;*&space;CPI&space;}{clock&space;\&space;rate&space;}" title="Execution \ time = \frac{Instruction \ Count * CPI }{clock \ rate }" /> | 
+
+Regarding CPU clock cycles:
+
+| Formula |
+| ---|
+|<img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;CPU&space;\&space;clock&space;\&space;cycles&space;=&space;\frac{No.&space;\&space;of&space;\&space;instructions}{Program}&space;*&space;\frac{Clock&space;\&space;cycles}{Instruction}" title="CPU \ clock \ cycles = \frac{No. \ of \ instructions}{Program} * \frac{Clock \ cycles}{Instruction}" /> |
+| <img src="https://latex.codecogs.com/gif.image?\dpi{110}&space;CPU&space;\&space;clock&space;\&space;cycles&space;=&space;Instruction&space;\&space;Count&space;*&space;CPI&space;" title="CPU \ clock \ cycles = Instruction \ Count * CPI " /> |
 
 ## `Auto ML setup`
 
